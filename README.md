@@ -1,7 +1,7 @@
 # Heart-Valve-Segmentor
 
 ## To do
-- [ ] Look at data
+- [x] Look at data
 - [x] Create a GitLab-repo
 - [ ] Work with MONAILabel to extract labels
 - [ ] Train nnU-Net to segment the heart valves
@@ -37,4 +37,4 @@ The landmarks are:
 Juval Gutknecht
 
 ### License
-Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel
+[Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel](https://dbe.unibas.ch/en/cian/)
