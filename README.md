@@ -3,8 +3,10 @@
 ## To do
 - [x] Look at data
 - [x] Create a GitLab-repo
-- [ ] Work with MONAILabel to extract labels
-- [ ] Train nnU-Net to segment the heart valves
+- [ ] get TensorBoard working
+- [ ] make DataLoader faster
+- [ ] (Work with MONAILabel to extract labels)
+- [ ] Train nnU-Net to segment the heart valves -> DynUNet (monai implementation of nnU-Net)
 - [ ] Train a 3D-landmark detector to detect the landmarks
 - [ ] Deploy the trained models to Specto
 - [ ] Write and complete the README file.
