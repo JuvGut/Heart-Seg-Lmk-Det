@@ -3,8 +3,8 @@ from monai.networks.layers import Norm
 from monai.losses import DiceLoss, DiceCELoss
 import os
 import torch
-from preporcess import prepare
-from utilities import train, show_patient
+from preporcess_v0 import prepare
+from utilities_v0 import train, show_patient
 
 
 data_dir = '/home/juval.gutknecht/Projects/Data/USB'

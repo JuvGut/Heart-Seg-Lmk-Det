@@ -1,11 +1,25 @@
+import monai
 from monai.utils import first
 import matplotlib.pyplot as plt
 import torch
 import os
+from datetime import datetime
 import numpy as np
 from monai.losses import DiceLoss
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
+
+class RemapLabels(monai.transforms.MapTransform):
+    def __init__(self, keys, mapping):
+        super().__init__(keys)
+        self.mapping = mapping
+
+    def __call__(self, data):
+        d = dict(data)
+        for key in self.keys:
+            for old_val, new_val in self.mapping.items():
+                d[key][d[key] == old_val] = new_val
+        return d
 
 def dice_metric(predicted, target):
     '''
@@ -30,6 +44,10 @@ def calculate_weights(val1, val2):
     return torch.tensor(weights, dtype=torch.float32)
 
 def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , device=torch.device("cuda:2")):
+    current_time = datetime.now().strftime('%b%d_%H-%M-%S')
+    log_dir = os.path.join(model_dir, 'logs', current_time)
+    writer = SummaryWriter(log_dir=log_dir)
+    
     best_metric = -1
     best_metric_epoch = -1
     save_loss_train = []
@@ -37,7 +55,7 @@ def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , 
     save_metric_train = []
     save_metric_test = []
     train_loader, test_loader = data_in
-    writer = SummaryWriter(log_dir=os.path.join(model_dir, 'runs'))
+
 
     for epoch in range(max_epochs):
         print("-" * 10)
@@ -64,33 +82,26 @@ def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , 
             optim.step()
 
             train_epoch_loss += train_loss.item()
-            print(
-                f"{train_step}/{len(train_loader) // train_loader.batch_size}, "
-                f"Train_loss: {train_loss.item():.4f}")
-
             train_metric = dice_metric(outputs, label)
             epoch_metric_train += train_metric
-            print(f'Train_dice: {train_metric:.4f}')
+            
+        train_epoch_loss /= train_step
+        epoch_metric_train /= train_step
 
+        print(f'Epoch_loss: {train_epoch_loss:.4f}')
+        print(f'Epoch_metric: {epoch_metric_train:.4f}')
+        
+        save_loss_train.append(train_epoch_loss)
+        save_metric_train.append(epoch_metric_train)
+        np.save(os.path.join(model_dir, 'loss_train.npy'), save_loss_train)
+        np.save(os.path.join(model_dir, 'metric_train.npy'), save_metric_train)
+    
+        writer.add_scalar('Train_Loss', train_epoch_loss, epoch)
+        writer.add_scalar('Train_Dice', epoch_metric_train, epoch)
+            
         print('-'*20)
         
-        train_epoch_loss /= train_step
-        print(f'Epoch_loss: {train_epoch_loss:.4f}')
-        save_loss_train.append(train_epoch_loss)
-        np.save(os.path.join(model_dir, 'loss_train.npy'), save_loss_train)
-        
-        epoch_metric_train /= train_step
-        print(f'Epoch_metric: {epoch_metric_train:.4f}')
-
-        save_metric_train.append(epoch_metric_train)
-        np.save(os.path.join(model_dir, 'metric_train.npy'), save_metric_train)
-
-        writer.add_scalar('Loss/train', train_epoch_loss, epoch)
-        writer.add_scalar('Dice/train', epoch_metric_train, epoch)
-        writer.flush()
-
         if (epoch + 1) % test_interval == 0:
-
             model.eval()
             with torch.no_grad():
                 test_epoch_loss = 0
@@ -99,7 +110,6 @@ def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , 
                 test_step = 0
 
                 for test_data in test_loader:
-
                     test_step += 1
 
                     test_volume = test_data["vol"]
@@ -114,17 +124,19 @@ def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , 
                     test_metric = dice_metric(test_outputs, test_label)
                     epoch_metric_test += test_metric
                     
-                
                 test_epoch_loss /= test_step
-                print(f'test_loss_epoch: {test_epoch_loss:.4f}')
-                save_loss_test.append(test_epoch_loss)
-                np.save(os.path.join(model_dir, 'loss_test.npy'), save_loss_test)
-
                 epoch_metric_test /= test_step
+                
+                print(f'test_loss_epoch: {test_epoch_loss:.4f}')
                 print(f'test_dice_epoch: {epoch_metric_test:.4f}')
+
+                save_loss_test.append(test_epoch_loss)
                 save_metric_test.append(epoch_metric_test)
+                np.save(os.path.join(model_dir, 'loss_test.npy'), save_loss_test)
                 np.save(os.path.join(model_dir, 'metric_test.npy'), save_metric_test)
 
+                writer.add_scalar('Loss/test', test_epoch_loss, epoch)
+                writer.add_scalar('Dice/test', epoch_metric_test, epoch)
 
                 if epoch_metric_test > best_metric:
                     best_metric = epoch_metric_test
@@ -133,19 +145,15 @@ def train(model, data_in, loss, optim, max_epochs, model_dir, test_interval=1 , 
                         model_dir, "best_metric_model.pth"))
                 
                 print(
-                    f"current epoch: {epoch + 1} current mean dice: {test_metric:.4f}"
-                    f"\nbest mean dice: {best_metric:.4f} "
-                    f"at epoch: {best_metric_epoch}"
+                    f"Current epoch: {epoch + 1}, Current mean dice: {test_metric:.4f}"
+                    f"\nbest mean dice: {best_metric:.4f} at epoch: {best_metric_epoch}"
                 )
-                writer.add_scalar('Loss/test', test_epoch_loss, epoch)
-                writer.add_scalar('Dice/test', epoch_metric_test, epoch)
-                writer.flush()
     
     writer.close()
     print(
-        f"train completed, best_metric: {best_metric:.4f} "
-        f"at epoch: {best_metric_epoch}")
+        f"train completed, best_metric: {best_metric:.4f} at epoch: {best_metric_epoch}")
     
+    return save_loss_train, save_loss_test, save_metric_train, save_metric_test
 
 def show_patient(data, SLICE_NUMBER=1, train=True, test=False):
     """
