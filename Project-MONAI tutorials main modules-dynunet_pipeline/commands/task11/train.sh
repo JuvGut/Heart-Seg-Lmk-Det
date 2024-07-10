@@ -15,9 +15,9 @@ lr=1e-1
 fold=0
 
 CUDA_VISIBLE_DEVICES=1 python train.py -fold $fold -train_num_workers 4 -interval 1 -num_samples 4 \
--learning_rate $lr -max_epochs 3000 -task_id 02 -pos_sample_num 1 \
+-learning_rate $lr -max_epochs 3000 -task_id 11 -pos_sample_num 1 \
 -expr_name baseline -tta_val True -determinism_flag True -determinism_seed 0 \
--root_dir //home/juval.gutknecht/Projects/Data/Example-Project
+-root_dir /home/juval.gutknecht/Projects/Data/USB
 
 
 # CUDA_VISIBLE_DEVICES=1,2 python train.py -fold $fold -train_num_workers 4 -interval 1 -num_samples 4 \

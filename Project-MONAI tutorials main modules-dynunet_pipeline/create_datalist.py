@@ -35,6 +35,7 @@ def create_datalist(
         "08": "Task08_HepaticVessel",
         "09": "Task09_Spleen",
         "10": "Task10_Colon",
+        "11": "USB_Heart",
     }
 
     dataset_file_path = os.path.join(dataset_input_dir, task_name[task_id], "dataset.json")

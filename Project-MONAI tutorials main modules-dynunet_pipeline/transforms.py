@@ -296,18 +296,45 @@ class PreprocessAnisotropic(MapTransform):
     def __call__(self, data):
         # load data
         d = dict(data)
+        
+        ### Debugging 1/2 ###
+        print("Data dictionary keys in and their types:")
+        for key, value in d.items():
+            if hasattr(value, "shape"):
+                print(f"{key}: {value.shape}")
+            else:
+                print(f"{key}: {type(value)}")
+        
 
         image = d["image"]
 
+        ### Debugging 2/2 -> print statements###
         if "image_meta_dict" in d:
-            image_spacings = d["image_meta_dict"]["pixdim"][1:4].tolist()
-        elif hasattr(image, "meta") and "pixdim" in image.meta:
-            image_spacings = image.meta["pixdim"][1:4].tolist()
+            print("Image_meta_dict found keys:")
+            # for meta_key, meta_value in d["image_meta_dict"].items():
+            #     print(f"{meta_key}: {meta_value}")
+            image_spacings = d["image_meta_dict"]["pixdim"][1:4].tolist() # this is important
+        elif hasattr(image, "meta") and "pixdim" in image.meta: 
+            print("image.meta \"pixdim\":")
+            # for meta_key, meta_value in image.meta.items():
+            #     print(f"{meta_key}: {meta_value}") # pixdim: [1.   1.25 1.25 1.37 0.   0.   0.   0.  ]
+            image_spacings = image.meta["pixdim"][1:4].tolist() # this is important
+        elif hasattr(image, "meta") and "spatial_shape" in image.meta:
+            print("Image.meta key \"spatial_shape\":")
+            # for meta_key, meta_value in image.meta.items():
+            #     print(f"{meta_key}: {meta_value}")
+            # image_spacings = image.meta["spatial_shape"][1:4].tolist() # this is important
+            image_spacings = [0.35, 0.35, 0.3] # -> from the task_params.py file
         else:
-            raise ValueError("Cannot find image spacing information in the data")
+            print("Available keys in the image object:")
+            for attr in dir(image):
+                if not callable(getattr(image, attr)) and not attr.startswith("__"):
+                    print(f"{attr}: {getattr(image, attr)}")
+                    
+            raise ValueError("Cannot find image spacing information in the data") # this is important
         # image_spacings = d["image_meta_dict"]["pixdim"][1:4].tolist()
-
-
+        
+        
         if "label" in self.keys:
             label = d["label"]
             label[label < 0] = 0
