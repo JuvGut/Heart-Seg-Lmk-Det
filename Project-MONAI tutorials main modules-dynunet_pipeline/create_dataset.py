@@ -62,7 +62,7 @@ def get_data(args, batch_size=1, mode="train"):
         val_ds = CacheDataset(
             data=datalist,
             transform=transform,
-            num_workers=4,
+            num_workers=8, # was 4
         )
 
         data_loader = DataLoader(

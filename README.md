@@ -3,13 +3,27 @@
 ## To do
 - [x] Look at data
 - [x] Create a GitLab-repo
-- [ ] get TensorBoard working
-- [ ] make DataLoader faster
-- [ ] (Work with MONAILabel to extract labels)
-- [ ] Train nnU-Net to segment the heart valves -> DynUNet (monai implementation of nnU-Net)
+- [x] make DataLoader faster
+- [x] (Work with MONAI)
+- [x] Find work-around of using differently structured labels (background is last, instead of first label)
+- [ ] Train **[nnU-Net](https://github.com/MIC-DKFZ/nnUNet)** to segment the heart valves ~~-> DynUNet (monai implementation of nnU-Net) "Project Monai folder on GitLab. Runs but takes 22 min for validation"~~
+- [ ] **SEE BELOW: What to train**
+- [ ] Create full size dataset (with all the data)
+
 - [ ] Train a 3D-landmark detector to detect the landmarks
 - [ ] Deploy the trained models to Specto
 - [ ] Write and complete the README file.
+
+### Training on small "test"-Dataset
+- [x] 2D U-Net: Fold 0, 1, 2, 3, 4
+- [x] 3D full resolution U-Net: 0
+- [ ] 3D full resolution U-Net: 1, 2, 3, 4
+- [ ] 3D full resolution U-Net: 0, 1, 2, 3, 4
+- [ ] 3D U-Net cascade: 0, 1, 2, 3, 4
+- [ ] 3D full resolution U-Net: 0, 1, 2, 3, 4
+
+### Goal: **FIND BEST CONFIGURATION**
+- [ ] [TO DO (How to use nnU-Net)](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/how_to_use_nnunet.md)
 
 ## README:
 ### Description
