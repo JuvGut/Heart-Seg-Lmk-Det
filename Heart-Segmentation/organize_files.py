@@ -8,7 +8,7 @@ def organize_files(patient_folder, volumes_dir, segmentations_dir):
     volume_file = next((f for f in files if f.endswith('.nrrd') and not f.endswith('.seg.nrrd')), None)
     if volume_file:
         source_path = os.path.join(patient_folder, volume_file)
-        dest_path = os.path.join(volumes_dir, f"{os.path.basename(patient_folder)}.nrrd")
+        dest_path = os.path.join(volumes_dir, f"{os.path.basename(patient_folder)}_0000.nrrd")
         shutil.copy2(source_path, dest_path)
         print(f"Copied volume file: {volume_file} -> {dest_path}")
     else:
