@@ -1,0 +1,113 @@
+(myenv) (base) juval.gutknecht@dbe-cia-sl19-01:~/Projects$ nnUNetv2_plan_and_preprocess -d 12 --verify_dataset_integrity
+Fingerprint extraction...
+Dataset012_USB_Heart_big
+Using <class 'nnunetv2.imageio.simpleitk_reader_writer.SimpleITKIO'> as reader/writer
+Error: Shape mismatch between segmentation and corresponding images. 
+Shape images: (716, 512, 512). 
+Shape seg: (1, 1, 1). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-004_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-004.nrrd
+
+Error: Spacing mismatch between segmentation and corresponding images. 
+Spacing images: [0.2999999999999999, 0.33398437499999994, 0.33398437499999994]. 
+Spacing seg: [1.0, 1.0, 1.0]. 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-004_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-004.nrrd
+
+Warning: Origin mismatch between segmentation and corresponding images. 
+Origin images: (-49.33300781250001, -233.83300781249997, 69.40000000000002). 
+Origin seg: (0.0, 0.0, 0.0). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-004_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-004.nrrd
+
+Warning: Direction mismatch between segmentation and corresponding images. 
+Direction images: (0.9999999999999999, 0.0, 0.0, 0.0, 0.9999999999999999, 0.0, 0.0, 0.0, 1.0). 
+Direction seg: (-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-004_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-004.nrrd
+
+Error: Shape mismatch between segmentation and corresponding images. 
+Shape images: (232, 512, 512). 
+Shape seg: (89, 512, 512). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-093_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-093.nrrd
+
+Warning: Origin mismatch between segmentation and corresponding images. 
+Origin images: (-165.67578125, -310.67578125, -297.5000000000001). 
+Origin seg: (165.6759948730469, 20.675800323486328, 131.22799682617188). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-093_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-093.nrrd
+
+Warning: Direction mismatch between segmentation and corresponding images. 
+Direction images: (1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.9999999999999999). 
+Direction seg: (-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.9999999999999999). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-093_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-093.nrrd
+
+Error: Shape mismatch between segmentation and corresponding images. 
+Shape images: (240, 512, 512). 
+Shape seg: (513, 512, 512). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-141_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-141.nrrd
+
+Warning: Origin mismatch between segmentation and corresponding images. 
+Origin images: (165.67599487304688, 28.675800323486328, -371.0329895019532). 
+Origin seg: (-165.67578125, -302.67578125, -644.0). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-141_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-141.nrrd
+
+Warning: Direction mismatch between segmentation and corresponding images. 
+Direction images: (-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0). 
+Direction seg: (1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-141_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-141.nrrd
+
+Error: Shape mismatch between segmentation and corresponding images. 
+Shape images: (668, 512, 512). 
+Shape seg: (331, 512, 512). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-286_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-286.nrrd
+
+Warning: Origin mismatch between segmentation and corresponding images. 
+Origin images: (-183.1240234375, -343.1240234375, 50.999999999999986). 
+Origin seg: (201.12399291992185, 41.124000549316406, 387.89599609374983). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-286_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-286.nrrd
+
+Warning: Direction mismatch between segmentation and corresponding images. 
+Direction images: (1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0). 
+Direction seg: (-1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-286_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-286.nrrd
+
+Error: Shape mismatch between segmentation and corresponding images. 
+Shape images: (700, 512, 512). 
+Shape seg: (361, 512, 512). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-336_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-336.nrrd
+
+Error: Spacing mismatch between segmentation and corresponding images. 
+Spacing images: [0.29999999999999993, 0.435546875, 0.435546875]. 
+Spacing seg: [1.0, 0.8710937500000002, 0.8710937500000002]. 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-336_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-336.nrrd
+
+Warning: Origin mismatch between segmentation and corresponding images. 
+Origin images: (-96.28222656249999, -309.2822265625, 399.4999999999999). 
+Origin seg: (-215.56445312500006, -417.06445312500006, -206.70000000000002). 
+Image files: ['/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr/BS-336_0000.nrrd']. 
+Seg file: /home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/labelsTr/BS-336.nrrd
+
+Traceback (most recent call last):
+  File "/home/juval.gutknecht/miniconda3/envs/myenv/bin/nnUNetv2_plan_and_preprocess", line 8, in <module>
+    sys.exit(plan_and_preprocess_entry())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/juval.gutknecht/Projects/nnUNet/nnunetv2/experiment_planning/plan_and_preprocess_entrypoints.py", line 180, in plan_and_preprocess_entry
+    extract_fingerprints(args.d, args.fpe, args.npfp, args.verify_dataset_integrity, args.clean, args.verbose)
+  File "/home/juval.gutknecht/Projects/nnUNet/nnunetv2/experiment_planning/plan_and_preprocess_api.py", line 47, in extract_fingerprints
+    extract_fingerprint_dataset(d, fingerprint_extractor_class, num_processes, check_dataset_integrity, clean,
+  File "/home/juval.gutknecht/Projects/nnUNet/nnunetv2/experiment_planning/plan_and_preprocess_api.py", line 30, in extract_fingerprint_dataset
+    verify_dataset_integrity(join(nnUNet_raw, dataset_name), num_processes)
+  File "/home/juval.gutknecht/Projects/nnUNet/nnunetv2/experiment_planning/verify_dataset_integrity.py", line 219, in verify_dataset_integrity
+    raise RuntimeError(
+RuntimeError: Some images have errors. Please check text output above to see which one(s) and what's going on.

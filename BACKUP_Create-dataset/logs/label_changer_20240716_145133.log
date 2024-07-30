@@ -1,0 +1,551 @@
+2024-07-16 14:51:36,376 - INFO - Starting processing of folder: /home/juval.gutknecht/Projects/Data/heart-segmentation-results/Dataset/labelsTr
+2024-07-16 14:51:41,058 - INFO - Processed BS-043_601_Aorta_1mm_iDose_(4).nrrd: Read: 0.71s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.58s, Write: 1.49s
+2024-07-16 14:51:43,516 - INFO - Labels in BS-043_601_Aorta_1mm_iDose_(4).nrrd have been changed correctly.
+2024-07-16 14:51:47,967 - INFO - Processed BS-489_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.61s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.48s, Write: 1.61s
+2024-07-16 14:51:50,201 - INFO - Labels in BS-489_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:51:54,590 - INFO - Processed BS-290_14_Herz__0.6__I26f__BestSyst_31_%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.53s, Write: 1.44s
+2024-07-16 14:51:56,824 - INFO - Labels in BS-290_14_Herz__0.6__I26f__BestSyst_31_%.nrrd have been changed correctly.
+2024-07-16 14:51:59,321 - INFO - Processed BS-568_7_DE_Thx_Angio_1.0__Q30f_Weichteil__M_0.5.nrrd: Read: 0.35s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.91s, Write: 0.79s
+2024-07-16 14:52:00,621 - INFO - Labels in BS-568_7_DE_Thx_Angio_1.0__Q30f_Weichteil__M_0.5.nrrd have been changed correctly.
+2024-07-16 14:52:05,399 - INFO - Processed BS-373_8_Thorax__1.0__I30f__3__BestDiast_74_%.nrrd: Read: 0.71s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.56s, Write: 1.65s
+2024-07-16 14:52:07,795 - INFO - Labels in BS-373_8_Thorax__1.0__I30f__3__BestDiast_74_%.nrrd have been changed correctly.
+2024-07-16 14:52:13,572 - INFO - Processed BS-129_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.85s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.89s, Write: 2.05s
+2024-07-16 14:52:16,402 - INFO - Labels in BS-129_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:52:17,789 - INFO - Processed BS-525_5_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.20s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.45s, Write: 0.47s
+2024-07-16 14:52:18,452 - INFO - Labels in BS-525_5_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 14:52:22,757 - INFO - Processed BS-137_8_Cor__Thorax__0.6__I26f__3__BestDiast_76_%.nrrd: Read: 0.63s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.49s, Write: 1.46s
+2024-07-16 14:52:24,869 - INFO - Labels in BS-137_8_Cor__Thorax__0.6__I26f__3__BestDiast_76_%.nrrd have been changed correctly.
+2024-07-16 14:52:30,279 - INFO - Processed BS-486_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.78s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.77s, Write: 1.95s
+2024-07-16 14:52:32,935 - INFO - Labels in BS-486_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:52:37,700 - INFO - Processed BS-091_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.71s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.64s, Write: 1.57s
+2024-07-16 14:52:40,154 - INFO - Labels in BS-091_6_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:52:43,990 - INFO - Processed BS-077_10_Herz__0.6__I26f__3__BestDiast_74_%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.31s, Write: 1.27s
+2024-07-16 14:52:45,956 - INFO - Labels in BS-077_10_Herz__0.6__I26f__3__BestDiast_74_%.nrrd have been changed correctly.
+2024-07-16 14:52:47,995 - INFO - Processed BS-125_8_Angio_Fl_Thoracica_axial___60%.nrrd: Read: 0.29s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.69s, Write: 0.69s
+2024-07-16 14:52:49,043 - INFO - Labels in BS-125_8_Angio_Fl_Thoracica_axial___60%.nrrd have been changed correctly.
+2024-07-16 14:52:52,756 - INFO - Processed BS-409_8_Herz__0.6__I26f__3__BestDiast_74_%.nrrd: Read: 0.54s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.32s, Write: 1.23s
+2024-07-16 14:52:54,549 - INFO - Labels in BS-409_8_Herz__0.6__I26f__3__BestDiast_74_%.nrrd have been changed correctly.
+2024-07-16 14:52:58,116 - INFO - Processed BS-190_5_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.48s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.11s, Write: 1.40s
+2024-07-16 14:52:59,808 - INFO - Labels in BS-190_5_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 14:53:00,359 - INFO - Processed BS-089_10_Thorax_LF_Std._Axial_5.0_CTA_CE.nrrd: Read: 0.06s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.19s, Write: 0.18s
+2024-07-16 14:53:00,569 - INFO - Labels in BS-089_10_Thorax_LF_Std._Axial_5.0_CTA_CE.nrrd have been changed correctly.
+2024-07-16 14:53:05,596 - INFO - Processed BS-394_7_Herz___0.6__I26f__3__40%.nrrd: Read: 0.70s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.63s, Write: 1.88s
+2024-07-16 14:53:08,003 - INFO - Labels in BS-394_7_Herz___0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:53:12,678 - INFO - Processed BS-349_13_Herz__0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.69s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.55s, Write: 1.62s
+2024-07-16 14:53:15,033 - INFO - Labels in BS-349_13_Herz__0.6__I26f__3__BestDiast_68_%.nrrd have been changed correctly.
+2024-07-16 14:53:17,034 - INFO - Processed BS-244_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.29s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.67s, Write: 0.68s
+2024-07-16 14:53:18,026 - INFO - Labels in BS-244_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:21,511 - INFO - Processed BS-162_6_QCA__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.49s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.17s, Write: 1.24s
+2024-07-16 14:53:23,268 - INFO - Labels in BS-162_6_QCA__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:27,795 - INFO - Processed BS-250_7_Herz__0.6__I30f__3__60%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.52s, Write: 1.64s
+2024-07-16 14:53:29,987 - INFO - Labels in BS-250_7_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:30,565 - INFO - Processed BS-455_5_Thoracica__5.0__I26f__3__BestDiast_82_%.nrrd: Read: 0.07s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.21s, Write: 0.20s
+2024-07-16 14:53:30,805 - INFO - Labels in BS-455_5_Thoracica__5.0__I26f__3__BestDiast_82_%.nrrd have been changed correctly.
+2024-07-16 14:53:34,869 - INFO - Processed BS-104_9_Herz__0.6__I30f__3__60%.nrrd: Read: 0.60s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.41s, Write: 1.33s
+2024-07-16 14:53:36,950 - INFO - Labels in BS-104_9_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:39,707 - INFO - Processed BS-034_11_Herz__0.6__I30f__3__60%.nrrd: Read: 0.37s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.90s, Write: 1.02s
+2024-07-16 14:53:41,115 - INFO - Labels in BS-034_11_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:45,979 - INFO - Processed BS-153_5_Cor__Thorax__0.6__I26f__3__BestSyst_41_%.nrrd: Read: 0.75s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.68s, Write: 1.62s
+2024-07-16 14:53:48,438 - INFO - Labels in BS-153_5_Cor__Thorax__0.6__I26f__3__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 14:53:50,536 - INFO - Processed BS-569_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.29s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.75s, Write: 0.69s
+2024-07-16 14:53:51,637 - INFO - Labels in BS-569_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:53:53,708 - INFO - Processed BS-195_4_Thorax_vens__1.0__Bv40__3.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.71s, Write: 0.72s
+2024-07-16 14:53:54,719 - INFO - Labels in BS-195_4_Thorax_vens__1.0__Bv40__3.nrrd have been changed correctly.
+2024-07-16 14:53:59,285 - INFO - Processed BS-048_6_Herz__0.6__I26f__3__BestDiast_75_%.nrrd: Read: 0.63s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.48s, Write: 1.69s
+2024-07-16 14:54:01,413 - INFO - Labels in BS-048_6_Herz__0.6__I26f__3__BestDiast_75_%.nrrd have been changed correctly.
+2024-07-16 14:54:08,222 - INFO - Processed BS-285_7_Herz__0.6__I26f__3__55%.nrrd: Read: 0.95s, Header: 0.00s, Copy: 0.12s, Label Mapping: 2.21s, Write: 2.46s
+2024-07-16 14:54:11,520 - INFO - Labels in BS-285_7_Herz__0.6__I26f__3__55%.nrrd have been changed correctly.
+2024-07-16 14:54:13,135 - INFO - Processed BS-339_11_Angio_Fl_Ao.Bo.Herz_axial___60%.nrrd: Read: 0.23s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.53s, Write: 0.57s
+2024-07-16 14:54:16,957 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-339_11_Angio_Fl_Ao.Bo.Herz_axial___60%.nrrd:
+2024-07-16 14:54:16,957 - WARNING -   Original count: 66862882, Modified count: 66865260
+2024-07-16 14:54:16,957 - WARNING -   Total mismatched voxels: 2378
+2024-07-16 14:54:16,957 - WARNING -   Sample of mismatched voxels:
+2024-07-16 14:54:16,957 - WARNING -     At (209,189,112): Original=0, Modified=0
+2024-07-16 14:54:16,957 - WARNING -     At (192,188,122): Original=0, Modified=0
+2024-07-16 14:54:16,958 - WARNING -     At (215,191,109): Original=0, Modified=0
+2024-07-16 14:54:16,958 - WARNING -     At (214,189,111): Original=0, Modified=0
+2024-07-16 14:54:16,958 - WARNING -     At (194,187,122): Original=0, Modified=0
+2024-07-16 14:54:16,958 - WARNING - Labels in BS-339_11_Angio_Fl_Ao.Bo.Herz_axial___60%.nrrd have NOT been changed correctly.
+2024-07-16 14:54:20,720 - INFO - Processed BS-181_9_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.52s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.27s, Write: 1.38s
+2024-07-16 14:54:22,539 - INFO - Labels in BS-181_9_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 14:54:25,193 - INFO - Processed BS-477_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.34s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.83s, Write: 1.05s
+2024-07-16 14:54:26,401 - INFO - Labels in BS-477_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:54:28,910 - INFO - Processed BS-338_6_Thorax__1.0__I30f__3__40%.nrrd: Read: 0.36s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.92s, Write: 0.79s
+2024-07-16 14:54:30,230 - INFO - Labels in BS-338_6_Thorax__1.0__I30f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:54:34,275 - INFO - Processed BS-015_9_Herz__0.6__I30f__3__60%.nrrd: Read: 0.56s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.32s, Write: 1.49s
+2024-07-16 14:54:36,313 - INFO - Labels in BS-015_9_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:54:40,325 - INFO - Processed BS-158_7_Cor__Thorax__0.6__I26f__3__BestDiast_69_%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.39s, Write: 1.38s
+2024-07-16 14:54:42,316 - INFO - Labels in BS-158_7_Cor__Thorax__0.6__I26f__3__BestDiast_69_%.nrrd have been changed correctly.
+2024-07-16 14:54:50,283 - INFO - Processed BS-483_9_Thorax__0.6__I30f__3__BestDiast_QCA_D_81_%.nrrd: Read: 1.20s, Header: 0.00s, Copy: 0.15s, Label Mapping: 2.74s, Write: 2.62s
+2024-07-16 14:54:54,411 - INFO - Labels in BS-483_9_Thorax__0.6__I30f__3__BestDiast_QCA_D_81_%.nrrd have been changed correctly.
+2024-07-16 14:54:56,377 - INFO - Processed BS-510_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.29s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.66s, Write: 0.62s
+2024-07-16 14:54:57,385 - INFO - Labels in BS-510_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:55:02,522 - INFO - Processed BS-196_9_Herz__0.6__Bv40__3__BestDiast_70_%.nrrd: Read: 0.76s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.76s, Write: 1.76s
+2024-07-16 14:55:05,099 - INFO - Labels in BS-196_9_Herz__0.6__Bv40__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 14:55:09,334 - INFO - Processed BS-136_6_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.61s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.43s, Write: 1.45s
+2024-07-16 14:55:11,524 - INFO - Labels in BS-136_6_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:55:16,791 - INFO - Processed BS-355_6_Herz__0.6__I26f__3__55%.nrrd: Read: 0.70s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.68s, Write: 2.01s
+2024-07-16 14:55:19,403 - INFO - Labels in BS-355_6_Herz__0.6__I26f__3__55%.nrrd have been changed correctly.
+2024-07-16 14:55:22,183 - INFO - Processed BS-426_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.38s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.85s, Write: 1.06s
+2024-07-16 14:55:23,427 - INFO - Labels in BS-426_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:55:25,253 - INFO - Processed BS-580_5_Thorax_LE__1.0__I26f__3.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.64s, Write: 0.60s
+2024-07-16 14:55:26,191 - INFO - Labels in BS-580_5_Thorax_LE__1.0__I26f__3.nrrd have been changed correctly.
+2024-07-16 14:55:32,472 - INFO - Processed BS-558_9_Thorax__0.6__I30f__3__70%_QCA_D.nrrd: Read: 0.93s, Header: 0.00s, Copy: 0.12s, Label Mapping: 2.21s, Write: 2.04s
+2024-07-16 14:55:35,950 - INFO - Labels in BS-558_9_Thorax__0.6__I30f__3__70%_QCA_D.nrrd have been changed correctly.
+2024-07-16 14:55:39,520 - INFO - Processed BS-186_9_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.53s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.17s, Write: 1.26s
+2024-07-16 14:55:41,220 - INFO - Labels in BS-186_9_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 14:55:45,564 - INFO - Processed BS-009_10_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.62s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.47s, Write: 1.51s
+2024-07-16 14:55:47,841 - INFO - Labels in BS-009_10_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 14:55:52,156 - INFO - Processed BS-439_401_Aorta_Gated_ax_75%_iDose_(4).nrrd: Read: 0.63s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.51s, Write: 1.43s
+2024-07-16 14:55:54,383 - INFO - Labels in BS-439_401_Aorta_Gated_ax_75%_iDose_(4).nrrd have been changed correctly.
+2024-07-16 14:55:56,665 - INFO - Processed BS-336_5_Thorax__1.0__I26f__3.nrrd: Read: 0.32s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.76s, Write: 0.81s
+2024-07-16 14:55:57,778 - INFO - Labels in BS-336_5_Thorax__1.0__I26f__3.nrrd have been changed correctly.
+2024-07-16 14:56:02,942 - INFO - Processed BS-096_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.72s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.77s, Write: 1.83s
+2024-07-16 14:56:05,488 - INFO - Labels in BS-096_6_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:56:11,976 - INFO - Processed BS-370_7_Herz__0.6__I26f__3__BestDiast_74_%.nrrd: Read: 0.93s, Header: 0.00s, Copy: 0.12s, Label Mapping: 2.18s, Write: 2.29s
+2024-07-16 14:56:15,247 - INFO - Labels in BS-370_7_Herz__0.6__I26f__3__BestDiast_74_%.nrrd have been changed correctly.
+2024-07-16 14:56:17,020 - INFO - Processed BS-524_8_Thoracica__1.0__I26f__3__BestDiast_66_%.nrrd: Read: 0.25s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.61s, Write: 0.59s
+2024-07-16 14:56:17,918 - INFO - Labels in BS-524_8_Thoracica__1.0__I26f__3__BestDiast_66_%.nrrd have been changed correctly.
+2024-07-16 14:56:19,495 - INFO - Processed BS-151_6_Abdomen_Std._Volume_1.0_arteriell_CE_cropped.nrrd: Read: 0.22s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.55s, Write: 0.54s
+2024-07-16 14:56:20,309 - INFO - Labels in BS-151_6_Abdomen_Std._Volume_1.0_arteriell_CE_cropped.nrrd have been changed correctly.
+2024-07-16 14:56:24,820 - INFO - Processed BS-472_7_Herz___0.6__I26f__3__40%.nrrd: Read: 0.60s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.42s, Write: 1.78s
+2024-07-16 14:56:26,943 - INFO - Labels in BS-472_7_Herz___0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:56:28,697 - INFO - Processed BS-600_13_Thoracica__1.0__I26f__3__BestDiast_70_%.nrrd: Read: 0.25s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.62s, Write: 0.57s
+2024-07-16 14:56:29,596 - INFO - Labels in BS-600_13_Thoracica__1.0__I26f__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 14:56:34,280 - INFO - Processed BS-098_10_Herz__0.6__I30f__3__60%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.61s, Write: 1.59s
+2024-07-16 14:56:36,675 - INFO - Labels in BS-098_10_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:56:40,969 - INFO - Processed BS-054_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.65s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.50s, Write: 1.38s
+2024-07-16 14:56:52,239 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-054_6_Herz__0.6__I30f__3__60%.nrrd:
+2024-07-16 14:56:52,239 - WARNING -   Original count: 186408782, Modified count: 186410044
+2024-07-16 14:56:52,239 - WARNING -   Total mismatched voxels: 1262
+2024-07-16 14:56:52,239 - WARNING -   Sample of mismatched voxels:
+2024-07-16 14:56:52,239 - WARNING -     At (264,251,234): Original=0, Modified=0
+2024-07-16 14:56:52,239 - WARNING -     At (263,239,214): Original=0, Modified=0
+2024-07-16 14:56:52,240 - WARNING -     At (261,243,237): Original=0, Modified=0
+2024-07-16 14:56:52,240 - WARNING -     At (256,244,237): Original=0, Modified=0
+2024-07-16 14:56:52,240 - WARNING -     At (256,277,235): Original=0, Modified=0
+2024-07-16 14:56:52,240 - WARNING - Labels in BS-054_6_Herz__0.6__I30f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 14:56:57,020 - INFO - Processed BS-241_10_Herz__0.6__Bv40__3__70%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.60s, Write: 1.69s
+2024-07-16 14:56:59,371 - INFO - Labels in BS-241_10_Herz__0.6__Bv40__3__70%.nrrd have been changed correctly.
+2024-07-16 14:57:03,928 - INFO - Processed BS-022_7_Herz__0.6__I30f__3__60%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.51s, Write: 1.64s
+2024-07-16 14:57:06,229 - INFO - Labels in BS-022_7_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:57:10,552 - INFO - Processed BS-217_7_Herz__0.6__I26f__3__60%.nrrd: Read: 0.62s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.34s, Write: 1.65s
+2024-07-16 14:57:12,591 - INFO - Labels in BS-217_7_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:57:16,828 - INFO - Processed BS-330_9_Thorax__1.0__I30f__3__BestDiast_QCA_D_77_%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.50s, Write: 1.33s
+2024-07-16 14:57:19,059 - INFO - Labels in BS-330_9_Thorax__1.0__I30f__3__BestDiast_QCA_D_77_%.nrrd have been changed correctly.
+2024-07-16 14:57:21,863 - INFO - Processed BS-066_14_Angio._Thoracica__I26f__axial.nrrd: Read: 0.40s, Header: 0.00s, Copy: 0.05s, Label Mapping: 1.03s, Write: 0.89s
+2024-07-16 14:57:23,293 - INFO - Labels in BS-066_14_Angio._Thoracica__I26f__axial.nrrd have been changed correctly.
+2024-07-16 14:57:27,822 - INFO - Processed BS-351_14_Herz__0.6__I26f__3__BestDiast_79_%.nrrd: Read: 0.65s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.57s, Write: 1.55s
+2024-07-16 14:57:30,059 - INFO - Labels in BS-351_14_Herz__0.6__I26f__3__BestDiast_79_%.nrrd have been changed correctly.
+2024-07-16 14:57:33,647 - INFO - Processed BS-270_10_Herz__0.6__I26f__3__BestSyst_41_%.nrrd: Read: 0.50s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.18s, Write: 1.29s
+2024-07-16 14:57:35,391 - INFO - Labels in BS-270_10_Herz__0.6__I26f__3__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 14:57:39,653 - INFO - Processed BS-475_9_Herz__0.6__I26f__3__60%.nrrd: Read: 0.61s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.40s, Write: 1.52s
+2024-07-16 14:57:50,332 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-475_9_Herz__0.6__I26f__3__60%.nrrd:
+2024-07-16 14:57:50,332 - WARNING -   Original count: 177260170, Modified count: 177261516
+2024-07-16 14:57:50,332 - WARNING -   Total mismatched voxels: 1346
+2024-07-16 14:57:50,332 - WARNING -   Sample of mismatched voxels:
+2024-07-16 14:57:50,332 - WARNING -     At (304,368,278): Original=0, Modified=0
+2024-07-16 14:57:50,332 - WARNING -     At (302,366,270): Original=0, Modified=0
+2024-07-16 14:57:50,332 - WARNING -     At (302,369,273): Original=0, Modified=0
+2024-07-16 14:57:50,332 - WARNING -     At (305,365,285): Original=0, Modified=0
+2024-07-16 14:57:50,332 - WARNING -     At (302,368,272): Original=0, Modified=0
+2024-07-16 14:57:50,332 - WARNING - Labels in BS-475_9_Herz__0.6__I26f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 14:57:53,751 - INFO - Processed BS-148_8_Cor__Thorax__0.6__I26f__3__52%.nrrd: Read: 0.47s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.23s, Write: 1.15s
+2024-07-16 14:57:55,517 - INFO - Labels in BS-148_8_Cor__Thorax__0.6__I26f__3__52%.nrrd have been changed correctly.
+2024-07-16 14:58:00,359 - INFO - Processed BS-308_8_Herz__0.6__I30f__3__60%.nrrd: Read: 0.66s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.54s, Write: 1.89s
+2024-07-16 14:58:02,617 - INFO - Labels in BS-308_8_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:58:05,881 - INFO - Processed BS-325_5_Thorax__1.0__I30f__3__40%.nrrd: Read: 0.49s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.11s, Write: 1.09s
+2024-07-16 14:58:07,509 - INFO - Labels in BS-325_5_Thorax__1.0__I30f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:58:09,847 - INFO - Processed BS-376_5_Herz__0.6__I26f__3__40%.nrrd: Read: 0.32s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.77s, Write: 0.85s
+2024-07-16 14:58:11,018 - INFO - Labels in BS-376_5_Herz__0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:58:15,367 - INFO - Processed BS-320_7_Herz__0.6__I30f__3__60%.nrrd: Read: 0.59s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.40s, Write: 1.67s
+2024-07-16 14:58:26,011 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-320_7_Herz__0.6__I30f__3__60%.nrrd:
+2024-07-16 14:58:26,011 - WARNING -   Original count: 173863253, Modified count: 173863483
+2024-07-16 14:58:26,011 - WARNING -   Total mismatched voxels: 230
+2024-07-16 14:58:26,011 - WARNING -   Sample of mismatched voxels:
+2024-07-16 14:58:26,011 - WARNING -     At (85,240,195): Original=0, Modified=0
+2024-07-16 14:58:26,011 - WARNING -     At (81,234,217): Original=0, Modified=0
+2024-07-16 14:58:26,011 - WARNING -     At (81,234,214): Original=0, Modified=0
+2024-07-16 14:58:26,011 - WARNING -     At (83,236,208): Original=0, Modified=0
+2024-07-16 14:58:26,011 - WARNING -     At (85,239,195): Original=0, Modified=0
+2024-07-16 14:58:26,011 - WARNING - Labels in BS-320_7_Herz__0.6__I30f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 14:58:27,985 - INFO - Processed BS-103_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.68s, Write: 0.68s
+2024-07-16 14:58:33,066 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-103_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd:
+2024-07-16 14:58:33,067 - WARNING -   Original count: 81988287, Modified count: 81988366
+2024-07-16 14:58:33,067 - WARNING -   Total mismatched voxels: 79
+2024-07-16 14:58:33,068 - WARNING -   Sample of mismatched voxels:
+2024-07-16 14:58:33,068 - WARNING -     At (211,236,116): Original=0, Modified=0
+2024-07-16 14:58:33,068 - WARNING -     At (208,240,119): Original=0, Modified=0
+2024-07-16 14:58:33,068 - WARNING -     At (214,246,119): Original=0, Modified=0
+2024-07-16 14:58:33,068 - WARNING -     At (212,237,117): Original=0, Modified=0
+2024-07-16 14:58:33,068 - WARNING -     At (212,247,121): Original=0, Modified=0
+2024-07-16 14:58:33,068 - WARNING - Labels in BS-103_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 14:58:34,827 - INFO - Processed BS-116_11_Angio_Fl_Thoracica_axial___60%.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.59s, Write: 0.61s
+2024-07-16 14:58:35,702 - INFO - Labels in BS-116_11_Angio_Fl_Thoracica_axial___60%.nrrd have been changed correctly.
+2024-07-16 14:58:38,253 - INFO - Processed BS-563_4_Thoracica__1.0__I26f__3__BestDiast_69_%.nrrd: Read: 0.37s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.90s, Write: 0.87s
+2024-07-16 14:58:39,412 - INFO - Labels in BS-563_4_Thoracica__1.0__I26f__3__BestDiast_69_%.nrrd have been changed correctly.
+2024-07-16 14:58:43,159 - INFO - Processed BS-567_5_Cor__Thorax__0.6__I26f__3__BestDiast_75_%.nrrd: Read: 0.54s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.18s, Write: 1.38s
+2024-07-16 14:58:44,975 - INFO - Labels in BS-567_5_Cor__Thorax__0.6__I26f__3__BestDiast_75_%.nrrd have been changed correctly.
+2024-07-16 14:58:50,070 - INFO - Processed BS-411_401_Aorta_Gated_ax_75%_iDose_(4).nrrd: Read: 0.77s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.75s, Write: 1.71s
+2024-07-16 14:58:52,409 - INFO - Labels in BS-411_401_Aorta_Gated_ax_75%_iDose_(4).nrrd have been changed correctly.
+2024-07-16 14:58:57,095 - INFO - Processed BS-607_8_Cor__Thorax__0.6__I26f__3__BestDiast_80_%.nrrd: Read: 0.67s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.56s, Write: 1.67s
+2024-07-16 14:58:59,398 - INFO - Labels in BS-607_8_Cor__Thorax__0.6__I26f__3__BestDiast_80_%.nrrd have been changed correctly.
+2024-07-16 14:59:04,693 - INFO - Processed BS-451_13_Herz__0.6__I26f__3__BestDiast_72_%.nrrd: Read: 0.69s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.66s, Write: 2.04s
+2024-07-16 14:59:07,126 - INFO - Labels in BS-451_13_Herz__0.6__I26f__3__BestDiast_72_%.nrrd have been changed correctly.
+2024-07-16 14:59:11,228 - INFO - Processed BS-085_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.43s, Write: 1.41s
+2024-07-16 14:59:13,283 - INFO - Labels in BS-085_6_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 14:59:17,548 - INFO - Processed BS-087_12_Thorax__1.0__I30f__BestSyst_QCA_D_33_%.nrrd: Read: 0.63s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.59s, Write: 1.31s
+2024-07-16 14:59:19,735 - INFO - Labels in BS-087_12_Thorax__1.0__I30f__BestSyst_QCA_D_33_%.nrrd have been changed correctly.
+2024-07-16 14:59:24,354 - INFO - Processed BS-282_8_Herz__0.6__I26f__3__BestDiast_69_%.nrrd: Read: 0.66s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.56s, Write: 1.59s
+2024-07-16 14:59:26,721 - INFO - Labels in BS-282_8_Herz__0.6__I26f__3__BestDiast_69_%.nrrd have been changed correctly.
+2024-07-16 14:59:27,633 - INFO - Processed BS-3399_7_Thorax__5.0__I30f__3__40%.nrrd: Read: 0.12s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.33s, Write: 0.30s
+2024-07-16 14:59:28,079 - INFO - Labels in BS-3399_7_Thorax__5.0__I30f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:59:33,327 - INFO - Processed BS-010_10_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.73s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.76s, Write: 1.89s
+2024-07-16 14:59:35,792 - INFO - Labels in BS-010_10_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 14:59:39,431 - INFO - Processed BS-482_7_Herz__0.6__I26f__3__BestDiast_82_%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.20s, Write: 1.27s
+2024-07-16 14:59:41,185 - INFO - Labels in BS-482_7_Herz__0.6__I26f__3__BestDiast_82_%.nrrd have been changed correctly.
+2024-07-16 14:59:46,489 - INFO - Processed BS-067_10_Herz___0.6__I26f__3__40%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.92s, Write: 1.83s
+2024-07-16 14:59:48,782 - INFO - Labels in BS-067_10_Herz___0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 14:59:52,089 - INFO - Processed BS-141_13_Fl_Thorax_TAVI_EKG__1.0__I50f__60%_LCAD.nrrd: Read: 0.50s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.09s, Write: 1.06s
+2024-07-16 14:59:53,696 - INFO - Labels in BS-141_13_Fl_Thorax_TAVI_EKG__1.0__I50f__60%_LCAD.nrrd have been changed correctly.
+2024-07-16 14:59:57,458 - INFO - Processed BS-374_13_Herz__0.6__I26f__3__BestDiast_73_%.nrrd: Read: 0.50s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.24s, Write: 1.43s
+2024-07-16 14:59:59,257 - INFO - Labels in BS-374_13_Herz__0.6__I26f__3__BestDiast_73_%.nrrd have been changed correctly.
+2024-07-16 15:00:01,598 - INFO - Processed BS-247_5_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.33s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.80s, Write: 0.80s
+2024-07-16 15:00:02,795 - INFO - Labels in BS-247_5_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:00:08,439 - INFO - Processed BS-264_12_Thoracica__0.6__I26f__3__BestDiast_83_%.nrrd: Read: 0.83s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.96s, Write: 1.95s
+2024-07-16 15:00:11,173 - INFO - Labels in BS-264_12_Thoracica__0.6__I26f__3__BestDiast_83_%.nrrd have been changed correctly.
+2024-07-16 15:00:15,733 - INFO - Processed BS-039_7_Herz___0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.67s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.51s, Write: 1.59s
+2024-07-16 15:00:27,111 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-039_7_Herz___0.6__I26f__3__BestDiast_68_%.nrrd:
+2024-07-16 15:00:27,111 - WARNING -   Original count: 181762010, Modified count: 181762140
+2024-07-16 15:00:27,111 - WARNING -   Total mismatched voxels: 130
+2024-07-16 15:00:27,111 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:00:27,111 - WARNING -     At (210,194,313): Original=0, Modified=0
+2024-07-16 15:00:27,111 - WARNING -     At (146,228,315): Original=0, Modified=0
+2024-07-16 15:00:27,111 - WARNING -     At (212,211,317): Original=0, Modified=0
+2024-07-16 15:00:27,111 - WARNING -     At (232,181,303): Original=0, Modified=0
+2024-07-16 15:00:27,111 - WARNING -     At (213,231,272): Original=0, Modified=0
+2024-07-16 15:00:27,111 - WARNING - Labels in BS-039_7_Herz___0.6__I26f__3__BestDiast_68_%.nrrd have NOT been changed correctly.
+2024-07-16 15:00:30,773 - INFO - Processed BS-243_15_Thorax_LF_Std._Volumen_1.0_CTA_CE_Vol..nrrd: Read: 0.51s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.29s, Write: 1.14s
+2024-07-16 15:00:32,518 - INFO - Labels in BS-243_15_Thorax_LF_Std._Volumen_1.0_CTA_CE_Vol..nrrd have been changed correctly.
+2024-07-16 15:00:35,239 - INFO - Processed BS-512_402_PARENCHYME_ART_iDose_(3).nrrd: Read: 0.39s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.99s, Write: 0.89s
+2024-07-16 15:00:36,640 - INFO - Labels in BS-512_402_PARENCHYME_ART_iDose_(3).nrrd have been changed correctly.
+2024-07-16 15:00:41,085 - INFO - Processed BS-579_6_QCA__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.62s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.59s, Write: 1.55s
+2024-07-16 15:00:43,143 - INFO - Labels in BS-579_6_QCA__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:00:45,343 - INFO - Processed BS-421_8_HALF_304ms_0.94s_Cardiac_Koronarien_0.5_CTA_-KM_80_ml-HALF_CE.nrrd: Read: 0.27s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.75s, Write: 0.84s
+2024-07-16 15:00:46,328 - INFO - Labels in BS-421_8_HALF_304ms_0.94s_Cardiac_Koronarien_0.5_CTA_-KM_80_ml-HALF_CE.nrrd have been changed correctly.
+2024-07-16 15:00:47,625 - INFO - Processed BS-155_7_DS_CorAdSeq__1.0__I30f__3__BestDiast_76_%.nrrd: Read: 0.17s, Header: 0.00s, Copy: 0.02s, Label Mapping: 0.45s, Write: 0.47s
+2024-07-16 15:00:48,249 - INFO - Labels in BS-155_7_DS_CorAdSeq__1.0__I30f__3__BestDiast_76_%.nrrd have been changed correctly.
+2024-07-16 15:00:50,147 - INFO - Processed BS-354_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.69s, Write: 0.62s
+2024-07-16 15:00:51,241 - INFO - Labels in BS-354_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:00:55,748 - INFO - Processed BS-182_6_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.56s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.45s, Write: 1.77s
+2024-07-16 15:00:57,875 - INFO - Labels in BS-182_6_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:01:03,829 - INFO - Processed BS-534_7_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.74s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.78s, Write: 2.47s
+2024-07-16 15:01:06,418 - INFO - Labels in BS-534_7_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:01:11,566 - INFO - Processed BS-334_13_Herz__0.6__I26f__3__BestDiast_83_%.nrrd: Read: 0.82s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.49s, Write: 1.96s
+2024-07-16 15:01:13,855 - INFO - Labels in BS-334_13_Herz__0.6__I26f__3__BestDiast_83_%.nrrd have been changed correctly.
+2024-07-16 15:01:19,240 - INFO - Processed BS-365_5_Herz__0.6__I26f__BestSyst_41_%.nrrd: Read: 0.83s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.85s, Write: 1.84s
+2024-07-16 15:01:21,668 - INFO - Labels in BS-365_5_Herz__0.6__I26f__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 15:01:26,069 - INFO - Processed BS-145_8_QCA__Fl_TAVI_EKG__0.6__I26f__60%.nrrd: Read: 0.52s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.24s, Write: 2.03s
+2024-07-16 15:01:27,906 - INFO - Labels in BS-145_8_QCA__Fl_TAVI_EKG__0.6__I26f__60%.nrrd have been changed correctly.
+2024-07-16 15:01:30,182 - INFO - Processed BS-348_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.31s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.76s, Write: 0.79s
+2024-07-16 15:01:31,321 - INFO - Labels in BS-348_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:01:33,272 - INFO - Processed BS-138_7_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.29s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.69s, Write: 0.65s
+2024-07-16 15:01:34,301 - INFO - Labels in BS-138_7_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:01:39,602 - INFO - Processed BS-573_8_Cor__Thorax__0.6__I26f__3__BestDiast_78_%.nrrd: Read: 0.77s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.70s, Write: 1.97s
+2024-07-16 15:01:42,376 - INFO - Labels in BS-573_8_Cor__Thorax__0.6__I26f__3__BestDiast_78_%.nrrd have been changed correctly.
+2024-07-16 15:01:42,526 - INFO - Processed BS-401_8_Fl_Th-Abd_Ang__3.0__cor_cropped.nrrd: Read: 0.01s, Header: 0.00s, Copy: 0.00s, Label Mapping: 0.03s, Write: 0.06s
+2024-07-16 15:01:42,562 - INFO - Labels in BS-401_8_Fl_Th-Abd_Ang__3.0__cor_cropped.nrrd have been changed correctly.
+2024-07-16 15:01:47,219 - INFO - Processed BS-092_8_Herz__0.6__I26f__BestSyst_38_%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.60s, Write: 1.59s
+2024-07-16 15:01:49,524 - INFO - Labels in BS-092_8_Herz__0.6__I26f__BestSyst_38_%.nrrd have been changed correctly.
+2024-07-16 15:01:54,175 - INFO - Processed BS-279_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.56s, Write: 1.66s
+2024-07-16 15:01:56,480 - INFO - Labels in BS-279_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:02:01,328 - INFO - Processed BS-207_8_Herz__0.6__I26f__3__BestSyst_41_%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.60s, Write: 1.77s
+2024-07-16 15:02:03,631 - INFO - Labels in BS-207_8_Herz__0.6__I26f__3__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 15:02:06,738 - INFO - Processed BS-429_7_Thorax_LF_Std._Volumen_1.0_KM_60_ml_CE_Vol..nrrd: Read: 0.48s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.21s, Write: 0.88s
+2024-07-16 15:02:08,107 - INFO - Labels in BS-429_7_Thorax_LF_Std._Volumen_1.0_KM_60_ml_CE_Vol..nrrd have been changed correctly.
+2024-07-16 15:02:09,162 - INFO - Processed BS-433_6_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.12s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.40s, Write: 0.38s
+2024-07-16 15:02:09,658 - INFO - Labels in BS-433_6_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:02:16,147 - INFO - Processed BS-072_8_Thoracica__0.6__I26f__3__80%.nrrd: Read: 1.09s, Header: 0.00s, Copy: 0.12s, Label Mapping: 2.27s, Write: 2.01s
+2024-07-16 15:02:19,498 - INFO - Labels in BS-072_8_Thoracica__0.6__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:02:21,308 - INFO - Processed BS-121_5_Thorax_Routine__1.0__I26f__3.nrrd: Read: 0.27s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.63s, Write: 0.57s
+2024-07-16 15:02:22,260 - INFO - Labels in BS-121_5_Thorax_Routine__1.0__I26f__3.nrrd have been changed correctly.
+2024-07-16 15:02:22,887 - INFO - Processed BS-556_6_Thx-Abd_Angio__1.0___I26f__3_Weichteil_cropped.nrrd: Read: 0.07s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.22s, Write: 0.25s
+2024-07-16 15:02:23,127 - INFO - Labels in BS-556_6_Thx-Abd_Angio__1.0___I26f__3_Weichteil_cropped.nrrd have been changed correctly.
+2024-07-16 15:02:26,959 - INFO - Processed BS-442_403_Herz_75%_iDose_(4).nrrd: Read: 0.60s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.29s, Write: 1.30s
+2024-07-16 15:02:28,916 - INFO - Labels in BS-442_403_Herz_75%_iDose_(4).nrrd have been changed correctly.
+2024-07-16 15:02:33,795 - INFO - Processed BS-459_8_Herz__0.6__I30f__3__60%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.64s, Write: 1.71s
+2024-07-16 15:02:36,206 - INFO - Labels in BS-459_8_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:02:39,240 - INFO - Processed BS-044_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.43s, Header: 0.00s, Copy: 0.05s, Label Mapping: 1.00s, Write: 1.08s
+2024-07-16 15:02:40,796 - INFO - Labels in BS-044_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:02:44,784 - INFO - Processed BS-144_13_Cor__Thorax__0.6__I26f__3__BestDiast_70_%.nrrd: Read: 0.60s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.30s, Write: 1.42s
+2024-07-16 15:02:46,704 - INFO - Labels in BS-144_13_Cor__Thorax__0.6__I26f__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 15:02:49,801 - INFO - Processed BS-179_8_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.44s, Header: 0.00s, Copy: 0.05s, Label Mapping: 0.98s, Write: 1.17s
+2024-07-16 15:02:51,292 - INFO - Labels in BS-179_8_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:02:55,315 - INFO - Processed BS-582_8_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.53s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.22s, Write: 1.63s
+2024-07-16 15:03:04,488 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-582_8_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd:
+2024-07-16 15:03:04,488 - WARNING -   Original count: 152860892, Modified count: 152863154
+2024-07-16 15:03:04,488 - WARNING -   Total mismatched voxels: 2262
+2024-07-16 15:03:04,488 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:03:04,488 - WARNING -     At (253,189,141): Original=0, Modified=0
+2024-07-16 15:03:04,489 - WARNING -     At (243,192,130): Original=0, Modified=0
+2024-07-16 15:03:04,489 - WARNING -     At (245,193,136): Original=0, Modified=0
+2024-07-16 15:03:04,489 - WARNING -     At (241,191,126): Original=0, Modified=0
+2024-07-16 15:03:04,489 - WARNING -     At (243,195,133): Original=0, Modified=0
+2024-07-16 15:03:04,489 - WARNING - Labels in BS-582_8_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 15:03:09,309 - INFO - Processed BS-458_10_Herz__0.6__I26f__BestSyst_38_%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.55s, Write: 1.77s
+2024-07-16 15:03:11,666 - INFO - Labels in BS-458_10_Herz__0.6__I26f__BestSyst_38_%.nrrd have been changed correctly.
+2024-07-16 15:03:22,034 - INFO - Processed BS-540_9_Thorax__0.6__I30f__3__70%_QCA_D.nrrd: Read: 1.65s, Header: 0.00s, Copy: 0.19s, Label Mapping: 3.60s, Write: 3.26s
+2024-07-16 15:03:27,478 - INFO - Labels in BS-540_9_Thorax__0.6__I30f__3__70%_QCA_D.nrrd have been changed correctly.
+2024-07-16 15:03:33,033 - INFO - Processed BS-441_10_Herz___0.6__I26f__3__40%.nrrd: Read: 0.76s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.81s, Write: 2.05s
+2024-07-16 15:03:35,704 - INFO - Labels in BS-441_10_Herz___0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 15:03:39,772 - INFO - Processed BS-140_9_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.33s, Write: 1.44s
+2024-07-16 15:03:41,805 - INFO - Labels in BS-140_9_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:03:45,095 - INFO - Processed BS-324_5_Thorax__1.0__I30f__3__40%.nrrd: Read: 0.46s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.16s, Write: 1.10s
+2024-07-16 15:03:46,752 - INFO - Labels in BS-324_5_Thorax__1.0__I30f__3__40%.nrrd have been changed correctly.
+2024-07-16 15:03:49,123 - INFO - Processed BS-031_11_Herz__0.6__I26f__3__BestDiast_69_%.nrrd: Read: 0.32s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.77s, Write: 0.88s
+2024-07-16 15:03:50,264 - INFO - Labels in BS-031_11_Herz__0.6__I26f__3__BestDiast_69_%.nrrd have been changed correctly.
+2024-07-16 15:03:54,802 - INFO - Processed BS-016_18_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.51s, Write: 1.57s
+2024-07-16 15:03:57,106 - INFO - Labels in BS-016_18_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:03:59,127 - INFO - Processed BS-076_9_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.30s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.70s, Write: 0.64s
+2024-07-16 15:04:00,160 - INFO - Labels in BS-076_9_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:04:06,648 - INFO - Processed BS-593_6_Thorax__0.6__I26f__3__BestDiast_QCA_D_67_%.nrrd: Read: 0.97s, Header: 0.00s, Copy: 0.12s, Label Mapping: 2.30s, Write: 2.08s
+2024-07-16 15:04:10,051 - INFO - Labels in BS-593_6_Thorax__0.6__I26f__3__BestDiast_QCA_D_67_%.nrrd have been changed correctly.
+2024-07-16 15:04:14,248 - INFO - Processed BS-532_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.41s, Write: 1.48s
+2024-07-16 15:04:16,308 - INFO - Labels in BS-532_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:04:20,399 - INFO - Processed BS-281_501_AORTE_INJECTE_iDose_(4).nrrd: Read: 0.63s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.39s, Write: 1.30s
+2024-07-16 15:04:22,495 - INFO - Labels in BS-281_501_AORTE_INJECTE_iDose_(4).nrrd have been changed correctly.
+2024-07-16 15:04:24,274 - INFO - Processed BS-504_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.62s, Write: 0.59s
+2024-07-16 15:04:25,197 - INFO - Labels in BS-504_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:04:26,819 - INFO - Processed BS-164_7_Thoracica__1.0__I50f__3__BestDiast_LCAD_80_%.nrrd: Read: 0.24s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.57s, Write: 0.53s
+2024-07-16 15:04:27,649 - INFO - Labels in BS-164_7_Thoracica__1.0__I50f__3__BestDiast_LCAD_80_%.nrrd have been changed correctly.
+2024-07-16 15:04:31,899 - INFO - Processed BS-386_7_Herz__0.6__I30f__3__60%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.33s, Write: 1.67s
+2024-07-16 15:04:33,880 - INFO - Labels in BS-386_7_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:04:35,588 - INFO - Processed BS-120_5_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.24s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.59s, Write: 0.55s
+2024-07-16 15:04:36,460 - INFO - Labels in BS-120_5_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:04:40,468 - INFO - Processed BS-216_7_Herz__0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.59s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.40s, Write: 1.35s
+2024-07-16 15:04:42,471 - INFO - Labels in BS-216_7_Herz__0.6__I26f__3__BestDiast_68_%.nrrd have been changed correctly.
+2024-07-16 15:04:47,075 - INFO - Processed BS-215_6_Herz__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.47s, Write: 1.74s
+2024-07-16 15:04:49,244 - INFO - Labels in BS-215_6_Herz__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:04:51,178 - INFO - Processed BS-255_8_Herz__1.0__Bv40__3__BestDiast_65_%.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.63s, Write: 0.71s
+2024-07-16 15:04:55,659 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-255_8_Herz__1.0__Bv40__3__BestDiast_65_%.nrrd:
+2024-07-16 15:04:55,659 - WARNING -   Original count: 79844448, Modified count: 79844644
+2024-07-16 15:04:55,659 - WARNING -   Total mismatched voxels: 196
+2024-07-16 15:04:55,659 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:04:55,659 - WARNING -     At (125,166,51): Original=0, Modified=0
+2024-07-16 15:04:55,660 - WARNING -     At (127,165,50): Original=0, Modified=0
+2024-07-16 15:04:55,660 - WARNING -     At (127,167,55): Original=0, Modified=0
+2024-07-16 15:04:55,660 - WARNING -     At (127,164,51): Original=0, Modified=0
+2024-07-16 15:04:55,660 - WARNING -     At (127,160,54): Original=0, Modified=0
+2024-07-16 15:04:55,660 - WARNING - Labels in BS-255_8_Herz__1.0__Bv40__3__BestDiast_65_%.nrrd have NOT been changed correctly.
+2024-07-16 15:04:57,722 - INFO - Processed BS-083_10_Angio_Fl_Thoracica_axial___60%.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.72s, Write: 0.73s
+2024-07-16 15:04:58,731 - INFO - Labels in BS-083_10_Angio_Fl_Thoracica_axial___60%.nrrd have been changed correctly.
+2024-07-16 15:05:04,372 - INFO - Processed BS-390_9_Herz___0.6__I26f__3__40%.nrrd: Read: 0.82s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.92s, Write: 1.89s
+2024-07-16 15:05:07,240 - INFO - Labels in BS-390_9_Herz___0.6__I26f__3__40%.nrrd have been changed correctly.
+2024-07-16 15:05:08,501 - INFO - Processed BS-132_8_QCA_D__Thorax__1.0__I50f__3_LCAD_43_%.nrrd: Read: 0.16s, Header: 0.00s, Copy: 0.02s, Label Mapping: 0.42s, Write: 0.44s
+2024-07-16 15:05:09,111 - INFO - Labels in BS-132_8_QCA_D__Thorax__1.0__I50f__3_LCAD_43_%.nrrd have been changed correctly.
+2024-07-16 15:05:09,973 - INFO - Processed BS-424_6_Thoracica__5.0__I26f__3__BestDiast_71_%.nrrd: Read: 0.09s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.30s, Write: 0.35s
+2024-07-16 15:05:10,342 - INFO - Labels in BS-424_6_Thoracica__5.0__I26f__3__BestDiast_71_%.nrrd have been changed correctly.
+2024-07-16 15:05:16,080 - INFO - Processed BS-603_8_Thorax__0.6__I26f__3__BestDiast_QCA_D_73_%.nrrd: Read: 0.86s, Header: 0.00s, Copy: 0.11s, Label Mapping: 1.99s, Write: 1.89s
+2024-07-16 15:05:19,154 - INFO - Labels in BS-603_8_Thorax__0.6__I26f__3__BestDiast_QCA_D_73_%.nrrd have been changed correctly.
+2024-07-16 15:05:19,939 - INFO - Processed BS-361_9_Fl_Thoracica__5.0__I26f__3__60%.nrrd: Read: 0.10s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.26s, Write: 0.26s
+2024-07-16 15:05:20,310 - INFO - Labels in BS-361_9_Fl_Thoracica__5.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:05:25,256 - INFO - Processed BS-577_5_Cor__Thorax__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.69s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.53s, Write: 1.93s
+2024-07-16 15:05:27,538 - INFO - Labels in BS-577_5_Cor__Thorax__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:05:32,549 - INFO - Processed BS-402_12_Herz__0.6__I26f__3__BestDiast_70_%.nrrd: Read: 0.71s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.69s, Write: 1.76s
+2024-07-16 15:05:35,016 - INFO - Labels in BS-402_12_Herz__0.6__I26f__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 15:05:38,776 - INFO - Processed BS-545_7_Cor__Thorax__0.6__I26f__3__70%.nrrd: Read: 0.53s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.28s, Write: 1.26s
+2024-07-16 15:05:40,780 - INFO - Labels in BS-545_7_Cor__Thorax__0.6__I26f__3__70%.nrrd have been changed correctly.
+2024-07-16 15:05:45,208 - INFO - Processed BS-393_8_Herz__0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.65s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.48s, Write: 1.53s
+2024-07-16 15:05:47,444 - INFO - Labels in BS-393_8_Herz__0.6__I26f__3__BestDiast_68_%.nrrd have been changed correctly.
+2024-07-16 15:05:49,429 - INFO - Processed BS-456_5_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.67s, Write: 0.68s
+2024-07-16 15:05:50,407 - INFO - Labels in BS-456_5_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:05:51,176 - INFO - Processed BS-149_9_Fl_Th-Abd_Art__2.0__cor_-_imageType_DERIVED-PRIMARY-AXIAL-CT_SOM5_MPR-STD-SNRG-DET_AB.nrrd: Read: 0.10s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.29s, Write: 0.26s
+2024-07-16 15:05:51,571 - INFO - Labels in BS-149_9_Fl_Th-Abd_Art__2.0__cor_-_imageType_DERIVED-PRIMARY-AXIAL-CT_SOM5_MPR-STD-SNRG-DET_AB.nrrd have been changed correctly.
+2024-07-16 15:05:56,309 - INFO - Processed BS-082_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.72s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.64s, Write: 1.54s
+2024-07-16 15:05:58,776 - INFO - Labels in BS-082_6_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:06:02,934 - INFO - Processed BS-180_8_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.36s, Write: 1.53s
+2024-07-16 15:06:04,981 - INFO - Labels in BS-180_8_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:06:08,587 - INFO - Processed BS-288_9_Herz__0.6__I26f__3__BestDiast_81_%.nrrd: Read: 0.47s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.14s, Write: 1.41s
+2024-07-16 15:06:10,303 - INFO - Labels in BS-288_9_Herz__0.6__I26f__3__BestDiast_81_%.nrrd have been changed correctly.
+2024-07-16 15:06:14,272 - INFO - Processed BS-053_12_Herz__0.6__I26f__3__70%.nrrd: Read: 0.60s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.32s, Write: 1.37s
+2024-07-16 15:06:24,327 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-053_12_Herz__0.6__I26f__3__70%.nrrd:
+2024-07-16 15:06:24,327 - WARNING -   Original count: 168183784, Modified count: 168183814
+2024-07-16 15:06:24,327 - WARNING -   Total mismatched voxels: 30
+2024-07-16 15:06:24,327 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:06:24,327 - WARNING -     At (192,175,283): Original=0, Modified=0
+2024-07-16 15:06:24,327 - WARNING -     At (192,176,282): Original=0, Modified=0
+2024-07-16 15:06:24,327 - WARNING -     At (204,233,285): Original=0, Modified=0
+2024-07-16 15:06:24,328 - WARNING -     At (205,233,284): Original=0, Modified=0
+2024-07-16 15:06:24,328 - WARNING -     At (252,198,322): Original=0, Modified=0
+2024-07-16 15:06:24,328 - WARNING - Labels in BS-053_12_Herz__0.6__I26f__3__70%.nrrd have NOT been changed correctly.
+2024-07-16 15:06:28,704 - INFO - Processed BS-306_10_Herz__0.6__I26f__3__BestDiast_70_%.nrrd: Read: 0.65s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.46s, Write: 1.52s
+2024-07-16 15:06:30,925 - INFO - Labels in BS-306_10_Herz__0.6__I26f__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 15:06:36,892 - INFO - Processed BS-559_6_Thorax__0.6__I30f__3__BestDiast_QCA_D_79_%.nrrd: Read: 0.87s, Header: 0.00s, Copy: 0.11s, Label Mapping: 2.12s, Write: 1.93s
+2024-07-16 15:06:40,111 - INFO - Labels in BS-559_6_Thorax__0.6__I30f__3__BestDiast_QCA_D_79_%.nrrd have been changed correctly.
+2024-07-16 15:06:42,080 - INFO - Processed BS-286_6_Gefsse_art.__1.5___I30f_cropped.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.69s, Write: 0.63s
+2024-07-16 15:06:43,102 - INFO - Labels in BS-286_6_Gefsse_art.__1.5___I30f_cropped.nrrd have been changed correctly.
+2024-07-16 15:06:47,103 - INFO - Processed BS-419_9_Herz__0.6__I30f__3__60%.nrrd: Read: 0.54s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.30s, Write: 1.51s
+2024-07-16 15:06:49,022 - INFO - Labels in BS-419_9_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:06:52,636 - INFO - Processed BS-418_11_Herz__0.6__I26f__3__BestSyst_40_%.nrrd: Read: 0.49s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.20s, Write: 1.33s
+2024-07-16 15:06:54,340 - INFO - Labels in BS-418_11_Herz__0.6__I26f__3__BestSyst_40_%.nrrd have been changed correctly.
+2024-07-16 15:06:56,702 - INFO - Processed BS-055_404_PARENCHYME_1.5_iDose_(3).nrrd: Read: 0.33s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.83s, Write: 0.78s
+2024-07-16 15:07:02,785 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-055_404_PARENCHYME_1.5_iDose_(3).nrrd:
+2024-07-16 15:07:02,785 - WARNING -   Original count: 101920017, Modified count: 101920054
+2024-07-16 15:07:02,785 - WARNING -   Total mismatched voxels: 37
+2024-07-16 15:07:02,785 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:07:02,785 - WARNING -     At (262,248,157): Original=0, Modified=0
+2024-07-16 15:07:02,785 - WARNING -     At (326,251,156): Original=0, Modified=0
+2024-07-16 15:07:02,785 - WARNING -     At (301,246,158): Original=0, Modified=0
+2024-07-16 15:07:02,785 - WARNING -     At (308,237,165): Original=0, Modified=0
+2024-07-16 15:07:02,785 - WARNING -     At (326,252,157): Original=0, Modified=0
+2024-07-16 15:07:02,785 - WARNING - Labels in BS-055_404_PARENCHYME_1.5_iDose_(3).nrrd have NOT been changed correctly.
+2024-07-16 15:07:07,827 - INFO - Processed BS-201_13_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.76s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.63s, Write: 1.82s
+2024-07-16 15:07:10,256 - INFO - Labels in BS-201_13_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:07:15,091 - INFO - Processed BS-460_6_Herz__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.62s, Write: 1.73s
+2024-07-16 15:07:17,480 - INFO - Labels in BS-460_6_Herz__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:07:22,598 - INFO - Processed BS-013_5_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.76s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.75s, Write: 1.69s
+2024-07-16 15:07:25,218 - INFO - Labels in BS-013_5_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:07:25,920 - INFO - Processed BS-435_6_Thoracica__5.0__I26f__3__BestDiast_78_%.nrrd: Read: 0.09s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.24s, Write: 0.25s
+2024-07-16 15:07:26,253 - INFO - Labels in BS-435_6_Thoracica__5.0__I26f__3__BestDiast_78_%.nrrd have been changed correctly.
+2024-07-16 15:07:30,001 - INFO - Processed BS-434_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.49s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.16s, Write: 1.53s
+2024-07-16 15:07:31,727 - INFO - Labels in BS-434_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:07:33,315 - INFO - Processed BS-469_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.22s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.54s, Write: 0.55s
+2024-07-16 15:07:36,986 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-469_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd:
+2024-07-16 15:07:36,986 - WARNING -   Original count: 68119993, Modified count: 68120277
+2024-07-16 15:07:36,986 - WARNING -   Total mismatched voxels: 284
+2024-07-16 15:07:36,986 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:07:36,986 - WARNING -     At (287,172,119): Original=0, Modified=0
+2024-07-16 15:07:36,986 - WARNING -     At (286,173,120): Original=0, Modified=0
+2024-07-16 15:07:36,986 - WARNING -     At (292,176,114): Original=0, Modified=0
+2024-07-16 15:07:36,986 - WARNING -     At (302,172,114): Original=0, Modified=0
+2024-07-16 15:07:36,986 - WARNING -     At (282,176,117): Original=0, Modified=0
+2024-07-16 15:07:36,986 - WARNING - Labels in BS-469_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd have NOT been changed correctly.
+2024-07-16 15:07:41,102 - INFO - Processed BS-202_9_Herz__0.6__I30f__3__60%.nrrd: Read: 0.55s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.43s, Write: 1.50s
+2024-07-16 15:07:43,038 - INFO - Labels in BS-202_9_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:07:44,807 - INFO - Processed BS-570_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.25s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.62s, Write: 0.57s
+2024-07-16 15:07:45,761 - INFO - Labels in BS-570_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:07:49,930 - INFO - Processed BS-057_10_Herz__0.6__I26f__3__BestSyst_41_%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.47s, Write: 1.42s
+2024-07-16 15:07:51,991 - INFO - Labels in BS-057_10_Herz__0.6__I26f__3__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 15:07:54,851 - INFO - Processed BS-152_7_Thx_angio_fines_1.0__B20f.nrrd: Read: 0.41s, Header: 0.00s, Copy: 0.05s, Label Mapping: 1.02s, Write: 0.91s
+2024-07-16 15:07:56,358 - INFO - Labels in BS-152_7_Thx_angio_fines_1.0__B20f.nrrd have been changed correctly.
+2024-07-16 15:08:00,193 - INFO - Processed BS-585_6_Cor__Thorax__0.6__I26f__3__BestDiast_71_%.nrrd: Read: 0.53s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.29s, Write: 1.39s
+2024-07-16 15:08:02,047 - INFO - Labels in BS-585_6_Cor__Thorax__0.6__I26f__3__BestDiast_71_%.nrrd have been changed correctly.
+2024-07-16 15:08:05,612 - INFO - Processed BS-572_7_Thoracica__1.0__I30f__3__BestDiast_71_%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.23s, Write: 1.14s
+2024-07-16 15:08:07,453 - INFO - Labels in BS-572_7_Thoracica__1.0__I30f__3__BestDiast_71_%.nrrd have been changed correctly.
+2024-07-16 15:08:09,360 - INFO - Processed BS-059_5_Thoracica__1.0__I26f__3__80%.nrrd: Read: 0.27s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.66s, Write: 0.62s
+2024-07-16 15:08:10,344 - INFO - Labels in BS-059_5_Thoracica__1.0__I26f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:08:14,840 - INFO - Processed BS-030_10_Herz__0.6__I30f__3__60%.nrrd: Read: 0.65s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.53s, Write: 1.55s
+2024-07-16 15:08:17,150 - INFO - Labels in BS-030_10_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:08:19,081 - INFO - Processed BS-431_5_Thoracica__1.0__I26f__3__BestDiast_67_%.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.66s, Write: 0.65s
+2024-07-16 15:08:20,096 - INFO - Labels in BS-431_5_Thoracica__1.0__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:08:24,707 - INFO - Processed BS-194_13_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.66s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.49s, Write: 1.71s
+2024-07-16 15:08:27,003 - INFO - Labels in BS-194_13_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:08:30,470 - INFO - Processed BS-245_7_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.48s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.10s, Write: 1.30s
+2024-07-16 15:08:32,148 - INFO - Labels in BS-245_7_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:08:36,819 - INFO - Processed BS-026_8_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.70s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.52s, Write: 1.62s
+2024-07-16 15:08:39,196 - INFO - Labels in BS-026_8_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:08:39,662 - INFO - Processed BS-093_5_Fl_Th-Abd_Art__3.0__I31f__3_cropped.nrrd: Read: 0.05s, Header: 0.00s, Copy: 0.00s, Label Mapping: 0.14s, Write: 0.20s
+2024-07-16 15:08:39,838 - INFO - Labels in BS-093_5_Fl_Th-Abd_Art__3.0__I31f__3_cropped.nrrd have been changed correctly.
+2024-07-16 15:08:44,371 - INFO - Processed BS-177_4_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.69s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.52s, Write: 1.57s
+2024-07-16 15:08:46,645 - INFO - Labels in BS-177_4_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:08:49,599 - INFO - Processed BS-508_7_Thorax__1.0__I50f__3_LCAD_76_%.nrrd: Read: 0.43s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.04s, Write: 0.96s
+2024-07-16 15:08:51,153 - INFO - Labels in BS-508_7_Thorax__1.0__I50f__3_LCAD_76_%.nrrd have been changed correctly.
+2024-07-16 15:08:55,189 - INFO - Processed BS-377_7_Herz__0.6__I30f__3__60%.nrrd: Read: 0.55s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.31s, Write: 1.51s
+2024-07-16 15:08:57,196 - INFO - Labels in BS-377_7_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:08:59,090 - INFO - Processed BS-549_5_Thorax_LE__1.0__I26f_Weichteil.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.65s, Write: 0.61s
+2024-07-16 15:09:00,045 - INFO - Labels in BS-549_5_Thorax_LE__1.0__I26f_Weichteil.nrrd have been changed correctly.
+2024-07-16 15:09:04,685 - INFO - Processed BS-242_6_Herz__0.6__I26f__3__60%.nrrd: Read: 0.68s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.62s, Write: 1.55s
+2024-07-16 15:09:07,047 - INFO - Labels in BS-242_6_Herz__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:09:08,916 - INFO - Processed BS-400_8_Thorax_KM__1.5__B41s.nrrd: Read: 0.26s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.66s, Write: 0.61s
+2024-07-16 15:09:09,920 - INFO - Labels in BS-400_8_Thorax_KM__1.5__B41s.nrrd have been changed correctly.
+2024-07-16 15:09:10,758 - INFO - Processed BS-073_4_Aorta_Angio__3.0__B31s.nrrd: Read: 0.11s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.30s, Write: 0.29s
+2024-07-16 15:09:11,184 - INFO - Labels in BS-073_4_Aorta_Angio__3.0__B31s.nrrd have been changed correctly.
+2024-07-16 15:09:15,290 - INFO - Processed BS-543_6_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.59s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.39s, Write: 1.43s
+2024-07-16 15:09:17,348 - INFO - Labels in BS-543_6_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:09:19,619 - INFO - Processed BS-154_10_Angio_Fl_Thoracica_axial___60%.nrrd: Read: 0.31s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.79s, Write: 0.73s
+2024-07-16 15:09:20,718 - INFO - Labels in BS-154_10_Angio_Fl_Thoracica_axial___60%.nrrd have been changed correctly.
+2024-07-16 15:09:25,858 - INFO - Processed BS-051_6_Herz__0.6__I30f__3__60%.nrrd: Read: 0.66s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.62s, Write: 2.04s
+2024-07-16 15:09:28,156 - INFO - Labels in BS-051_6_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:09:29,803 - INFO - Processed BS-171_8_Thoracica__1.0__I30f__3__80%.nrrd: Read: 0.24s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.57s, Write: 0.54s
+2024-07-16 15:09:30,649 - INFO - Labels in BS-171_8_Thoracica__1.0__I30f__3__80%.nrrd have been changed correctly.
+2024-07-16 15:09:36,179 - INFO - Processed BS-170_7_Cor__Thorax__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.80s, Header: 0.00s, Copy: 0.10s, Label Mapping: 1.88s, Write: 1.90s
+2024-07-16 15:09:38,989 - INFO - Labels in BS-170_7_Cor__Thorax__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:09:43,611 - INFO - Processed BS-541_5_Cor__Thorax__0.6__I26f__3__BestSyst_39_%.nrrd: Read: 0.67s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.55s, Write: 1.60s
+2024-07-16 15:09:45,934 - INFO - Labels in BS-541_5_Cor__Thorax__0.6__I26f__3__BestSyst_39_%.nrrd have been changed correctly.
+2024-07-16 15:09:49,801 - INFO - Processed BS-061_6_Herz__0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.59s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.19s, Write: 1.44s
+2024-07-16 15:09:58,837 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-061_6_Herz__0.6__I26f__3__BestDiast_68_%.nrrd:
+2024-07-16 15:09:58,837 - WARNING -   Original count: 150178454, Modified count: 150178714
+2024-07-16 15:09:58,837 - WARNING -   Total mismatched voxels: 260
+2024-07-16 15:09:58,837 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:09:58,837 - WARNING -     At (234,173,213): Original=0, Modified=0
+2024-07-16 15:09:58,837 - WARNING -     At (254,159,255): Original=0, Modified=0
+2024-07-16 15:09:58,837 - WARNING -     At (143,316,221): Original=0, Modified=0
+2024-07-16 15:09:58,837 - WARNING -     At (234,174,213): Original=0, Modified=0
+2024-07-16 15:09:58,837 - WARNING -     At (258,162,264): Original=0, Modified=0
+2024-07-16 15:09:58,838 - WARNING - Labels in BS-061_6_Herz__0.6__I26f__3__BestDiast_68_%.nrrd have NOT been changed correctly.
+2024-07-16 15:10:03,560 - INFO - Processed BS-124_13_Herz__0.6__I26f__3__BestDiast_68_%.nrrd: Read: 0.72s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.58s, Write: 1.58s
+2024-07-16 15:10:05,926 - INFO - Labels in BS-124_13_Herz__0.6__I26f__3__BestDiast_68_%.nrrd have been changed correctly.
+2024-07-16 15:10:09,795 - INFO - Processed BS-017_8_Herz__0.6__I30f__3__60%.nrrd: Read: 0.52s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.22s, Write: 1.49s
+2024-07-16 15:10:11,577 - INFO - Labels in BS-017_8_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:10:15,812 - INFO - Processed BS-287_12_Herz__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.66s, Write: 1.32s
+2024-07-16 15:10:17,818 - INFO - Labels in BS-287_12_Herz__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:10:21,990 - INFO - Processed BS-130_10_Cor__Thorax__0.6__I26f__3__BestDiast_77_%.nrrd: Read: 0.64s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.37s, Write: 1.39s
+2024-07-16 15:10:24,044 - INFO - Labels in BS-130_10_Cor__Thorax__0.6__I26f__3__BestDiast_77_%.nrrd have been changed correctly.
+2024-07-16 15:10:27,997 - INFO - Processed BS-538_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.30s, Write: 1.39s
+2024-07-16 15:10:29,961 - INFO - Labels in BS-538_5_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:10:34,469 - INFO - Processed BS-014_9_Herz__0.6__I26f__3__BestDiast_80_%.nrrd: Read: 0.66s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.54s, Write: 1.50s
+2024-07-16 15:10:36,903 - INFO - Labels in BS-014_9_Herz__0.6__I26f__3__BestDiast_80_%.nrrd have been changed correctly.
+2024-07-16 15:10:41,034 - INFO - Processed BS-383_6_Herz__0.6__I26f__3__BestDiast_74_%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.42s, Write: 1.44s
+2024-07-16 15:10:43,009 - INFO - Labels in BS-383_6_Herz__0.6__I26f__3__BestDiast_74_%.nrrd have been changed correctly.
+2024-07-16 15:10:45,083 - INFO - Processed BS-262_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.28s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.72s, Write: 0.72s
+2024-07-16 15:10:46,081 - INFO - Labels in BS-262_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:10:48,354 - INFO - Processed BS-090_402_Cardiac_35%_35%_iDose_(4).nrrd: Read: 0.32s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.78s, Write: 0.79s
+2024-07-16 15:10:49,493 - INFO - Labels in BS-090_402_Cardiac_35%_35%_iDose_(4).nrrd have been changed correctly.
+2024-07-16 15:10:50,132 - INFO - Processed BS-425_6_Thoracica__5.0__I26f__3__BestDiast_70_%.nrrd: Read: 0.07s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.23s, Write: 0.23s
+2024-07-16 15:10:50,389 - INFO - Labels in BS-425_6_Thoracica__5.0__I26f__3__BestDiast_70_%.nrrd have been changed correctly.
+2024-07-16 15:10:50,760 - INFO - Processed BS-560_5_Thx-Becken__1.5__I30f__3_axial_Weichteil_cropped.nrrd: Read: 0.03s, Header: 0.00s, Copy: 0.00s, Label Mapping: 0.12s, Write: 0.16s
+2024-07-16 15:10:50,901 - INFO - Labels in BS-560_5_Thx-Becken__1.5__I30f__3_axial_Weichteil_cropped.nrrd have been changed correctly.
+2024-07-16 15:10:52,728 - INFO - Processed BS-548_7_Thoracica__1.0__I50f__3__BestDiast_LCAD_85_%.nrrd: Read: 0.27s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.63s, Write: 0.63s
+2024-07-16 15:10:53,647 - INFO - Labels in BS-548_7_Thoracica__1.0__I50f__3__BestDiast_LCAD_85_%.nrrd have been changed correctly.
+2024-07-16 15:10:55,685 - INFO - Processed BS-539_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.30s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.77s, Write: 0.63s
+2024-07-16 15:10:56,688 - INFO - Labels in BS-539_6_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:11:01,207 - INFO - Processed BS-224_11_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.62s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.47s, Write: 1.70s
+2024-07-16 15:11:03,459 - INFO - Labels in BS-224_11_Fl_Herz__0.6__Bv40__3__65%.nrrd have been changed correctly.
+2024-07-16 15:11:07,490 - INFO - Processed BS-410_14_Herz__0.6__I26f__3__BestDiast_72_%.nrrd: Read: 0.57s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.36s, Write: 1.38s
+2024-07-16 15:11:09,632 - INFO - Labels in BS-410_14_Herz__0.6__I26f__3__BestDiast_72_%.nrrd have been changed correctly.
+2024-07-16 15:11:11,488 - INFO - Processed BS-056_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd: Read: 0.25s, Header: 0.00s, Copy: 0.03s, Label Mapping: 0.66s, Write: 0.62s
+2024-07-16 15:11:12,416 - INFO - Labels in BS-056_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:11:17,197 - INFO - Processed BS-293_5_Thorax__1.0__I30f__BestSyst_QCA_D_44_%.nrrd: Read: 0.70s, Header: 0.00s, Copy: 0.09s, Label Mapping: 1.64s, Write: 1.63s
+2024-07-16 15:11:19,721 - INFO - Labels in BS-293_5_Thorax__1.0__I30f__BestSyst_QCA_D_44_%.nrrd have been changed correctly.
+2024-07-16 15:11:23,122 - INFO - Processed BS-036_5_Fl_Herz__0.6__Bv40__3__65%.nrrd: Read: 0.49s, Header: 0.00s, Copy: 0.06s, Label Mapping: 1.09s, Write: 1.27s
+2024-07-16 15:11:30,951 - WARNING - Label BG (old label: 5, new label: 0) does not match in BS-036_5_Fl_Herz__0.6__Bv40__3__65%.nrrd:
+2024-07-16 15:11:30,951 - WARNING -   Original count: 128194382, Modified count: 128194712
+2024-07-16 15:11:30,951 - WARNING -   Total mismatched voxels: 330
+2024-07-16 15:11:30,951 - WARNING -   Sample of mismatched voxels:
+2024-07-16 15:11:30,951 - WARNING -     At (232,287,256): Original=0, Modified=0
+2024-07-16 15:11:30,951 - WARNING -     At (235,272,261): Original=0, Modified=0
+2024-07-16 15:11:30,951 - WARNING -     At (231,243,234): Original=0, Modified=0
+2024-07-16 15:11:30,951 - WARNING -     At (290,252,259): Original=0, Modified=0
+2024-07-16 15:11:30,951 - WARNING -     At (210,268,199): Original=0, Modified=0
+2024-07-16 15:11:30,951 - WARNING - Labels in BS-036_5_Fl_Herz__0.6__Bv40__3__65%.nrrd have NOT been changed correctly.
+2024-07-16 15:11:32,932 - INFO - Processed BS-592_7_Fl_Thoracica__1.0__I50f_LCAD__3__60%.nrrd: Read: 0.31s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.71s, Write: 0.63s
+2024-07-16 15:11:33,929 - INFO - Labels in BS-592_7_Fl_Thoracica__1.0__I50f_LCAD__3__60%.nrrd have been changed correctly.
+2024-07-16 15:11:39,812 - INFO - Processed BS-337_9_Herz__0.6__I30f__3__60%.nrrd: Read: 0.84s, Header: 0.00s, Copy: 0.09s, Label Mapping: 2.04s, Write: 2.00s
+2024-07-16 15:11:42,300 - INFO - Labels in BS-337_9_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:11:45,627 - INFO - Processed BS-005_11_Herz__0.6__I26f__3__BestDiast_67_%.nrrd: Read: 0.43s, Header: 0.00s, Copy: 0.05s, Label Mapping: 1.11s, Write: 1.28s
+2024-07-16 15:11:47,269 - INFO - Labels in BS-005_11_Herz__0.6__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:11:49,457 - INFO - Processed BS-360_8_Angio._Thoracica__I26f__axial.nrrd: Read: 0.31s, Header: 0.00s, Copy: 0.04s, Label Mapping: 0.70s, Write: 0.82s
+2024-07-16 15:11:50,462 - INFO - Labels in BS-360_8_Angio._Thoracica__I26f__axial.nrrd have been changed correctly.
+2024-07-16 15:11:54,992 - INFO - Processed BS-143_13_Cor__Thorax__0.6__I26f__3__70%.nrrd: Read: 0.58s, Header: 0.00s, Copy: 0.07s, Label Mapping: 1.47s, Write: 1.72s
+2024-07-16 15:11:56,966 - INFO - Labels in BS-143_13_Cor__Thorax__0.6__I26f__3__70%.nrrd have been changed correctly.
+2024-07-16 15:12:03,089 - INFO - Processed BS-415_7_Herz__0.6__I26f__3__BestSyst_41_%.nrrd: Read: 0.89s, Header: 0.00s, Copy: 0.10s, Label Mapping: 2.23s, Write: 1.97s
+2024-07-16 15:12:05,931 - INFO - Labels in BS-415_7_Herz__0.6__I26f__3__BestSyst_41_%.nrrd have been changed correctly.
+2024-07-16 15:12:06,890 - INFO - Processed BS-437_7_Thoracica__5.0__I26f__3__BestDiast_67_%.nrrd: Read: 0.11s, Header: 0.00s, Copy: 0.01s, Label Mapping: 0.31s, Write: 0.38s
+2024-07-16 15:12:07,266 - INFO - Labels in BS-437_7_Thoracica__5.0__I26f__3__BestDiast_67_%.nrrd have been changed correctly.
+2024-07-16 15:12:12,284 - INFO - Processed BS-316_10_Herz__0.6__I26f__3__BestDiast_69_%.nrrd: Read: 0.72s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.64s, Write: 1.84s
+2024-07-16 15:12:14,550 - INFO - Labels in BS-316_10_Herz__0.6__I26f__3__BestDiast_69_%.nrrd have been changed correctly.
+2024-07-16 15:12:19,506 - INFO - Processed BS-520_8_Fl_Coro___0.6__I26f__3__60%.nrrd: Read: 0.74s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.68s, Write: 1.60s
+2024-07-16 15:12:21,879 - INFO - Labels in BS-520_8_Fl_Coro___0.6__I26f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:12:26,647 - INFO - Processed BS-021_8_Herz__0.6__I30f__3__60%.nrrd: Read: 0.71s, Header: 0.00s, Copy: 0.08s, Label Mapping: 1.58s, Write: 1.63s
+2024-07-16 15:12:29,004 - INFO - Labels in BS-021_8_Herz__0.6__I30f__3__60%.nrrd have been changed correctly.
+2024-07-16 15:12:29,033 - INFO - Processing completed successfully.

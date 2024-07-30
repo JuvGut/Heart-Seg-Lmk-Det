@@ -11,7 +11,7 @@
 - [x] Create full size dataset (with all the data)
 - [ ] Run the dataset through the preprocessing of nnUNet full size dataset (with all the data) **currently running**
 - [x] What is brilliant is that the data is sometimes flawed - some of the datasets are mismatched in form of having different files where the coordinate system has been different than for others. -> finally solved (every segmentation matches to the volume. Was a hassle.)
-- [ ] Take out all the files with the "mismatched voxels", so there are lots of clean images.
+- [ ] Take out all the files with the "mismatched voxels", so there are lots of clean images. **Then do the split dataset.**
 - find out which configuration to train the model on (2d, 3d_fullres, 3d_lowres). 
 - [ ] Think about using "only heart" or "only thorax" or ... images. According to Helene, nnUNet doesn't get on well with multiple modalities.
 
@@ -22,18 +22,50 @@ Later:
 - [ ] Deploy the trained models to Specto
 - [ ] Write and complete the README file.
 
-### Training on small "test"-Dataset
-- [x] 2D U-Net: Fold 0, 1, 2, 3, 4
-- [x] 3D full resolution U-Net: 0
-- [ ] 3D full resolution U-Net: 1, 2, 3, 4
-- [ ] 3D full resolution U-Net: 0, 1, 2, 3, 4
-- [ ] 3D U-Net cascade: 0, 1, 2, 3, 4
-- [ ] 3D full resolution U-Net: 0, 1, 2, 3, 4
 
 ### Goal: **FIND BEST CONFIGURATION**
 - [ ] [TO DO (How to use nnU-Net)](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/how_to_use_nnunet.md)
 
-## README:
+## Findings
+### Data
+217 Folders containing the `.nrrd` volume file (sometimes there are several, i.e. once cropped, once not), the `.nrrd` segmentation file and one or several `.mrk.json` markup files.
+
+- "Herz" Files: 103
+- "Thorax/Abdomen" Files: 100
+- Other Files: 13
+
+Issues with 13 labels -> put whole contents of the BS-XXX folders into an `.ignore` folder:
+- BS-339_11_Angio_Fl_Ao.Bo.Herz_axial___60%.nrrd
+- BS-054_6_Herz__0.6__I30f__3__60%.nrrd
+- BS-475_9_Herz__0.6__I26f__3__60%.nrrd
+- BS-320_7_Herz__0.6__I30f__3__60%.nrrd
+- BS-103_5_Fl_Thoracica__1.0__I26f__3__60%.nrrd
+- BS-039_7_Herz___0.6__I26f__3__BestDiast_68_%.nrrd
+- BS-582_8_Cor__Fl_Thx-Abd__0.6__I26f__3__60%.nrrd
+- BS-255_8_Herz__1.0__Bv40__3__BestDiast_65_%.nrrd
+- BS-053_12_Herz__0.6__I26f__3__70%.nrrd
+- BS-055_404_PARENCHYME_1.5_iDose_(3).nrrd
+- BS-469_8_Fl_Thoracica__1.0__I26f__3__60%.nrrd
+- BS-061_6_Herz__0.6__I26f__3__BestDiast_68_%.nrrd
+- BS-036_5_Fl_Herz__0.6__Bv40__3__65%.nrrd
+
+**NEW Stats**
+- "Herz" Files: 94
+- "Thorax/Abdomen" Files: 97
+- Other Files: 12
+
+Now: Use all files that do not exit with an error to create dataset. Even the ones that do not have "Herz", "Thorax" or so in their name have the same segmentation masks.
+
+This should result in a dataset consisting of 203 images and segmentations as well as landmarks BEFORE the splitting up of the data (80% Training, 20% Testing).
+
+The dataset is then Validated by nnUNet and the datasets are prepared automatically (163 training images, rest for validation/testing).
+
+**30.07.2024, 09:00 :** Currently, the model is being trained with Dataset012_USB_Heart_big by nnUNet with the configuration 3d_lowres because it yielded the best results (time and values) and the results will be saved in the nnUNet_results folder. The training takes place on cuda:3, cuda:4 and cuda:7
+
+Then Train the model using "3d low res".
+Folds: The splits have 130-131 training and 32-33 validation cases.
+
+# README:
 ### Description
 This project aims to segment the heart into five segments and also to detect landmarks in CT scans of hearts, anonymized and provided by the [University Hospital of Basel](https://www.unispital-basel.ch/).
 
