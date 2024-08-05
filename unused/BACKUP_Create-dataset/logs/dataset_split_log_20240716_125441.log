@@ -1,7 +1,0 @@
-2024-07-16 12:54:41,346 - INFO - Creating folder: /home/juval.gutknecht/Projects/Data/VerySmallSampleFolder/Dataset/imagesTs
-2024-07-16 12:54:41,346 - INFO - Creating folder: /home/juval.gutknecht/Projects/Data/VerySmallSampleFolder/Dataset/labelsTs
-2024-07-16 12:54:41,346 - INFO - Creating folder: /home/juval.gutknecht/Projects/Data/VerySmallSampleFolder/Dataset/landmarksTs
-2024-07-16 12:54:41,347 - INFO - Getting file pairs...
-2024-07-16 12:54:41,347 - INFO - Found 0 complete file pairs
-2024-07-16 12:54:41,347 - INFO - Moving 0 samples to test set
-2024-07-16 12:54:41,347 - INFO - Dataset split completed successfully.
