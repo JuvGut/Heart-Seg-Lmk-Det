@@ -27,6 +27,8 @@
 - [ ] **Train a 3D-landmark detector to detect the landmarks**
 - [ ] Make the folder structure etc more beautiful and userfriendly.
 
+- [ ] Create each a Dockerfile for 1. Segmenter, 2. Landmark detector, 3. both
+
 ## To do once both models work.
 - [ ] Deploy the trained models to Specto
 - [ ] Write and complete the README file.
@@ -44,6 +46,7 @@ Folds: The splits have 130-131 training and 32-33 validation cases.
 `Spacing fullres: "spacing": [0.4296875, 0.30000000000000004,0.4296875]`
 `Spacing 3d lowres: "spacing": [1.2090815233627648, 0.8441587363114579, 1.2090815233627648]`
 
+**07.08.2024, 17:00 :** Segmentation model at training (epoch ~521). Landmark detection model training on full dataset (Training set), epoch 593. Acquiring knowledge of Docker and how to use docker to use the model for specto.
 
 
 # README:
