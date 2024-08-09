@@ -46,8 +46,9 @@ Folds: The splits have 130-131 training and 32-33 validation cases.
 `Spacing fullres: "spacing": [0.4296875, 0.30000000000000004,0.4296875]`
 `Spacing 3d lowres: "spacing": [1.2090815233627648, 0.8441587363114579, 1.2090815233627648]`
 
-**07.08.2024, 17:00 :** Segmentation model at training (epoch ~521). Landmark detection model training on full dataset (Training set), epoch 593. Acquiring knowledge of Docker and how to use docker to use the model for specto.
+**07.08.2024, 17:00 :** Segmentation model at training (epoch ~521). Landmark detection model training on full dataset (Training set), epoch 58. Acquiring knowledge of Docker and how to use docker to use the model for specto.
 
+**09.08.2024, 17:00 :** Segmentation model at training (epoch ~610). Landmark detection model training on full dataset (Training set), epoch 103 (1. checkpoint saved). Acquiring knowledge of Docker and how to use docker to use the model for specto.
 
 # README:
 ### Description
