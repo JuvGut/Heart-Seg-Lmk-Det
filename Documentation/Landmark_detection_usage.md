@@ -113,6 +113,66 @@ Then the model can be trained by running the following command.
 python lmk_det_train.py
 ```
 
+# Inference
+
+## 1. Generate CSV from NRRD files
+
+### Usage
+
+```
+python generate_test_file_big.py <input_folder> <output_file>
+```
+
+### Arguments
+
+- `<input_folder>`: Path to the folder containing NRRD files.
+- `<output_file>`: Path to the output CSV file. (This file doesn't have to exist, but only the folder.)
+
+### Example
+
+```
+python generate_test_file_big.py /path/to/nrrd/files /path/to/output/test_file_big.csv
+```
+
+This script will:
+1. Recursively search for all `.nrrd` files in the input folder.
+2. Generate a CSV file with columns `image_name` and `image_path`.
+3. If the output file already exists, it will append new data to it.
+
+## 2. 3D Medical Image Segmentation Inference
+
+### Usage
+
+```
+python lmk_det_infer_big.py [-i INPUT] [-m MODEL] [-o OUTPUT] [-g GPU_ID] [-s SAVE_PROB]
+```
+
+### Arguments
+
+- `-i, --input`: Input folder/file for intensity images (default: '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/test_file/test_file_big.csv')
+- `-m, --model`: Model root folder (default: '/home/juval.gutknecht/Projects/CSA/DATA/results/model_big')
+- `-o, --output`: Output folder for segmentation results (default: '/home/juval.gutknecht/Projects/CSA/DATA/big_test/inference_results')
+- `-g, --gpu_id`: GPU ID to run the model (default: 5, set to -1 for CPU only)
+- `-s, --save_prob`: Whether to save probability maps (default: False)
+
+### Example
+
+```
+python lmk_det_infer_big.py -i /path/to/input/data -m /path/to/model -o /path/to/output/results -g 0 -s True
+```
+
+This script will:
+1. Load the specified model.
+2. Process the input images (single image, text file with image paths, or folder of images).
+3. Perform 3D medical image segmentation.
+4. Save the results in the specified output folder.
+
+## Notes
+
+- Ensure that the `detection3d` module is properly installed and accessible in your Python environment.
+- Adjust the default paths in `lmk_det_infer_big.py` if necessary to match your system's directory structure.
+- For large datasets, consider running the scripts on a machine with sufficient computational resources and GPU support.
+
 
 # DEBUG
 

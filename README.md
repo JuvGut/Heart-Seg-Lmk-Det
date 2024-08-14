@@ -14,7 +14,7 @@
 - [x] Take out all the files with the "mismatched voxels", so there are lots of clean images.
 - [x] find out [which configuration](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/how_to_use_nnunet.md) to train the model on (2d, 3d_fullres, **3d_lowres**). 
 - [x] Think about using "only heart" or "only thorax" or ... images. According to Helene, nnUNet doesn't get on well with multiple modalities.
-- [ ] **Train 5 folds of 3d_lowres model on the whole dataset and conduct validation.** *The model is being trained. As of 05.08 the training runs for 6 days, is at Epoch 410*
+- [ ] **Train 5 folds of 3d_lowres model on the whole dataset and conduct validation.** *The model is being trained. As of 14.08 the training runs for 15 days, is at Epoch 903/1000*
 
 
 ## To do -> Landmark detection:
@@ -24,7 +24,7 @@
 - [x] Copy CSA (5.3 Gb) from dbe-cia-wl20-01 to dbe-cia-sl19-01
 - [x] Adapt the mialab22 framework [CSA](/home/juval.gutknecht/Projects/CSA) to function with the given data. (-> landmark mask generation)
 - [x] Generate the dataset to train this detector model.
-- [ ] **Train a 3D-landmark detector to detect the landmarks**
+- [ ] **Train a 3D-landmark detector to detect the landmarks** -> more or less done (~ at epoch 250 (batch 2593), train loss: 0.0005)
 - [ ] Make the folder structure etc more beautiful and userfriendly.
 
 - [ ] Create each a Dockerfile for 1. Segmenter, 2. Landmark detector, 3. both
@@ -50,18 +50,21 @@ Folds: The splits have 130-131 training and 32-33 validation cases.
 
 **09.08.2024, 17:00 :** Segmentation model at training (epoch ~610). Landmark detection model training on full dataset (Training set), epoch 103 (1. checkpoint saved). Acquiring knowledge of Docker and how to use docker to use the model for specto.
 
+**14.08.2024, 17:00 :** Segmentation model at training (epoch 903/1000). Landmark detection model training on full dataset (Training set), epoch 250 (2. checkpoint saved). Acquiring knowledge of Docker and how to use docker to use the model for specto. It is very probable that the training is rather slow, because the training data is saved on the storage server and this drive is mounted to the GPU-Server. **It is definitely the reason...**
+
+
 # README:
 ### Description
-This project aims to segment the heart into five segments and also to detect landmarks in CT scans of hearts, anonymized and provided by the [University Hospital of Basel](https://www.unispital-basel.ch/).
+This project aims to segment the heart into five segments (4 + Background) and detect landmarks in CT scans of hearts, using anonymized data provided by the [University Hospital of Basel](https://www.unispital-basel.ch/). The project utilizes [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) for segmentation and a custom 3D landmark detection pipeline based on the [Medical-Detection3d-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/tree/master).
 
-The segments are:
+## Segments
 - LVOT
 - RCC
 - LCC
 - NCC
-- BG
+- BG (Background)
 
-The landmarks are:
+## Landmarks
 - Commissure LCC-RCC
 - Commissure LCC-NCC
 - Commissure NCC-RCC
@@ -72,17 +75,121 @@ The landmarks are:
 - Basis of IVT LCC-NCC
 - Basis of IVT NCC-RCC
 
-
-### Visuals
+## Visuals
 ![alt text](BS-043.png)
-### Installation
-### Usage
-### Roadmap
-### Authors and acknowledgment
-Juval Gutknecht
 
-### License
-[Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel](https://dbe.unibas.ch/en/cian/)
+## Project Structure
+```
+Project/
+├── scripts/
+│   ├── nrrd_processor.py
+│   ├── change_label.py
+│   ├── split_dataset.py
+│   ├── create_dataset_json.py
+│   └── ...
+├── Documentation/
+│   ├── Dataset_preparation.md (for seg and lmk)
+│   ├── Landmark_detection_usage.md
+│   ├── Segmentation_usage.md (TODO)
+│   └── ...
+├── nnUNet/
+│   └── ...
+├── landmark_detection/
+│   └── ...
+└── README.md
+```
+
+## Installation
+1. Clone this repository
+2. Install the required dependencies (list them here or provide a requirements.txt file)
+
+## Usage
+
+### 1. Dataset Preparation
+Follow these steps to prepare your dataset:
+
+a. Match and align labels with images:
+```
+python scripts/dataset/nrrd_processor.py /path/to/folder/containing/data
+```
+
+b. Change the label structure (move background to 0):
+```
+python scripts/dataset/change_label.py /path/to/Dataset/labelsTr
+```
+
+c. Split the dataset into training and test sets:
+```
+python scripts/dataset/split_dataset.py /path/to/Dataset
+```
+
+d. Create the dataset.json file:
+```
+python scripts/dataset/create_dataset_json.py /path/to/Dataset
+```
+
+For detailed instructions, refer to `Documentation/Dataset_preparation.md`.
+
+### 2. Segmentation with nnU-Net
+Follow these steps to train and run inference with nnU-Net:
+
+Set up the environment variables `nnUNet_raw`, `nnUNet_preprocessed`, and `nnUNet_results` according to [this document](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/set_environment_variables.md). 
+
+a. Experiment planning and preprocessing:
+```
+nnUNetv2_plan_and_preprocess -d DATASET_ID --verify_dataset_integrity
+```
+
+b. Model training:
+```
+nnUNetv2_train DATASET_NAME_OR_ID CONFIGURATION FOLD [--npz]
+```
+
+c. Find the best configuration:
+```
+nnUNetv2_find_best_configuration DATASET_NAME_OR_ID -c CONFIGURATIONS
+```
+
+d. Run inference:
+```
+nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities
+```
+
+For detailed instructions and additional options, refer to `nnUNet/documentation/how_to_use_nnunet.md`
+
+### 3. Landmark Detection
+Follow these steps to run the landmark detection pipeline:
+
+a. Convert .JSON landmarks to .CSV:
+```
+python convert_landmarks.py /path/to/landmarksTr/folder
+```
+
+b. Generate landmark masks:
+```
+python gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
+```
+
+c. Generate the dataset:
+```
+python gen_dataset.py
+```
+
+d. Train the landmark detection model:
+```
+python lmk_det_train.py
+```
+
+For detailed instructions and additional options, refer to `Documentation/Landmark_detection_usage.md`.
+
+## Authors and Acknowledgment
+- Juval Gutknecht
+
+## License
+This project is licensed under the Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel.
+
+## Contact
+For any questions or issues, please open an issue on this repository or contact Juval Gutknecht.
 
 
 # Appendix

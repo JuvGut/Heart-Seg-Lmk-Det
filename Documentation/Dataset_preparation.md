@@ -1,4 +1,4 @@
-# How to Prepare the Dataset for nnUNetv2
+# How to Prepare the Dataset for nnUNetv2 (and Landmark detection)
 
 This guide provides detailed instructions on how to prepare your dataset for use with nnUNetv2. Follow the steps carefully to ensure your dataset is correctly structured and formatted.
 

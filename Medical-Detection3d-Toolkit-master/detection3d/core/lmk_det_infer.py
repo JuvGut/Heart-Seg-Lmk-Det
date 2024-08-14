@@ -188,7 +188,7 @@ def detection_single_image(image, image_name, model, gpu_id, save_prob, save_fol
 
         # only keep probability of the largest connected component
         landmark_mask_cc = sitk.GetArrayFromImage(landmark_mask_cc)
-        masked_landmark_mask_prob = np.multiply(landmark_mask_cc.astype(np.float), landmark_mask_prob)
+        masked_landmark_mask_prob = np.multiply(landmark_mask_cc.astype(np.float64), landmark_mask_prob)
 
         # compute the weighted mass center of the probability map
         masked_landmark_mask_prob = sitk.GetImageFromArray(masked_landmark_mask_prob)
@@ -327,7 +327,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
 
           # only keep probability of the largest connected component
           landmark_mask_cc = sitk.GetArrayFromImage(landmark_mask_cc)
-          masked_landmark_mask_prob = np.multiply(landmark_mask_cc.astype(np.float), landmark_mask_prob)
+          masked_landmark_mask_prob = np.multiply(landmark_mask_cc.astype(np.float64), landmark_mask_prob)
 
           # compute the weighted mass center of the probability map
           masked_landmark_mask_prob = sitk.GetImageFromArray(masked_landmark_mask_prob)
