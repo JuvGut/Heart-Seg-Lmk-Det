@@ -153,11 +153,11 @@ def generate_landmark_mask(image_folder, landmark_folder, landmark_label_file, s
 def main():
     long_description = 'Generate landmark mask for landmark detection.'
 
-    default_input = '/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/imagesTr'
-    default_landmark = '/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/landmarksTr_csv'
-    default_output = '/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/landmark/mask'
-    default_label = '/home/juval.gutknecht/Projects/Storage_server/Heart-Project/nnUNet_raw/Dataset012_USB_Heart_big/landmark/landmark_label_file_1.csv'
-    default_spacing = [1.3, 0.85, 1.3]
+    default_input = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTr'
+    default_landmark = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmarksTr_csv'
+    default_output = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmark/mask'
+    default_label = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmark/landmark_label_file_1.csv'
+    default_spacing = [0.43, 0.3, 0.43] # [1.3, 0.85, 1.3]
     default_pos_upper_bound = 3
     default_neg_lower_bound = 6
 

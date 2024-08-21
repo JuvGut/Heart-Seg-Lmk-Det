@@ -176,4 +176,4 @@ This script will:
 
 # DEBUG
 
-If some error occurs with the landmarks: check if all the landmark names are identical (i.e. Basis of RCC-NCC vs Basis of IVT RCC-NCC) and adapt it.
+If some error occurs with the landmarks: check if all the landmark names are identical (Mostly *Basal RCC-NCC* instead of *Basis of IVT RCC-NCC* and *Nadir NC* instead of *Nadir NCS* for all three landmark types) and adapt it.d

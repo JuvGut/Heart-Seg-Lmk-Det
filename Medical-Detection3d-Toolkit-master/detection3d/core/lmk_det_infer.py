@@ -198,16 +198,17 @@ def detection_single_image(image, image_name, model, gpu_id, save_prob, save_fol
         landmark_name = landmark_name_list[landmark_label_reorder[i]]
         if voxel_coordinate is not None:
             world_coordinate = masked_landmark_mask_prob.TransformContinuousIndexToPhysicalPoint(voxel_coordinate)
-            print("world coordinate of volume {0} landmark {1} is:[{2},{3},{4}]".format(
-                image_name, i, world_coordinate[0], world_coordinate[1], world_coordinate[2]))
+            max_prob = np.max(landmark_mask_prob)  # Get the maximum probability
+            print("world coordinate of volume {0} landmark {1} is:[{2},{3},{4}], max probability: {5:.4f}".format(
+                image_name, i, world_coordinate[0], world_coordinate[1], world_coordinate[2], max_prob))
             detected_landmark.append(
-                [landmark_name, world_coordinate[0], world_coordinate[1], world_coordinate[2]]
+                [landmark_name, world_coordinate[0], world_coordinate[1], world_coordinate[2], max_prob]
             )
         else:
             print("world coordinate of volume {0} landmark {1} is not detected.".format(image_name, i))
-            detected_landmark.append([landmark_name, 0, 0, 0])
+            detected_landmark.append([landmark_name, 0, 0, 0, 0])
 
-    detected_landmark_df = pd.DataFrame(data=detected_landmark, columns=['name', 'x', 'y', 'z'])
+    detected_landmark_df = pd.DataFrame(data=detected_landmark, columns=['name', 'x', 'y', 'z', 'probability'])
 
     return detected_landmark_df
 
@@ -316,7 +317,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
 
           landmark_mask_prob = sitk.GetArrayFromImage(landmark_mask_pred)
           # threshold the probability map to get the binary mask
-          prob_threshold = 0.5
+          prob_threshold = 0.1 # was 0.5
           landmark_mask_binary = np.zeros_like(landmark_mask_prob, dtype=np.int16)
           landmark_mask_binary[landmark_mask_prob >= prob_threshold] = 1
           landmark_mask_binary[landmark_mask_prob < prob_threshold] = 0
@@ -337,16 +338,17 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
           landmark_name = landmark_name_list[landmark_label_reorder[j]]
           if voxel_coordinate is not None:
             world_coordinate = masked_landmark_mask_prob.TransformContinuousIndexToPhysicalPoint(voxel_coordinate)
-            print("world coordinate of volume {0} landmark {1} is:[{2},{3},{4}]".format(
-              file_name_list[i], j, world_coordinate[0], world_coordinate[1], world_coordinate[2]))
+            max_prob = np.max(landmark_mask_prob)
+            print("world coordinate of volume {0} landmark {1} is:[{2:.2f},{3:.2f},{4:.2f}], probability: {5:.4f}".format(
+              file_name_list[i], j, world_coordinate[0], world_coordinate[1], world_coordinate[2], max_prob))
             detected_landmark.append(
-                [landmark_name, world_coordinate[0], world_coordinate[1], world_coordinate[2]]
+                [landmark_name, world_coordinate[0], world_coordinate[1], world_coordinate[2], max_prob]
             )
           else:
             print("world coordinate of volume {0} landmark {1} is not detected.".format(file_name_list[i], j))
-            detected_landmark.append([landmark_name, 5, 5, 5])
+            detected_landmark.append([landmark_name, 5, 5, 5, 0])
 
-        detected_landmark_df = pd.DataFrame(data=detected_landmark, columns=['name', 'x', 'y', 'z'])
+        detected_landmark_df = pd.DataFrame(data=detected_landmark, columns=['name', 'x', 'y', 'z', 'probability'])
         if return_landmark_file:
             landmark_files.append(detected_landmark_df)
 

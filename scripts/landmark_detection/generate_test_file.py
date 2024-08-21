@@ -41,9 +41,16 @@ def generate_csv_from_nrrd(input_folder, output_file):
     print(f"Data has been {'appended to' if file_exists else 'written to'} '{output_file}' successfully.")
 
 if __name__ == "__main__":
+    # Set default values
+    default_input_folder = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTr")
+    default_output_file = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test_Tr.csv")
+
     parser = argparse.ArgumentParser(description="Generate or append to CSV from NRRD files in a folder")
-    parser.add_argument("input_folder", help="Path to the input folder containing NRRD files")
-    parser.add_argument("output_file", help="Path to the output CSV file")
+    parser.add_argument("-i", "--input_folder", default=default_input_folder, 
+                        help=f"Path to the input folder containing NRRD files (default: {default_input_folder})")
+    parser.add_argument("-o", "--output_file", default=default_output_file, 
+                        help=f"Path to the output CSV file (default: {default_output_file})")
+    
     args = parser.parse_args()
 
     generate_csv_from_nrrd(args.input_folder, args.output_file)

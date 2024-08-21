@@ -12,10 +12,10 @@ def main():
                        '2. A text file containing paths of all testing images\n' \
                        '3. A folder containing all testing images\n'
 
-    default_input = '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/test_file/test_file_big.csv'
+    default_input = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test.csv'
     # default_input = '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/imagesTs'
-    default_model = '/home/juval.gutknecht/Projects/CSA/DATA/results/model_big'
-    default_output = '/home/juval.gutknecht/Projects/CSA/DATA/big_test/inference_results'
+    default_model = '/home/juval.gutknecht/Projects/Data/results/lmk_model_tiny_augmented'
+    default_output = '/home/juval.gutknecht/Projects/Data/results/lmk_model_tiny/inference_results'
     default_save_prob = False
     default_gpu_id = 3
 
