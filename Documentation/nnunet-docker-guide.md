@@ -65,3 +65,16 @@ After the segmentation is complete, you'll find the results in the specified out
 By following this guide, you should be able to easily run nnUNet segmentation tasks using the provided Docker setup.
 
 **Attribution**: This how-to guide was created with assistance from Claude.ai, an AI language model developed by Anthropic.
+
+# Example output to the Segmentation model
+
+## Files in Folder 
+
+The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model. The inference process was done on a A6000 GPU, barely using 1600Mb of its 24Gb memory.
+
+```
+Segmentation/Example_Output/
+├── Sample_images/
+├── Sample_seg_labels/
+└── Sample_seg_results/
+```

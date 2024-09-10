@@ -1,6 +1,6 @@
 # Heart-Valve-Segmentor and Landmark detection
 
-## TO DO -> Segmentation & Landmark detection
+## TO DO -> finish Segmentation & Landmark detection
 - [ ] Visit Notion Kanban Board
 
 # README:
@@ -28,6 +28,17 @@ This project aims to segment the heart into five segments (4 + Background) and d
 ## Visuals
 ![alt text](BS-043.png)
 
+## Example output to the Segmentation model
+
+The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model.
+
+```
+Segmentation/Example_Output/
+├── Sample_images/
+├── Sample_seg_labels/
+└── Sample_seg_results/
+```
+
 ## Project Structure
 ```
 Project/
@@ -41,11 +52,17 @@ Project/
 │   ├── Dataset_preparation.md (for seg and lmk)
 │   ├── Landmark_detection_usage.md
 │   ├── Segmentation_usage.md (TODO)
+│   ├── nnunet-docker-guide.md
 │   └── ...
 ├── nnUNet/
 │   └── ...
 ├── landmark_detection/
 │   └── ...
+├── Segmentation/
+│   └── Example_Output/
+│       ├── Sample_images/
+│       ├── Sample_seg_labels/
+│       └── Sample_seg_results/
 └── README.md
 ```
 
@@ -106,6 +123,8 @@ nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFI
 ```
 
 For detailed instructions and additional options, refer to [how_to_use_nnunet.md](/nnUNet/documentation/how_to_use_nnunet.md)
+
+The model can also be deployed using a docker container. In order to do that, consult this [guide](/nnUNet/documentation/nnunet-docker-guide.md).
 
 ### 3. Landmark Detection
 Follow these steps to run the landmark detection pipeline:
