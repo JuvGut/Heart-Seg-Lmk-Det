@@ -42,8 +42,8 @@ def generate_csv_from_nrrd(input_folder, output_file):
 
 if __name__ == "__main__":
     # Set default values
-    default_input_folder = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTr")
-    default_output_file = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test_Tr.csv")
+    default_input_folder = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/Dataset012_aligned/imagesTs")
+    default_output_file = os.path.join(os.path.expanduser("~"), "/home/juval.gutknecht/Projects/Data/Dataset012_aligned/test.csv")
 
     parser = argparse.ArgumentParser(description="Generate or append to CSV from NRRD files in a folder")
     parser.add_argument("-i", "--input_folder", default=default_input_folder, 

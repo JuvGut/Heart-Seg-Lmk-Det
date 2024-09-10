@@ -9,7 +9,7 @@ def split_dataset(image_list, image_folder, landmark_file_folder, landmark_mask_
     seed = 0
     random.Random(seed).shuffle(image_list)
 
-    num_training_images = int(len(image_list) * 10 // 10)  # Using all images for training in this case
+    num_training_images = int(len(image_list) * 4 // 5)
     training_images = image_list[:num_training_images]
     test_images = image_list[num_training_images:]
 
@@ -72,10 +72,10 @@ def get_image_list(image_folder):
     return image_list
 
 if __name__ == '__main__':
-    image_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTr'
-    landmark_file_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmarksTr_csv'
-    landmark_mask_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmark/mask'
-    output_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file'
+    image_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/labelsTr'
+    landmark_file_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/landmarksTr_csv'
+    landmark_mask_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/lmk_masks'
+    output_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/training_file_labels'
 
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)

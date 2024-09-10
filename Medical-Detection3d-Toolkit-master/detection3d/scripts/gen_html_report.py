@@ -28,12 +28,12 @@ def parse_and_check_arguments():
   Parse input arguments and raise error if invalid.
 
   """
-  default_image_folder = '/home/mialab22.team2/CSA/DATA/img'
-  default_label_folder = '/home/mialab22.team2/CSA/DATA/landmark/coords'
-  default_detection_folder = '/home/mialab22.team2/CSA/DATA/detection_coords' #'/mnt/projects/CT_Dental/results/model_0514_2020//batch_3/epoch_1000/test_set' #???
+  default_image_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTr'
+  default_label_folder = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/landmarksTr_csv'
+  default_detection_folder = '/home/juval.gutknecht/Projects/Data/results/inference_results' #'/mnt/projects/CT_Dental/results/model_0514_2020//batch_3/epoch_1000/test_set' #???
   default_resolution = [1.5, 1.5, 1.5]
   default_contrast_range = None
-  default_output_folder = '/home/mialab22.team2/CSA/DATA/results/html_report' #/mnt/projects/CT_Dental/results/model_0514_2020//batch_3/epoch_1000/test_set/html_report'
+  default_output_folder = '/home/juval.gutknecht/Projects/Data/results/inference_results/html_report' #/mnt/projects/CT_Dental/results/model_0514_2020//batch_3/epoch_1000/test_set/html_report'
   default_generate_pictures = False
   
   parser = argparse.ArgumentParser(
@@ -74,14 +74,14 @@ if __name__ == '__main__':
     usage_flag = 2
   
   print("The label folder: {}".format(args.label_folder))
-  label_landmark_csvs = glob.glob(os.path.join(args.label_folder, "case_*.csv"))
+  label_landmark_csvs = glob.glob(os.path.join(args.label_folder, "*.csv"))
   assert len(label_landmark_csvs) > 0
   label_landmark_csvs.sort()
   print("# landmark files in the label folder: {}".format(len(label_landmark_csvs)))
   
   if usage_flag == 2:
     print("The detection folder: {}".format(args.detection_folder))
-    detection_landmark_csvs = glob.glob(os.path.join(args.detection_folder, "case_*.csv"))
+    detection_landmark_csvs = glob.glob(os.path.join(args.detection_folder, "*.csv"))
     assert len(detection_landmark_csvs) > 0
     detection_landmark_csvs.sort()
     print("# landmark files in the detection folder: {}".format(
@@ -93,12 +93,12 @@ if __name__ == '__main__':
 
     label_landmark_csvs_basenames = []
     for label_landmark_csv in label_landmark_csvs:
-      basename = os.path.basename(label_landmark_csv)
+      basename = os.path.basename(label_landmark_csv).split('_')[0]  # Get the BS-XXX part
       label_landmark_csvs_basenames.append(basename)
 
     detection_landmark_csvs_basenames = []
     for detection_landmark_csv in detection_landmark_csvs:
-      basename = os.path.basename(detection_landmark_csv)
+      basename = os.path.basename(detection_landmark_csv).split('_')[0]  # Get the BS-XXX part
       detection_landmark_csvs_basenames.append(basename)
     
     intersect_basename = \
@@ -107,15 +107,19 @@ if __name__ == '__main__':
 
     label_landmark_csvs, detection_landmark_csvs = [], []
     for basename in intersect_basename:
-      label_landmark_csvs.append(os.path.join(label_landmark_csvs_folder, basename))
-      detection_landmark_csvs.append(os.path.join(detection_landmark_csvs_folder, basename))
+      label_csv = next(csv for csv in glob.glob(os.path.join(label_landmark_csvs_folder, f"{basename}*.csv")))
+      detection_csv = next(csv for csv in glob.glob(os.path.join(detection_landmark_csvs_folder, f"{basename}*.csv")))
+      label_landmark_csvs.append(label_csv)
+      detection_landmark_csvs.append(detection_csv)
+      # label_landmark_csvs.append(os.path.join(label_landmark_csvs_folder, basename))
+      # detection_landmark_csvs.append(os.path.join(detection_landmark_csvs_folder, basename))
     
     print("# landmark files in both folders: {}".format(
       len(detection_landmark_csvs)))
     
   label_landmarks = {}
   for label_landmark_csv in label_landmark_csvs:
-    file_name = os.path.basename(label_landmark_csv).split('.')[0]
+    file_name = os.path.basename(label_landmark_csv).split('_')[0] # Get the BS-XXX part
     landmarks = load_coordinates_from_csv(label_landmark_csv)
     label_landmarks.update({file_name: landmarks})
   
@@ -125,7 +129,7 @@ if __name__ == '__main__':
   if usage_flag == 2:
     detection_landmarks = {}
     for detection_landmark_csv in detection_landmark_csvs:
-      file_name = os.path.basename(detection_landmark_csv).split('.')[0]
+      file_name = os.path.basename(detection_landmark_csv).split('_')[0] # Get the BS-XXX part
       landmarks = load_coordinates_from_csv(detection_landmark_csv)
       detection_landmarks.update({file_name: landmarks})
 

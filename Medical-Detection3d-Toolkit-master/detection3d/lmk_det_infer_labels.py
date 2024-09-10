@@ -12,12 +12,12 @@ def main():
                        '2. A text file containing paths of all testing images\n' \
                        '3. A folder containing all testing images\n'
 
-    default_input = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test.csv'
+    default_input = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test_labels_Ts.csv'
     # default_input = '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/imagesTs'
-    default_model = '/home/juval.gutknecht/Projects/Data/results/lmk_model_H_augmented'
-    default_output = '/home/juval.gutknecht/Projects/Data/results/lmk_model_tiny/inference_results'
+    default_model = '/home/juval.gutknecht/Projects/Data/results/lmk_model_labels'
+    default_output = '/home/juval.gutknecht/Projects/Data/results/lmk_model_labels/inference_results'
     default_save_prob = False
-    default_gpu_id = 7
+    default_gpu_id = 3
 
     parser = argparse.ArgumentParser(description=long_description)
     parser.add_argument('-i', '--input', default=default_input,

@@ -1,7 +1,7 @@
 import SimpleITK as sitk
 
-from detection.utils.image_tools import mask_to_mesh
-from segmentation3d.utils.image_tools import resample_spacing
+from detection3d.utils.image_tools import mask_to_mesh
+from detection3d.utils.image_tools import resample_spacing
 
 
 def test_mask_to_mesh():

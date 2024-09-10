@@ -5,12 +5,27 @@
 This 3d medical landmark detection pipeline ... 
 
 ## Step-By-Step
- 
+
+### 0. Step: Pre-Align the images.
+Run the script with the dataset folder as an argument. Alternatively, change the default input folder in the file itself. 
+
+*This script is located at heart-valve-segmentor/scripts/landmark_detection/pre-align_images.py*
+
+```
+python pre-align_images.py /path/to/Dataset/folder /path/to/output/folder
+```
+
+The script will set all the origins to (0, 0, 0), so all images are more or less aligned, instead of being scattered throughout space.
+Process all the images, segmentations and landmarks. It starts with the Training images (Tr) and will automatically process the Test images (Ts) as well. It will then create the same folder structure in the output folder. 
+
+
 ### 1. Step: Convert .JSON landmarks to .CSV landmarks
 Run the script with the input folder as an argument:
 
+*This script is located at heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/scripts/convert_landmarks.py*
+
 ```
-python convert_landmarks.py /path/to/landmarksTr/folder
+python scripts/convert_landmarks.py /path/to/landmarksTr/folder
 ```
 
 The script will:
@@ -22,27 +37,32 @@ Convert each JSON file to a CSV file in the new folder
 *Note: The script converts Slicer fiducial markup files (`.mrk.json`) to CSV format, extracting landmark names and coordinates.*
 
 ### 2. Step: Generate the landmark masks.
+This mask is paramount for the model, because it shows the model where in the image the landmarks are found.
+*This script is located at heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/scripts/gen_landmark_mask.py*
 How to Use gen_landmark_mask.py:
 
 1. Place your input images (.nrrd files) in a folder.
 2. Prepare a folder with landmark CSV files corresponding to your images.
-3. Create a landmark label file (CSV) with columns 'landmark_name' and 'landmark_label'.
+3. Create a landmark label file (CSV) with columns 'landmark_name' and 'landmark_label'. Without that the code will fail.
 4. Run the script from the command line:
 ```
-python gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
+python scripts/gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
 ```
 Example:
 ```
-python gen_landmark_mask.py -i /path/to/images -l /path/to/landmarks -o /path/to/output -n /path/to/label_file.csv
+python scripts/gen_landmark_mask.py -i /path/to/images -l /path/to/landmarks -o /path/to/output -n /path/to/label_file.csv
 ```
+Alternatively, adapt the default inputs to your liking.
 
 6. The program will generate landmark masks for each image and save them in the specified output folder.
 
-Optional arguments:
+Optional arguments (See below for explanation):
 - -s: Specify spacing (default: [1.3, 0.85, 1.3])
 - -b: Specify bounds (default: [3, 6])
-
+- --debug: debugging mode with a verbose output
 For more details, run `python gen_landmark_mask.py --help`.
+
+
 
 ### 3. Step: How to Use gen_dataset.py
 
@@ -141,12 +161,17 @@ This script will:
 
 ## 2. 3D Medical Image Segmentation Inference
 
+THE MODEL WAS TRAINED USING THE MEAN SPACING PROVIDED BY THE PREPROCESSING OF THE NNUNETV2 PREPROCESSOR AND USED THROUGHOUT THE WHOLE LANDMARK DETECTION TRAINING.
+
 ### Usage
 
 ```
 python lmk_det_infer_big.py [-i INPUT] [-m MODEL] [-o OUTPUT] [-g GPU_ID] [-s SAVE_PROB]
 ```
-
+alternatively, use the bash script using the same arguments.
+```
+./prediction [-i INPUT] [-m MODEL] [-o OUTPUT] [-g GPU_ID] [-s SAVE_PROB]
+```
 ### Arguments
 
 - `-i, --input`: Input folder/file for intensity images (default: '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/test_file/test_file_big.csv')
@@ -177,3 +202,54 @@ This script will:
 # DEBUG
 
 If some error occurs with the landmarks: check if all the landmark names are identical (Mostly *Basal RCC-NCC* instead of *Basis of IVT RCC-NCC* and *Nadir NC* instead of *Nadir NCS* for all three landmark types) and adapt it.d
+
+
+# Additional Material
+
+## Explanation of Parameters
+
+### Spacing Parameter
+The 'spacing' parameter defines the physical size of each voxel in the output landmark mask. It is specified as three float values representing the spacing in millimeters along the x, y, and z axes respectively.
+
+- Default value: [0.43, 0.3, 0.43]
+- Usage: -s 0.43 0.3 0.43 or --spacing 0.43 0.3 0.43
+
+**How it affects the output:**
+
+- The spacing parameter determines the resolution of the output landmark mask.
+- A smaller spacing results in a higher resolution mask with more voxels, potentially capturing finer details but increasing computational requirements and file size.
+- A larger spacing produces a lower resolution mask with fewer voxels, which may be computationally efficient but might lose some detail.
+- The output mask is resampled to this spacing, regardless of the input image's original spacing.
+
+### Bounds Parameter
+The 'bounds' parameter consists of two values: the positive upper bound and the negative lower bound. These values define the size of the region around each landmark in the mask.
+
+- Default values: [5, 10] (positive upper bound: 5, negative lower bound: 10)
+- Usage: -b 5 10 or --bound 5 10
+
+**How it influences landmark mask generation:**
+
+1. Positive Upper Bound (first value):
+
+- Defines the radius (in voxels) around the landmark where the mask will have the full landmark label value.
+- Voxels within this radius from the landmark center are assigned the landmark's label value.
+
+
+2. Negative Lower Bound (second value):
+
+- Defines the outer radius (in voxels) of a "transition zone" around the landmark.
+- Voxels between the positive upper bound and this value are assigned a value of 0.5, representing a transition or "negative" sample area.
+
+
+
+**Visual representation:**
+```
+    0 0 0 0 0 0 0      0: Background
+    0 0 5 5 5 0 0      5: Full landmark value (within positive upper bound)
+    0 5 5 5 5 5 0      2: Transition zone (between bounds)
+    0 5 5 L 5 5 0      L: Landmark center
+    0 5 5 5 5 5 0
+    0 0 5 5 5 0 0
+    0 0 0 0 0 0 0
+```
+These bounds help create a gradual transition in the landmark mask, which can be beneficial for training landmark detection models by providing context around the exact landmark location.

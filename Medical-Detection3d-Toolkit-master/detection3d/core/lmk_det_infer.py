@@ -22,7 +22,7 @@ def read_test_folder(folder_path):
     :param folder_path: image file folder path
     :return: a list of image path list, list of image case names
     """
-    suffix = ['.mhd', '.nii', '.hdr', '.nii.gz', '.mha', '.image3d']
+    suffix = ['.mhd', '.nii', '.hdr', '.nii.gz', '.mha', '.image3d', '.nrrd']
     file = []
     for suf in suffix:
         file += glob.glob(os.path.join(folder_path, '*' + suf))
@@ -317,7 +317,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
 
           landmark_mask_prob = sitk.GetArrayFromImage(landmark_mask_pred)
           # threshold the probability map to get the binary mask
-          prob_threshold = 0.1 # was 0.5
+          prob_threshold = 0.4 # was 0.5
           landmark_mask_binary = np.zeros_like(landmark_mask_prob, dtype=np.int16)
           landmark_mask_binary[landmark_mask_prob >= prob_threshold] = 1
           landmark_mask_binary[landmark_mask_prob < prob_threshold] = 0
@@ -346,7 +346,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
             )
           else:
             print("world coordinate of volume {0} landmark {1} is not detected.".format(file_name_list[i], j))
-            detected_landmark.append([landmark_name, 5, 5, 5, 0])
+            detected_landmark.append([landmark_name, -1, -1, -1, 0])
 
         detected_landmark_df = pd.DataFrame(data=detected_landmark, columns=['name', 'x', 'y', 'z', 'probability'])
         if return_landmark_file:

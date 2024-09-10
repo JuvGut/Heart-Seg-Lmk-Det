@@ -25,8 +25,8 @@ display_help() {
 }
 
 # Default values
-INPUT_VOLUME="/home/juval.gutknecht/Projects/Data/A_Subset_012_a/imagesTs:/input"
-OUTPUT_VOLUME="/home/juval.gutknecht/Projects/Data/A_Subset_012_a/segmentations_results:/output"
+INPUT_VOLUME="/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTs:/input"
+OUTPUT_VOLUME="/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/segmentations_results:/output"
 GPU_ID=0
 DEBUG_MODE=false
 
@@ -84,7 +84,7 @@ docker_cmd="docker run --gpus all \
     --rm -it \
     -v $INPUT_VOLUME \
     -v $OUTPUT_VOLUME \
-    --shm-size=1g \
+    --shm-size=3g \
     nnunet-predictor"
 
 if [ "$DEBUG_MODE" = true ] ; then

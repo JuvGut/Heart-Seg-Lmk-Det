@@ -145,8 +145,8 @@ def align_dataset(input_folder, output_folder):
 
 # Example usage
 if __name__ == "__main__":
-    input_folder = "/home/juval.gutknecht/Projects/Data/A_Subset_012"
-    output_folder = "/home/juval.gutknecht/Projects/Data/A_Subset_012_a"
+    input_folder = "/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big"
+    output_folder = "/home/juval.gutknecht/Projects/Data/Dataset012_aligned"
     align_dataset(input_folder, output_folder)
 
 
