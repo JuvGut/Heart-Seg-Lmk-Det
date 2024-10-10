@@ -12,11 +12,12 @@ def main():
                        '2. A text file containing paths of all testing images\n' \
                        '3. A folder containing all testing images\n'
 
-    default_input = '/home/mialab22.team2/CSA/DATA/training_file/test.csv'
-    default_model = '/home/mialab22.team2/CSA/DATA/trained_models/model'
-    default_output = '/home/mialab22.team2/CSA/DATA/detection_coords'
+    default_input = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test.csv'
+    # default_input = '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/imagesTs'
+    default_model = '/home/juval.gutknecht/Projects/Data/results/lmk_model_big'
+    default_output = '/home/juval.gutknecht/Projects/Data/results/lmk_model_big/inference_results'
     default_save_prob = False
-    default_gpu_id = 2
+    default_gpu_id = 7
 
     parser = argparse.ArgumentParser(description=long_description)
     parser.add_argument('-i', '--input', default=default_input,

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Default values
-DEFAULT_INPUT="/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file/test.csv"
-DEFAULT_MODEL="/home/juval.gutknecht/Projects/Data/results/lmk_model_tiny_new"
+DEFAULT_INPUT="/home/juval.gutknecht/Projects/Data/A_Subset_012/training_file/test.csv"
+DEFAULT_MODEL="/home/juval.gutknecht/Projects/Data/results/lmk_model_all_and_aligned"
 DEFAULT_OUTPUT="/home/juval.gutknecht/Projects/Data/results/inference_results"
 DEFAULT_GPU_ID=7
 DEFAULT_SAVE_PROB=False
