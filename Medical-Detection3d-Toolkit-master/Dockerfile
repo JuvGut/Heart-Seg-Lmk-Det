@@ -1,28 +1,47 @@
-# Use an official Python runtime as a parent image
-FROM python:3.11-slim
+# Use an official PyTorch image as a parent image (before: runtime image)
+FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /workspace
 
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Install additional system dependencies
 RUN apt-get update && apt-get install -y \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    libglib2.0-0 \
+    build-essential \
+    cmake \
+    git \
+    libxrender1 \
+    libgl1-mesa-glx \
+    cuda-command-line-tools-12-1 \
+    cuda-libraries-dev-12-1 \
+    cuda-minimal-build-12-1 \
+    cuda-cudart-dev-12-1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Clone the Medical-Detection3d-Toolkit
+RUN git clone https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit.git && \
+    sed -i "s/suffix = \['.mhd', '.nii', '.hdr', '.nii.gz', '.mha', '.image3d'\]/suffix = ['.mhd', '.nii', '.hdr', '.nii.gz', '.mha', '.image3d', '.nrrd']/" /workspace/Medical-Detection3d-Toolkit/detection3d/core/lmk_det_infer.py && \
+    sed -i "/if input_path\.endswith('.mhd') or input_path\.endswith('.mha') or/s/$/ input_path.endswith('.nrrd') or/" /workspace/Medical-Detection3d-Toolkit/detection3d/core/lmk_det_infer.py
 
-# Define environment variable
-ENV NAME World
+# Set the PYTHONPATH environment variable
+ENV PYTHONPATH="/workspace/Medical-Detection3d-Toolkit"
 
-# Run the script when the container launches
-CMD ["python", "run_detection.py"]
+# Copy the current directory contents into the container at /workspace
+COPY . /workspace
+COPY run_detection.py /workspace/run_detection.py
+
+# Upgrade pip
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir numpy easydict pandas vtk SimpleITK && \
+    if [ -f "/workspace/Medical-Detection3d-Toolkit/requirements.txt" ]; then pip install -r /workspace/Medical-Detection3d-Toolkit/requirements.txt; fi
+
+# Make sure the model, input, and output directories exist
+RUN mkdir -p /workspace/model /workspace/input /workspace/output
+
+# Increase shared memory size
+RUN echo "none /dev/shm tmpfs defaults,size=1g 0 0" >> /etc/fstab
+
+# Copy the prediction script into the container
+COPY predictor-lmk-script.sh /usr/local/bin/predictor-lmk-script.sh
+RUN chmod +x /usr/local/bin/predictor-lmk-script.sh
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["/usr/local/bin/predictor-lmk-script.sh"]
