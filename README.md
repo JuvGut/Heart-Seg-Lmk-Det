@@ -53,10 +53,16 @@ Project/
 │   ├── Landmark_detection_usage.md
 │   ├── Segmentation_usage.md (TODO)
 │   ├── nnunet-docker-guide.md
+│   ├── landmark-detection-docker-guide.md
 │   └── ...
+├── Medical-Detection3d-Toolkit-master/
+│   └── ...
+├── Landmark_Detection/
+│   └── Example_Output/
+│       ├── Sample_images/
+│       ├── Sample_seg_labels/
+│       └── Sample_seg_results/
 ├── nnUNet/
-│   └── ...
-├── landmark_detection/
 │   └── ...
 ├── Segmentation/
 │   └── Example_Output/

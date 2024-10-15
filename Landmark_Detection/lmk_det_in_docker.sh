@@ -18,7 +18,7 @@ display_help() {
 
 # Default values
 DEFAULT_INPUT="/home/juval.gutknecht/Projects/Data/A_Subset_012/imagesTs"
-DEFAULT_OUTPUT="/home/juval.gutknecht/Projects/Data/results/inference_results_new"
+DEFAULT_OUTPUT="/home/juval.gutknecht/Projects/Data/results/inference_results"
 DEFAULT_MODEL="/home/juval.gutknecht/Projects/Data/results/lmk_model_all_and_aligned"
 GPU_ID=0
 DEBUG_MODE=false

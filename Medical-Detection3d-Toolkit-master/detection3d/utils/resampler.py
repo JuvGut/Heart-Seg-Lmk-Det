@@ -44,8 +44,8 @@ def process_folder(input_folder, output_folder, new_spacing):
 
 
 # Example usage
-input_folder = "/home/juval.gutknecht/Projects/Data/A_Subset_012/imagesTs"
-output_folder = "/home/juval.gutknecht/Projects/Data/A_Subset_012/imagesTs_resampled"
+input_folder = "/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTr_fs"
+output_folder = "/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTr"
 new_spacing = (1,1,1)  # New spacing in mm
 
 process_folder(input_folder, output_folder, new_spacing)
