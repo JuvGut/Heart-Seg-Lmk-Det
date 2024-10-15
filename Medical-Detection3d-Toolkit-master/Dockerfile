@@ -40,8 +40,8 @@ RUN mkdir -p /workspace/model /workspace/input /workspace/output
 RUN echo "none /dev/shm tmpfs defaults,size=1g 0 0" >> /etc/fstab
 
 # Copy the prediction script into the container
-COPY predictor-lmk-script.sh /usr/local/bin/predictor-lmk-script.sh
-RUN chmod +x /usr/local/bin/predictor-lmk-script.sh
+COPY lmk-pred-runner.sh /usr/local/bin/lmk-pred-runner.sh
+RUN chmod +x /usr/local/bin/lmk-pred-runner.sh
 
 ENTRYPOINT ["/bin/bash"]
-CMD ["/usr/local/bin/predictor-lmk-script.sh"]
+CMD ["/usr/local/bin/lmk-pred-runner.sh"]

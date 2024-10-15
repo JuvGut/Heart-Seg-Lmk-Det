@@ -243,7 +243,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
         if input_path.endswith('.csv'):
             file_name_list, file_path_list, _, _ = read_image_list(input_path, 'test')
         else:
-            if input_path.endswith('.mhd') or input_path.endswith('.mha') or \
+            if input_path.endswith('.mhd') or input_path.endswith('.mha') or input_path.endswith('.nrrd') or \
                     input_path.endswith('.nii.gz') or input_path.endswith('.nii') or \
                     input_path.endswith('.hdr') or input_path.endswith('.image3d'):
                 im_name = os.path.basename(input_path)
