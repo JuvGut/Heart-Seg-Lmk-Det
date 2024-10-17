@@ -317,7 +317,7 @@ def detection(input_path, model_folder, gpu_id, return_landmark_file, save_landm
 
           landmark_mask_prob = sitk.GetArrayFromImage(landmark_mask_pred)
           # threshold the probability map to get the binary mask
-          prob_threshold = 0.4 # was 0.5
+          prob_threshold = 0.25 # was 0.5
           landmark_mask_binary = np.zeros_like(landmark_mask_prob, dtype=np.int16)
           landmark_mask_binary[landmark_mask_prob >= prob_threshold] = 1
           landmark_mask_binary[landmark_mask_prob < prob_threshold] = 0

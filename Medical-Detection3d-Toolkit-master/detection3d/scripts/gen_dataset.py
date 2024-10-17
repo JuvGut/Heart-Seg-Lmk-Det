@@ -72,10 +72,10 @@ def get_image_list(image_folder):
     return image_list
 
 if __name__ == '__main__':
-    image_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/labelsTr'
-    landmark_file_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/landmarksTr_csv'
-    landmark_mask_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/lmk_masks'
-    output_folder = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/training_file_labels'
+    image_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTr'
+    landmark_file_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/landmarksTr_csv'
+    landmark_mask_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/landmark/mask'
+    output_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file'
 
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)

@@ -11,7 +11,7 @@ __C.general = {}
 
 __C.general.training_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file/train.csv'
 
-__C.general.validation_image_list_file = ''
+__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file/test.csv'
 
 # landmark label starts from 1, 0 represents the background.
 __C.general.target_landmark_label = {
@@ -26,7 +26,7 @@ __C.general.target_landmark_label = {
     'Basis of IVT LCC-NCC': 9,
 }
 
-__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_big'
+__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_resampled_data'
 
 __C.general.resume_epoch = -1
 
@@ -37,7 +37,7 @@ __C.general.num_gpus = 1
 ##################################
 __C.dataset = {}
 
-__C.dataset.crop_spacing = [2, 2, 2]        # mm
+__C.dataset.crop_spacing = [2, 2, 2]        # mm; default [2, 2, 2]
 
 __C.dataset.crop_size = [96, 96, 96]        # voxel default: [96, 96, 96]
 
@@ -102,7 +102,7 @@ __C.net.name = 'vdnet'
 ##################################
 __C.train = {}
 
-__C.train.epochs = 3001
+__C.train.epochs = 1001
 
 __C.train.batch_size = 12 # Default: 1
 
