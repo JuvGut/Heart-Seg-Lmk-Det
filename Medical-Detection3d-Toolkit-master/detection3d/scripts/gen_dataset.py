@@ -26,7 +26,7 @@ def split_dataset(image_list, image_folder, landmark_file_folder, landmark_mask_
         landmark_mask_path = os.path.join(landmark_mask_folder, landmark_mask) if landmark_mask else ''
         content.append([name, image_path, landmark_file_path, landmark_mask_path])
 
-    csv_file_path = os.path.join(output_folder, 'train.csv')
+    csv_file_path = os.path.join(output_folder, 'train_hr.csv')
     columns = ['image_name', 'image_path', 'landmark_file_path', 'landmark_mask_path']
     df = pd.DataFrame(data=content, columns=columns)
     df.to_csv(csv_file_path, index=False)
@@ -45,7 +45,7 @@ def split_dataset(image_list, image_folder, landmark_file_folder, landmark_mask_
             landmark_mask_path = os.path.join(landmark_mask_folder, landmark_mask) if landmark_mask else ''
             content.append([name, image_path, landmark_file_path, landmark_mask_path])
 
-        csv_file_path = os.path.join(output_folder, 'test.csv')
+        csv_file_path = os.path.join(output_folder, 'test_hr.csv')
         columns = ['image_name', 'image_path', 'landmark_file_path', 'landmark_mask_path']
         df = pd.DataFrame(data=content, columns=columns)
         df.to_csv(csv_file_path, index=False)
@@ -72,10 +72,10 @@ def get_image_list(image_folder):
     return image_list
 
 if __name__ == '__main__':
-    image_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTr'
+    image_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/imagesTr_fs'
     landmark_file_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/landmarksTr_csv'
     landmark_mask_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/landmark/mask'
-    output_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file'
+    output_folder = '/home/juval.gutknecht/Projects/trashcan/trashoutput'
 
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)

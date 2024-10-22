@@ -41,7 +41,7 @@ def main():
             default='/home/juval.gutknecht/Projects/heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/config/lmk_train_config_big.py',
                         help='configure file for medical image segmentation training.')
     parser.add_argument('-g', '--gpus',
-            default='0',
+            default='1',
                         help='the device id of gpus.')
     args = parser.parse_args()
 

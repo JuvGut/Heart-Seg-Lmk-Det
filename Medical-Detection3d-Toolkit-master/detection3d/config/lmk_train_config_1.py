@@ -9,9 +9,9 @@ cfg = __C
 ##################################
 __C.general = {}
 
-__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/training_file/train.csv'
+__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/trashcan/trashoutput/train_hr.csv'
 
-__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/Data/Subset_50_samples_aligned/training_file/test.csv'
+__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/trashcan/trashoutput/test_hr.csv'
 
 # landmark label starts from 1, 0 represents the background.
 __C.general.target_landmark_label = {
@@ -26,7 +26,7 @@ __C.general.target_landmark_label = {
     'Basis of IVT LCC-NCC': 9,
 }
 
-__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_50_samples'
+__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_highres_new'
 
 __C.general.resume_epoch = -1
 
@@ -37,19 +37,19 @@ __C.general.num_gpus = 1
 ##################################
 __C.dataset = {}
 
-__C.dataset.crop_spacing = [2, 2, 2]        # mm
+__C.dataset.crop_spacing = [1, 1, 1]        # mm
 
 __C.dataset.crop_size = [96, 96, 96]        # voxel default: [96, 96, 96]
 
 __C.dataset.sampling_size = [6, 6, 6]       # voxel
 
-__C.dataset.positive_upper_bound = 5        # voxel
+__C.dataset.positive_upper_bound = 3        # voxel
 
-__C.dataset.negative_lower_bound = 10        # voxel
+__C.dataset.negative_lower_bound = 6        # voxel
 
-__C.dataset.num_pos_patches_per_image = 16  # default: 8
+__C.dataset.num_pos_patches_per_image = 8  # default: 8
 
-__C.dataset.num_neg_patches_per_image = 32  # default: 16
+__C.dataset.num_neg_patches_per_image = 16  # default: 16
 
 # crop intensity normalizers (to [-1,1])
 # one normalizer corresponds to one input modality
@@ -102,9 +102,9 @@ __C.net.name = 'vdnet'
 ##################################
 __C.train = {}
 
-__C.train.epochs = 2001
+__C.train.epochs = 1001
 
-__C.train.batch_size = 6 # Default: 1
+__C.train.batch_size = 16 # Default: 1
 
 __C.train.num_threads = 4
 
@@ -112,7 +112,7 @@ __C.train.lr = 1e-4
 
 __C.train.betas = (0.9, 0.999)
 
-__C.train.save_epochs = 100
+__C.train.save_epochs = 20
 
 ##################################
 # debug parameters

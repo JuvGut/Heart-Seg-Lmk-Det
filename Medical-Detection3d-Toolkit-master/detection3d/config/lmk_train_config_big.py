@@ -9,9 +9,9 @@ cfg = __C
 ##################################
 __C.general = {}
 
-__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file/train.csv'
+__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file_new/train.csv'
 
-__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_USB_Heart_big/training_file/test.csv'
+__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/Data/A_Subset_012_a/training_file_new/test.csv'
 
 # landmark label starts from 1, 0 represents the background.
 __C.general.target_landmark_label = {
@@ -26,7 +26,7 @@ __C.general.target_landmark_label = {
     'Basis of IVT LCC-NCC': 9,
 }
 
-__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_resampled_data'
+__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_debugtest'
 
 __C.general.resume_epoch = -1
 
@@ -37,19 +37,19 @@ __C.general.num_gpus = 1
 ##################################
 __C.dataset = {}
 
-__C.dataset.crop_spacing = [2, 2, 2]        # mm; default [2, 2, 2]
+__C.dataset.crop_spacing = [1.5, 1.5, 1.5]        # mm; default [2, 2, 2]
 
 __C.dataset.crop_size = [96, 96, 96]        # voxel default: [96, 96, 96]
 
-__C.dataset.sampling_size = [6, 6, 6]       # voxel
+__C.dataset.sampling_size = [6, 6, 6]       # voxel [6, 6, 6]
 
 __C.dataset.positive_upper_bound = 3        # voxel
 
 __C.dataset.negative_lower_bound = 6        # voxel
 
-__C.dataset.num_pos_patches_per_image = 16  # default: 8
+__C.dataset.num_pos_patches_per_image = 8  # default: 8
 
-__C.dataset.num_neg_patches_per_image = 32  # default: 16
+__C.dataset.num_neg_patches_per_image = 16  # default: 16
 
 # crop intensity normalizers (to [-1,1])
 # one normalizer corresponds to one input modality

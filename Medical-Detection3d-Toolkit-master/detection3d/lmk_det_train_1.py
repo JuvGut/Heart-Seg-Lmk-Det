@@ -38,10 +38,10 @@ def main():
     parser = argparse.ArgumentParser(description=long_description)
 
     parser.add_argument('-i', '--input',
-            default='/home/juval.gutknecht/Projects/heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/config/lmk_train_config_50_samples.py',
+            default='/home/juval.gutknecht/Projects/heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/config/lmk_train_config_1.py',
                         help='configure file for medical image segmentation training.')
     parser.add_argument('-g', '--gpus',
-            default='2',
+            default='3',
                         help='the device id of gpus.')
     args = parser.parse_args()
 

@@ -4,6 +4,7 @@ import pandas as pd
 import SimpleITK as sitk
 import torch
 from torch.utils.data import Dataset
+import os
 
 from detection3d.utils.image_tools import select_random_voxels_in_multi_class_mask, \
   crop_image, convert_image_to_tensor, get_image_frame
@@ -288,5 +289,51 @@ class LandmarkDetectionDataset(Dataset):
     # image frame
     image_frame = get_image_frame(images[0])
 
+
+    # Debug: Save the data
+    try:
+        self.save_debug_data(image_tensor, landmark_mask_tensor, landmark_coords_tensor, image_frame, image_name)
+    except Exception as e:
+        print(f"Error saving debug data for {image_name}: {str(e)}")
+    
     return image_tensor, landmark_mask_tensor, \
            landmark_coords_tensor, image_frame, image_name
+  
+  def save_debug_data(self, image_tensor, landmark_mask_tensor, landmark_coords_tensor, image_frame, image_name):
+        debug_dir = 'debug_output'
+        os.makedirs(debug_dir, exist_ok=True)
+
+        # Convert crop_spacing to a list of floats
+        spacing = [float(s) for s in self.crop_spacing]
+
+        # Save image tensor as NIFTI
+        image_np = image_tensor.numpy()[0]  # Remove batch dimension
+        if image_np.shape[0] == 1:  # If there's a channel dimension
+            image_np = image_np[0]  # Remove channel dimension
+        image_np = np.transpose(image_np, (2, 1, 0))  # Adjust dimensions to match SimpleITK expectation
+        image_nifti = sitk.GetImageFromArray(image_np)
+        image_nifti.SetSpacing(spacing)
+        sitk.WriteImage(image_nifti, os.path.join(debug_dir, f'{image_name}_image.nii.gz'))
+
+        # Save landmark mask tensor as NIFTI
+        mask_np = landmark_mask_tensor.numpy()[0]  # Remove batch dimension
+        if mask_np.shape[0] == 1:  # If there's a channel dimension
+            mask_np = mask_np[0]  # Remove channel dimension
+        mask_np = np.transpose(mask_np, (2, 1, 0))  # Adjust dimensions to match SimpleITK expectation
+        mask_nifti = sitk.GetImageFromArray(mask_np)
+        mask_nifti.SetSpacing(spacing)
+        sitk.WriteImage(mask_nifti, os.path.join(debug_dir, f'{image_name}_mask.nii.gz'))
+
+        # Save landmark coordinates as CSV
+        coords_df = pd.DataFrame(landmark_coords_tensor.numpy(), columns=['x', 'y', 'z'])
+        coords_df.to_csv(os.path.join(debug_dir, f'{image_name}_coords.csv'), index=False)
+
+        # Save image frame information
+        with open(os.path.join(debug_dir, f'{image_name}_frame.txt'), 'w') as f:
+            f.write(str(image_frame))
+
+        # Print debug information
+        print(f"Debug data saved for {image_name}")
+        print(f"Image shape: {image_np.shape}")
+        print(f"Mask shape: {mask_np.shape}")
+        print(f"Spacing: {spacing}")

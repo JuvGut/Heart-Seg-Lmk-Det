@@ -3,6 +3,7 @@ import glob
 import os
 import sys
 import numpy as np
+import pandas as pd
 from typing import Dict, List, Tuple
 import csv
 
@@ -13,8 +14,8 @@ from detection3d.vis.gen_images import gen_plane_images, load_coordinates_from_c
 def parse_arguments() -> argparse.Namespace:
     default_image_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_aligned/imagesTs'
     default_label_folder = '/home/juval.gutknecht/Projects/Data/Dataset012_aligned/landmarksTs_csv'
-    default_detection_folder = '/home/juval.gutknecht/Projects/Data/results/inference_results_large'
-    default_resolution = [0.43, 0.3, 0.43]
+    default_detection_folder = '/home/juval.gutknecht/Projects/Data/results/inference_results_aaa'
+    default_resolution = [0.43, 0.3, 0.43] # [x, y, z] in mm
     default_contrast_range = None
     default_output_folder = os.path.join(default_detection_folder, 'report')
     default_generate_pictures = False
@@ -62,6 +63,7 @@ def analyze_landmarks(label_landmarks: Dict[str, Dict[str, List[float]]],
     
     landmark_data = {landmark: {'detected': 0, 'total': 0, 'errors': []} for landmark in all_landmarks}
     case_data = {case: {'total': 0, 'detected': 0} for case in label_landmarks.keys()}
+    detailed_errors = []
 
     if debug:
         print("Step 1: Collecting data and calculating errors")
@@ -79,9 +81,25 @@ def analyze_landmarks(label_landmarks: Dict[str, Dict[str, List[float]]],
                     case_detected += 1
                     
                     if not np.allclose(coords, [-1, -1, -1]):
-                        error = np.linalg.norm(np.array(coords) - np.array(detection_coords))
-                        landmark_data[landmark]['errors'].append(error)
+                        error = np.array(coords) - np.array(detection_coords)
+                        error_magnitude = np.linalg.norm(error)
+                        landmark_data[landmark]['errors'].append(error_magnitude)
                         
+                        detailed_errors.append({
+                            'image': case,
+                            'landmark': landmark,
+                            'x_detected': detection_coords[0],
+                            'y_detected': detection_coords[1],
+                            'z_detected': detection_coords[2],
+                            'x_groundtruth': coords[0],
+                            'y_groundtruth': coords[1],
+                            'z_groundtruth': coords[2],
+                            'x_error': error[0],
+                            'y_error': error[1],
+                            'z_error': error[2],
+                            'error_magnitude': error_magnitude
+                        })
+
                         if debug:
                             print(f"  Case: {case}, Landmark: {landmark}")
                             print(f"    Label coordinates: {coords}")
@@ -115,13 +133,13 @@ def analyze_landmarks(label_landmarks: Dict[str, Dict[str, List[float]]],
                 print(f"    Detected: {data['detected']}")
                 print(f"    Detection rate: {data['detection_rate']:.2f}%")
                 print(f"    Number of valid error measurements: {len(data['errors'])}")
-                print(f"    Mean error: {data['mean_error']:.2f}")
-                print(f"    Median error: {data['median_error']:.2f}")
-                print(f"    Std error: {data['std_error']:.2f}")
-                print(f"    Max error: {data['max_error']:.2f}")
-                print(f"    25th percentile: {data['percentile_25']:.2f}")
-                print(f"    75th percentile: {data['percentile_75']:.2f}")
-                print(f"    90th percentile: {data['percentile_90']:.2f}")
+                print(f"    Mean error: {data['mean_error']:.2f} mm")
+                print(f"    Median error: {data['median_error']:.2f} mm")
+                print(f"    Std error: {data['std_error']:.2f} mm")
+                print(f"    Max error: {data['max_error']:.2f} mm")
+                print(f"    25th percentile: {data['percentile_25']:.2f} mm")
+                print(f"    75th percentile: {data['percentile_75']:.2f} mm")
+                print(f"    90th percentile: {data['percentile_90']:.2f} mm")
                 print(f"    Inlier rate (5mm): {data['inlier_rate_5mm']:.2f}%")
         else:
             data['mean_error'] = data['median_error'] = data['std_error'] = data['max_error'] = 'N/A'
@@ -146,9 +164,9 @@ def analyze_landmarks(label_landmarks: Dict[str, Dict[str, List[float]]],
             print(f"    Detected landmarks: {case_data[case]['detected']}")
             print(f"    Detection rate: {case_data[case]['detection_rate']:.2f}%")
 
-    return landmark_data, case_data
+    return landmark_data, case_data, detailed_errors
 
-def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: Dict[str, Dict[str, float]], output_folder: str, compare_mode: bool):
+def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: Dict[str, Dict[str, float]], detailed_errors: List[Dict[str, any]], output_folder: str, compare_mode: bool):
     # Sort landmarks and cases by detection rate
     sorted_landmarks = sorted(landmark_data.items(), key=lambda x: x[1]['detection_rate'], reverse=True)
     sorted_cases = sorted(case_data.items(), key=lambda x: x[1]['detection_rate'], reverse=True)
@@ -173,13 +191,13 @@ def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: 
                 <th>Detection Rate</th>
                 <th>Detected</th>
                 <th>Total</th>
-                <th>Mean Error</th>
-                <th>Median Error</th>
-                <th>Std Error</th>
-                <th>Max Error</th>
-                <th>25th Percentile</th>
-                <th>75th Percentile</th>
-                <th>90th Percentile</th>
+                <th>Mean Error (mm)</th>
+                <th>Median Error (mm)</th>
+                <th>Std Error (mm)</th>
+                <th>Max Error (mm)</th>
+                <th>25th Percentile (mm)</th>
+                <th>75th Percentile (mm)</th>
+                <th>90th Percentile (mm)</th>
                 <th>Inlier Rate (5mm)</th>
             </tr>
             {0}
@@ -194,6 +212,25 @@ def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: 
                 <th>Total</th>
             </tr>
             {1}
+        </table>
+
+        <h2>Detailed Error Information</h2>
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Landmark</th>
+                <th>X Detected</th>
+                <th>Y Detected</th>
+                <th>Z Detected</th>
+                <th>X Ground Truth</th>
+                <th>Y Ground Truth</th>
+                <th>Z Ground Truth</th>
+                <th>X Error</th>
+                <th>Y Error</th>
+                <th>Z Error</th>
+                <th>Error Magnitude</th>
+            </tr>
+            {2}
         </table>
     </body>
     </html>
@@ -215,6 +252,10 @@ def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: 
             "<tr><td>{0}</td><td>{1:.2f}%</td><td>{2}</td><td>{3}</td></tr>".format(
                 case, data['detection_rate'], data['detected'], data['total']
             ) for case, data in sorted_cases
+        ]),
+        "\n".join([
+            "<tr><td>{image}</td><td>{landmark}</td><td>{x_detected:.2f}</td><td>{y_detected:.2f}</td><td>{z_detected:.2f}</td><td>{x_groundtruth:.2f}</td><td>{y_groundtruth:.2f}</td><td>{z_groundtruth:.2f}</td><td>{x_error:.2f}</td><td>{y_error:.2f}</td><td>{z_error:.2f}</td><td>{error_magnitude:.2f}</td></tr>".format(**error)
+            for error in detailed_errors
         ])
     )
 
@@ -244,6 +285,58 @@ def generate_html_report(landmark_data: Dict[str, Dict[str, float]], case_data: 
 
     print(f"CSV report generated and saved to {csv_output_file}")
 
+    # Generate CSV report for detailed errors
+    detailed_csv_content = "image,landmark,x_detected,y_detected,z_detected,x_groundtruth,y_groundtruth,z_groundtruth,x_error,y_error,z_error,error_magnitude\n"
+    for error in detailed_errors:
+        detailed_csv_content += "{image},{landmark},{x_detected:.2f},{y_detected:.2f},{z_detected:.2f},{x_groundtruth:.2f},{y_groundtruth:.2f},{z_groundtruth:.2f},{x_error:.2f},{y_error:.2f},{z_error:.2f},{error_magnitude:.2f}\n".format(**error)
+
+    detailed_csv_output_file = os.path.join(output_folder, 'landmark_detection_detailed.csv')
+    with open(detailed_csv_output_file, 'w') as f:
+        f.write(detailed_csv_content)
+
+    print(f"CSV detailed report generated and saved to {detailed_csv_output_file}")
+
+def generate_tableau_data(landmark_data: Dict[str, Dict[str, float]], case_data: Dict[str, Dict[str, float]], detailed_errors: List[Dict[str, any]], output_folder: str):
+    # Prepare landmark summary data
+    landmark_summary = []
+    for landmark, data in landmark_data.items():
+        landmark_summary.append({
+            'Landmark': landmark,
+            'Detection Rate (%)': data['detection_rate'],
+            'Detected': data['detected'],
+            'Total': data['total'],
+            'Mean Error (mm)': data['mean_error'] if isinstance(data['mean_error'], float) else None,
+            'Median Error (mm)': data['median_error'] if isinstance(data['median_error'], float) else None,
+            'Std Error (mm)': data['std_error'] if isinstance(data['std_error'], float) else None,
+            'Max Error (mm)': data['max_error'] if isinstance(data['max_error'], float) else None,
+            'Percentile 25 (mm)': data['percentile_25'] if isinstance(data['percentile_25'], float) else None,
+            'Percentile 75 (mm)': data['percentile_75'] if isinstance(data['percentile_75'], float) else None,
+            'Percentile 90 (mm)': data['percentile_90'] if isinstance(data['percentile_90'], float) else None,
+            'Inlier Rate (5mm) (%)': data['inlier_rate_5mm'] if isinstance(data['inlier_rate_5mm'], float) else None
+        })
+    
+    # Prepare case summary data
+    case_summary = []
+    for case, data in case_data.items():
+        case_summary.append({
+            'Case': case,
+            'Detection Rate (%)': data['detection_rate'],
+            'Detected': data['detected'],
+            'Total': data['total']
+        })
+    
+    # Convert to pandas DataFrames
+    landmark_df = pd.DataFrame(landmark_summary)
+    case_df = pd.DataFrame(case_summary)
+    detailed_errors_df = pd.DataFrame(detailed_errors)
+    
+    # Save as CSV files
+    landmark_df.to_csv(os.path.join(output_folder, 'tableau_landmark_summary.csv'), index=False)
+    case_df.to_csv(os.path.join(output_folder, 'tableau_case_summary.csv'), index=False)
+    detailed_errors_df.to_csv(os.path.join(output_folder, 'tableau_detailed_errors.csv'), index=False)
+    
+    print(f"Tableau-ready CSV files generated in {output_folder}")
+
 def main():
     args = parse_arguments()
     
@@ -262,9 +355,10 @@ def main():
         detection_landmarks = None
         compare_mode = False
     
-    landmark_data, case_data = analyze_landmarks(label_landmarks, detection_landmarks, args.debug)
-    generate_html_report(landmark_data, case_data, args.output_folder, compare_mode)
-    
+    landmark_data, case_data, detailed_errors = analyze_landmarks(label_landmarks, detection_landmarks, args.debug)
+    generate_html_report(landmark_data, case_data, detailed_errors, args.output_folder, compare_mode)
+    generate_tableau_data(landmark_data, case_data, detailed_errors, args.output_folder)
+
     if args.generate_pictures:
         print('Generating planes for the labelled landmarks.')
         gen_plane_images(args.image_folder, label_landmarks, 'label',
