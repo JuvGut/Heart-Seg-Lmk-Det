@@ -2,7 +2,11 @@
 
 ## Abstract
 
-This 3d medical landmark detection pipeline ... 
+This documentation 
+
+This document outlines a pipeline for detecting anatomical landmarks in 3D cardiac CT images. The workflow covers preprocessing, training and inference. The pipeline includes tools for preparing data, training models with adjustable settings, and evaluating performance.
+
+The system is designed to be modular, supporting both new model training and using pre-trained models. It is reliable and reproducible in medical imaging, focusing on cardiac structures. It can be deployed locally or in containers, making it adaptable to various research and clinical environments.
 
 ## Step-By-Step
 ### Initial Setup
