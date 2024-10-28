@@ -416,3 +416,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# python scripts/gen_html_report_v3.py --image_folder /home/juval.gutknecht/Projects/Data/Dataset012_aligned/imagesTs --label_folder /home/juval.gutknecht/Projects/Data/Dataset012_aligned/landmarksTs_csv --detection_folder /home/juval.gutknecht/Projects/Data/results/inference_model_comparison/newmask_012_202020  --output_folder /home/juval.gutknecht/Projects/Data/results/inference_model_comparison/newmask_012_202020/report 

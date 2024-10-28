@@ -62,7 +62,7 @@ def plot_inlier_rate_vs_mean_error(data, output_file):
 
 def main():
     # Load the data
-    data = load_data('/home/juval.gutknecht/Projects/Data/results/inference_results_aaa/report/landmark_detection_report.csv')
+    data = load_data('/home/juval.gutknecht/Projects/Data/results/inference_model_comparison/newmask_012_202020/report/landmark_detection_report.csv')
 
     # Generate plots
     plot_detection_rate(data, 'detection_rate_by_landmark.png')
