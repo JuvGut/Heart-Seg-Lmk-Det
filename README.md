@@ -1,11 +1,8 @@
-# Heart-Valve-Segmentor and Landmark detection
+# Heart Valve Segmentation and Landmark detection
 
-## TO DO -> finish Segmentation & Landmark detection
-- [ ] Visit Notion Kanban Board
-
-# README:
+## README:
 ### Description
-This project aims to segment the heart into five segments (4 + Background) and detect landmarks in CT scans of hearts, using anonymized data provided by the [University Hospital of Basel](https://www.unispital-basel.ch/). The project utilizes [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) for segmentation and a custom 3D landmark detection pipeline based on the [Medical-Detection3d-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/tree/master).
+This project aims to segment the heart into 4 segments (4 + Background) and detect 9 landmarks in CT scans of hearts, using anonymized data provided by the [University Hospital of Basel](https://www.unispital-basel.ch/). The project utilizes [nnU-Net](https://github.com/MIC-DKFZ/nnUNet) for segmentation and a custom 3D landmark detection pipeline based on the [Medical-Detection3d-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/tree/master).
 
 ## Segments
 - LVOT
@@ -25,7 +22,7 @@ This project aims to segment the heart into five segments (4 + Background) and d
 - Basis of IVT LCC-NCC
 - Basis of IVT NCC-RCC
 
-## Visuals
+## Visuals of the provided labels and landmarks
 ![alt text](BS-043.png)
 
 ## Example output to the Segmentation model
@@ -33,10 +30,19 @@ This project aims to segment the heart into five segments (4 + Background) and d
 The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model.
 
 ```
-Segmentation/Example_Output/
-├── Sample_images/
-├── Sample_seg_labels/
-└── Sample_seg_results/
+Project/
+├── Segmentation/
+│   └── Example_Output/
+│       ├── Sample_images/
+│       ├── Sample_landmarks/
+│       └── Sample_lmk_results/
+│       └── ...
+├── Landmark_Detection/
+│   └── Example_Output/
+│       ├── Sample_images/
+│       ├── Sample_seg_labels/
+│       └── Sample_seg_results/
+|       └── ...
 ```
 
 ## Project Structure
@@ -56,12 +62,18 @@ Project/
 │   ├── landmark-detection-docker-guide.md
 │   └── ...
 ├── Medical-Detection3d-Toolkit-master/
+│   ├── detection3d/
+│       └── ...
+│   ├── lmk_det_in_docker.sh
+│   ├── lmk-pred-runner.sh
+│   ├── run_detection.py
 │   └── ...
 ├── Landmark_Detection/
 │   └── Example_Output/
 │       ├── Sample_images/
 │       ├── Sample_seg_labels/
 │       └── Sample_seg_results/
+│       └── ...
 ├── nnUNet/
 │   └── ...
 ├── Segmentation/
@@ -104,7 +116,7 @@ python scripts/dataset/create_dataset_json.py /path/to/Dataset
 For detailed instructions, refer to [Dataset_preparation.md](/Documentation/Dataset_preparation.md).
 
 ### 2. Segmentation with nnU-Net
-Follow these steps to train and run inference with nnU-Net:
+Follow these steps to **train** and **run inference** with nnU-Net:
 
 Set up the environment variables `nnUNet_raw`, `nnUNet_preprocessed`, and `nnUNet_results` according to [this document](https://github.com/MIC-DKFZ/nnUNet/blob/master/documentation/set_environment_variables.md). 
 
@@ -123,75 +135,80 @@ c. Find the best configuration:
 nnUNetv2_find_best_configuration DATASET_NAME_OR_ID -c CONFIGURATIONS
 ```
 
-d. Run inference:
+d. Run inference (In order to run it in **Docker**, see below):
 ```
 nnUNetv2_predict -i INPUT_FOLDER -o OUTPUT_FOLDER -d DATASET_NAME_OR_ID -c CONFIGURATION --save_probabilities
 ```
 
 For detailed instructions and additional options, refer to [how_to_use_nnunet.md](/nnUNet/documentation/how_to_use_nnunet.md)
 
-The model can also be deployed using a docker container. In order to do that, consult this [guide](/nnUNet/documentation/nnunet-docker-guide.md).
+The model can also be deployed using a docker container. In order to do that, consult the [nnunet-docker-guide.md](/nnUNet/documentation/nnunet-docker-guide.md).
 
 ### 3. Landmark Detection
 Follow these steps to run the landmark detection pipeline:
 
+---
+> Before all the following steps, navigate to the folder `/detection3d` within `Medical-Detection3d-Toolkit-master`.
+---
+
 a. Prealign the files, so the origin matches for all the files. 
+
+> I achieved the best results, once the images (, segmentations) and landmarks had their origin at (0, 0, 0).
+
 ```
-python pre-align_images.py /path/to/dataset/folder
+python scripts/prealign_images.py /path/to/dataset/folder
 ```
 
 b. Convert .JSON landmarks to .CSV:
 ```
-python convert_landmarks.py /path/to/landmarksTr/folder
+python scripts/convert_landmarks.py /path/to/landmarksTr/folder
 ```
 
 c. Generate landmark masks:
 ```
-python gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
+python scripts/gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
 ```
 
-d. Generate the dataset:
+d. Generate the dataset files:
+> This step generates the files that contain the case names, the paths to the images, landmarks and landmark masks.
 ```
 python gen_dataset.py
 ```
 
 e. Train the landmark detection model:
+> Specify all the paths and parameters in the config file (`/config/lmk_train_config.py`) and point to the config file from the file `detection3d/lmk_det_train.py`. Then start the training by running this command.
 ```
 python lmk_det_train.py
 ```
 
-For detailed instructions and additional options, refer to [/Documentation/Landmark_detection_usage.md](Documentation/Landmark_detection_usage.md).
+For detailed instructions and additional options, refer to [Landmark_detection_usage.md](Documentation/Landmark_detection_usage.md).
 
 ### Inference
 
-a. prealign images
-```
-python pre-align_images.py /path/to/dataset/folder
-```
+Run inference with a pretrained model.
 
-b. generate test_file
-```
-python generate_test_file.py /path/to/test_images/folder
-```
+Adapt all the paths in the file `lmk_det_infer.py` and run it like so. Alternatively it is possible to use flags to specify the paths. For that consult [Landmark_detection_usage.md](Documentation/Landmark_detection_usage.md) and for the usage of the model within Docker  [landmark-detection-docker-guide.md](Documentation/landmark-detection-docker-guide.md).
 
-c. Run inference with the pretrained model
-
-Adapt all the paths and run
 ```
 python lmk_det_infer.py
 ```
+
 ## Authors and Acknowledgment
-- Juval Gutknecht
+- **Lead Developer:** Juval Gutknecht
+- **Original nnUNet Implementation:** Isensee et al. ([GitHub Repository](https://github.com/MIC-DKFZ/nnUNet))
+- **Original Medical Detection 3D Toolkit** Liu et al. ([GitHub Repository](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit))
 
 ## License
 This project is licensed under the Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel.
 
 ## Contact
-For any questions or issues, please open an issue on this repository or contact Juval Gutknecht.
-
+For general inquiries and bug reports, please open an issue in this repository
+For specific questions, contact:
+- Juval Gutknecht
+- For questions about the original implementations, please refer to the respective repositories linked above.
 
 # Appendix
-## Findings
+## Preliminary findings of the provided data for this project.
 ### Data
 217 Folders containing the `.nrrd` volume file (sometimes there are several, i.e. once cropped, once not), the `.nrrd` segmentation file and one or several `.mrk.json` markup files.
 

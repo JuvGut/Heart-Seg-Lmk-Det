@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default values
-# bash lmk_det_in_docker.sh --input /home/juval.gutknecht/Projects/Data/Dataset012_aligned/imagesTs --output /home/juval.gutknecht/Projects/Data/results/inference_results_aaa --model /home/juval.gutknecht/Projects/Data/results/lmk_model_all_and_aligned --gpu_id 2
+# bash lmk_det_in_docker.sh --input /home/juval.gutknecht/Projects/Data/Dataset012_aligned/imagesTs --output /home/juval.gutknecht/Projects/Data/results/inference_results_aaa --model /home/juval.gutknecht/Projects/Data/results/lmk_model_newmask_012 --gpu_id 2
 
 # Function to display help message
 display_help() {

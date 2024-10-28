@@ -1,6 +1,6 @@
 # How to Use: nnUNet Docker Segmentation
 
-This guide explains how to use the provided files to run nnUNet segmentation in a Docker container. The system consists of several components that work together to create a containerized environment for running nnUNet predictions.
+This guide explains how to use the provided files to run nnUNet segmentation in a Docker container. The system consists of several components that work together to create a containerized environment for running nnUNet predictions. This is by far the easiest method to run the pretrained model provided here (`segmentation_model.zip`).
 
 ## Components
 
@@ -8,6 +8,19 @@ This guide explains how to use the provided files to run nnUNet segmentation in 
 2. `segmentation_model.zip`: Contains the pre-trained nnUNet model.
 3. `predictor-seg-script.sh`: The main script for running nnUNet predictions.
 4. `segmentation_in_docker.sh`: A wrapper script to run the Docker container with appropriate settings.
+
+## Prerequisites
+
+- Docker installed on your system
+- NVIDIA GPU with CUDA support
+- NVIDIA Container Toolkit installed
+- Input images in .NRRD or NIFTI format (.nii.gz)
+
+## Performance Notes
+
+Tested Configuration:
+- GPU Memory usage: ~1600MB on NVIDIA Quadro RTX 6000 
+- Other resource requirements may vary based on your specific setup and data
 
 ## Step-by-Step Guide
 
@@ -70,7 +83,7 @@ By following this guide, you should be able to easily run nnUNet segmentation ta
 
 ## Files in Folder 
 
-The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model. The inference process was done on a A6000 GPU, barely using 1600Mb of its 24Gb memory.
+The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model. The inference process was done on a Quadro RTX 6000 GPU, barely using 1600MB of its 24GB memory.
 
 ```
 Segmentation/Example_Output/

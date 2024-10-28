@@ -9,9 +9,9 @@ cfg = __C
 ##################################
 __C.general = {}
 
-__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/trashcan/trashoutput/train_hr.csv'
+__C.general.training_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_aligned/train.csv'
 
-__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/trashcan/trashoutput/test_hr.csv'
+__C.general.validation_image_list_file = '/home/juval.gutknecht/Projects/Data/Dataset012_aligned/test.csv'
 
 # landmark label starts from 1, 0 represents the background.
 __C.general.target_landmark_label = {
@@ -26,7 +26,7 @@ __C.general.target_landmark_label = {
     'Basis of IVT LCC-NCC': 9,
 }
 
-__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_highres_new'
+__C.general.save_dir = '/home/juval.gutknecht/Projects/Data/results/lmk_model_newmask_012_222'
 
 __C.general.resume_epoch = -1
 
@@ -37,7 +37,7 @@ __C.general.num_gpus = 1
 ##################################
 __C.dataset = {}
 
-__C.dataset.crop_spacing = [1, 1, 1]        # mm
+__C.dataset.crop_spacing = [2, 2, 2]        # mm
 
 __C.dataset.crop_size = [96, 96, 96]        # voxel default: [96, 96, 96]
 
@@ -112,7 +112,7 @@ __C.train.lr = 1e-4
 
 __C.train.betas = (0.9, 0.999)
 
-__C.train.save_epochs = 20
+__C.train.save_epochs = 10
 
 ##################################
 # debug parameters

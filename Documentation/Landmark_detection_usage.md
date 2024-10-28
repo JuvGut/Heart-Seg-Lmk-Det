@@ -5,24 +5,28 @@
 This 3d medical landmark detection pipeline ... 
 
 ## Step-By-Step
-
-### 0. Step: Pre-Align the images.
-Run the script with the dataset folder as an argument. Alternatively, change the default input folder in the file itself. 
-
-*This script is located at heart-valve-segmentor/scripts/landmark_detection/pre-align_images.py*
-
+### Initial Setup
+Navigate to the detection toolkit directory: 
 ```
-python pre-align_images.py /path/to/Dataset/folder /path/to/output/folder
+cd Medical-Detection3d-toolkit-master/detection3d
 ```
 
-The script will set all the origins to (0, 0, 0), so all images are more or less aligned, instead of being scattered throughout space.
-Process all the images, segmentations and landmarks. It starts with the Training images (Tr) and will automatically process the Test images (Ts) as well. It will then create the same folder structure in the output folder. 
+### 0. Step: Pre-Align images
+This initial preprocessing step ensures all images share a common origin point (0, 0, 0), which significantly improved landmark detection accuracy during training.
+Run the alignment script:
 
+```
+python scripts/pre-align_images.py /path/to/Dataset/folder /path/to/output/folder
+```
+
+The script will:
+- Process all the images, segmentations and landmarks
+- Handle both Training (Tr) and Test (Ts) datasets automatically
+- Maintain the original folder structure in the output directory 
+- Set all image origins to (0, 0, 0), preventing spatial scatter
 
 ### 1. Step: Convert .JSON landmarks to .CSV landmarks
 Run the script with the input folder as an argument:
-
-*This script is located at heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/scripts/convert_landmarks.py*
 
 ```
 python scripts/convert_landmarks.py /path/to/landmarksTr/folder
@@ -30,226 +34,231 @@ python scripts/convert_landmarks.py /path/to/landmarksTr/folder
 
 The script will:
 
-Process all `.mrk.json` files in the input folder
-Create a new folder named [input_folder_name]_csv in the parent directory
-Convert each JSON file to a CSV file in the new folder
+- Process all `.mrk.json` files in the input folder
+- Create a new folder named [input_folder_name]_csv in the parent directory
+- Convert each JSON file to a CSV file in the new folder
 
-*Note: The script converts Slicer fiducial markup files (`.mrk.json`) to CSV format, extracting landmark names and coordinates.*
+*Note: The script converts Slicer fiducial markup files (`.mrk.json`) to CSV format, extracting landmark names and coordinates. It will **not** retain all the additional information contained in the Slicer fiducial markup files.*
 
 ### 2. Step: Generate the landmark masks.
-This mask is paramount for the model, because it shows the model where in the image the landmarks are found.
-*This script is located at heart-valve-segmentor/Medical-Detection3d-Toolkit-master/detection3d/scripts/gen_landmark_mask.py*
-How to Use gen_landmark_mask.py:
+This step creates mask files that indicate the precise locations of the anatomical landmarks in each image. These masks are essential for training the model to recognize landmark positions.
 
-1. Place your input images (.nrrd files) in a folder.
-2. Prepare a folder with landmark CSV files corresponding to your images.
-3. Create a landmark label file (CSV) with columns 'landmark_name' and 'landmark_label'. Without that the code will fail.
-4. Run the script from the command line:
+**Prerequisites**
+- Prealigned images in `imagesTr` folder
+- Landmark files in .csv format (converted in Step 1)
+- Landmark label file (.csv) containing: 
+   - Column 'landmark_name': Name of each landmark
+   - Column 'landmark_label': Numeric label for each landmark
+
+**Basic Usage**
 ```
-python scripts/gen_landmark_mask.py -i <input_folder> -l <landmark_folder> -o <output_folder> -n <label_file> [-s <spacing>] [-b <bounds>]
+python scripts/gen_landmark_mask.py \ 
+   -i /path/to/imagesTr \ 
+   -l /path/to/landmarksTr_csv \
+   -o path/to/landmark_masks \
+   -n /path/to/label_file.csv
 ```
-Example:
-```
-python scripts/gen_landmark_mask.py -i /path/to/images -l /path/to/landmarks -o /path/to/output -n /path/to/label_file.csv
-```
+
 Alternatively, adapt the default inputs to your liking.
 
-6. The program will generate landmark masks for each image and save them in the specified output folder.
+**How It Works**
+The script:
+- Matches each image with its corresponding landmark file
+- Processes landmarks using the image's native spacing
+- Creates a mask where:
+   - Positive values indicate landmark locations (using labels from label file)
+   - -1 indicates the negative boundary region
+   - 0 indicates background
+- Saves masks as .nii.gz files in the output folder
+**Output**
+Generated masks will be named: `[original_image_name]_landmark_mask.nii.gz`
 
-Optional arguments (See below for explanation):
-- -s: Specify spacing (default: [1.3, 0.85, 1.3])
-- -b: Specify bounds (default: [3, 6])
-- --debug: debugging mode with a verbose output
-For more details, run `python gen_landmark_mask.py --help`.
+### 3. Step: Generate Dataset Split
+This step organizes the data into training and test sets by creating .csv files that link images with their corresponding landmarks and masks.
 
+**Prerequisites**
+Ensure you have:
+- Pre-aligned images (from Step 0)
+- Converted landmark files (from Step 1)
+- Generated landmark masks (from Step 2)
 
+**Basic Usage**
+```
+python scripts/generate_dataset.py
+```
 
-### 3. Step: How to Use gen_dataset.py
+**How it works**
+The script: 
+- Randomly splits the dataset (80% training, 20% test/validation)
+- Creates two .csv files (`train.csv` and `test.csv`) containing: 
+   - Image names
+   - Full paths to images
+   - Full paths to landmark files
+   - Full paths to landmark masks
 
-1. Ensure your data is organized as follows:
-   - Image files (.nrrd) in the `imagesTr` folder
-   - Landmark CSV files in the `landmarksTr_csv` folder
-   - Landmark mask files (.nii.gz) in the `landmark/mask` folder
+**Important Notes**
+- Uses a fixed random seed (0) for reproducible splits
+- Automatically creates the output folder if it doesn't exist
+- Files are matched based on the first 6 characters of the filename (e.g., "BS-001")
+- Only processes `.nrrd` image files
+- Missing landmark files or masks will be recorded as empty paths in the CSV
 
-2. Open `/scripts/gen_landmark_mask.py` and verify/update these paths at the bottom of the file:
-   - `image_folder`
-   - `landmark_file_folder`
-   - `landmark_mask_folder`
-   - `output_folder`
+### 4. step: Train the Landmark Detection Model
+This step covers how to configure and train the landmark detection model on the preprocessed dataset. 
 
-3. Run the script:
-   ```
-   python gen_dataset.py
-   ```
+**Prerequisites**
+- Completed Steps 0-3 (aligned images, converted landmarks, generated masks, created dataset split)
+- Environment with required packages:
 
-4. Check the `output_folder` (gets created automatically, if doesn't exist yet) for the generated `train.csv` (and possibly `test.csv`) file(s).
+   `PyTorch tensorboardX SimpleITK pandas numpy`
 
-Note: The script currently puts all images in the training set. Adjust the split ratio in the `split_dataset` function if you need a separate test set.
+**Configuration Setup**
 
-### 4. step: train the model -> How to Use Landmark Detection Training Script
+Update config/lmk_train_config.py
+```
+# Dataset paths
+__C.general.training_image_list_file = '/path/to/Dataset012_aligned/train.csv'
+__C.general.validation_image_list_file = '/path/to/Dataset012_aligned/test.csv'
+__C.general.save_dir = '/path/to/output/landmark_detection_model'
 
-1. Ensure your environment is set up with the required dependencies (PyTorch, tensorboardX, etc.).
+# Landmark configuration
+__C.general.target_landmark_label = {
+    'landmark1': 1,
+    'landmark2': 2,
+    # Add all your landmarks here
+}
 
-2. Prepare your data and update the `config/lmk_train_config.py` file:
-   - Set correct paths for `training_image_list_file` and `validation_image_list_file`.
-   - Update `target_landmark_label` to match your landmarks.
-   - Adjust `save_dir` to your desired output location.
+# Loss function parameters
+__C.landmark_loss.focal_obj_alpha = [0.75] * (num_landmarks + 1)  # +1 for background
 
-3. Modify the FocalLoss parameters in `lmk_train_config.py`:
-   - Update `focal_obj_alpha` to match the number of classes:
-     ```python
-     __C.landmark_loss.focal_obj_alpha = [0.75] * (len(__C.general.target_landmark_label) + 1)
-     ```
-     Note: Add 1 to account for the background class.
+# Training parameters
+__C.train.crop_size = [96, 96, 96]      # Size of training patches
+__C.train.batch_size = 4                # Adjust based on GPU memory
+__C.train.num_pos_patches_per_image = 8  # Positive sample patches per image
+__C.train.num_neg_patches_per_image = 8  # Negative sample patches per image
+```
 
-4. Adjust other parameters as needed:
-   - `crop_size`, `sampling_size`, `num_pos_patches_per_image`, `num_neg_patches_per_image`, etc.
+**Training Process**
 
-5. Run the training script:
-   ```
-   python lmk_det_train_.py -i /path/to/lmk_train_config.py -g 0
-   ```
-   Replace `/path/to/lmk_train_config.py` with the actual path to your config file.
-   The `-g 0` argument specifies to use GPU 0. Adjust as needed.
+1. Start training:
+```
+python lmk_det_train.py -i config/lmk_train_config.py -gpu_id 0
+```
+Arguments:
+- -i: Path to configuration file
+- -g: GPU ID (default: 0)
 
-6. Monitor the training:
-   - Check the console output for loss values and other metrics.
-   - Use TensorBoard to visualize training progress:
-     ```
-     tensorboard --logdir=/path/to/save_dir/tensorboard
-     ```
+Or specify these as default values in the file `lmk_det_train.py`.
 
-7. After training, find your model checkpoints in the specified `save_dir`.
+2. Monitor Training:
+
+```
+tensorboard --logdir=/path/to/output/landmark_detection_model
+````
 
 Note: If you encounter other errors, double-check all paths and ensure your data is formatted correctly.
 
-The model is trained by running the program `lmk_det_train.py`. First all the parameters have to be adapted to the newly created dataset.
-
-First the files `lmk_train_config.py` and `lmk_det_train.py` have to be adapted. This is done by opening each and adapting the parameters.
-
-Then the model can be trained by running the following command.
-
-``` 
-python lmk_det_train.py
-```
-
 # Inference
+This section explains how to use the trained model to detect landmarks in new images.
 
-## 1. Generate CSV from NRRD files
+### Option A: Direct Python Inference (local)
 
-### Usage
+**Basic Usage**
+```
+python lmk_det_infer.py -i <input> -m <model_path> -o <output_dir> -g <gpu_id>
 
 ```
-python generate_test_file_big.py <input_folder> <output_file>
+Example:
+```
+python lmk_det_infer.py \
+    -i /path/to/test/images \
+    -m /path/to/model/ \
+    -o /path/to/results \
+    -g 0
 ```
 
-### Arguments
+Input Options
+- Single image: Path to an CT image file
+- Multiple images:
+   - Folder containing the CT image files
+   - Text file with image paths (one per line)
 
-- `<input_folder>`: Path to the folder containing NRRD files.
-- `<output_file>`: Path to the output CSV file. (This file doesn't have to exist, but only the folder.)
+Parameters
+- `-i`: Input path (image/folder/list)
+- `-m`: Path to trained model checkpoint
+- `-o`: Output directory for results
+- `-g`: GPU ID (default: 0)
 
-### Example
+Output
+- CSV files containing detected landmark coordinates
 
-```
-python generate_test_file_big.py /path/to/nrrd/files /path/to/output/test_file_big.csv
-```
+### Option B: Docker Inference
+Refer to detailed Docker guide in [Documentation/landmark-detection-doocker-guide.md](Documentation/landmark-detection-docker-guide.md) for containerized inference.
 
-This script will:
-1. Recursively search for all `.nrrd` files in the input folder.
-2. Generate a CSV file with columns `image_name` and `image_path`.
-3. If the output file already exists, it will append new data to it.
+## Evaluation of Detection Model Performance
 
-## 2. 3D Medical Image Segmentation Inference
+This step analyzes detection accuracy and generates comprehensive reports comparing ground truth and detected landmarks.
 
-THE MODEL WAS TRAINED USING THE MEAN SPACING PROVIDED BY THE PREPROCESSING OF THE NNUNETV2 PREPROCESSOR AND USED THROUGHOUT THE WHOLE LANDMARK DETECTION TRAINING.
+**Prerequisites**
+- Pre-aligned images (from Step 0)
+- Ground truth landmark files (from Step 1)
+- Inference results from the trained model
+- Python packages: `numpy pandas matplotlib SimpleITK``
 
-### Usage
-
-```
-python lmk_det_infer_big.py [-i INPUT] [-m MODEL] [-o OUTPUT] [-g GPU_ID] [-s SAVE_PROB]
-```
-alternatively, use the bash script using the same arguments.
-```
-./prediction [-i INPUT] [-m MODEL] [-o OUTPUT] [-g GPU_ID] [-s SAVE_PROB]
-```
-### Arguments
-
-- `-i, --input`: Input folder/file for intensity images (default: '/home/juval.gutknecht/Projects/CSA/DATA/big_test/dataset/test_file/test_file_big.csv')
-- `-m, --model`: Model root folder (default: '/home/juval.gutknecht/Projects/CSA/DATA/results/model_big')
-- `-o, --output`: Output folder for segmentation results (default: '/home/juval.gutknecht/Projects/CSA/DATA/big_test/inference_results')
-- `-g, --gpu_id`: GPU ID to run the model (default: 5, set to -1 for CPU only)
-- `-s, --save_prob`: Whether to save probability maps (default: False)
-
-### Example
+**Basic Usage**
 
 ```
-python lmk_det_infer_big.py -i /path/to/input/data -m /path/to/model -o /path/to/output/results -g 0 -s True
+python scripts/gen_html_report.py \
+    --image_folder /path/to/test/images \
+    --label_folder /path/to/ground_truth/landmarks \
+    --detection_folder /path/to/model/predictions \
+    --output_folder /path/to/report/output \
+    --generate_pictures  # Optional: creates visualization images
 ```
 
-This script will:
-1. Load the specified model.
-2. Process the input images (single image, text file with image paths, or folder of images).
-3. Perform 3D medical image segmentation.
-4. Save the results in the specified output folder.
+**Generated Reports**
+The script produces a comprehensive analysis including:
 
-## Notes
+1. **HTML Report**
 
-- Ensure that the `detection3d` module is properly installed and accessible in your Python environment.
-- Adjust the default paths in `lmk_det_infer_big.py` if necessary to match your system's directory structure.
-- For large datasets, consider running the scripts on a machine with sufficient computational resources and GPU support.
+- Overall model performance metrics
+- Per-landmark statistics
+- Interactive visualizations
+- Case-by-case analysis
 
+2. **CSV Reports**
 
-# DEBUG
+- landmark_summary.csv: Statistics for each landmark
+- case_summary.csv: Per-case detection rates
+- detailed_errors.csv: Comprehensive error analysis
 
-If some error occurs with the landmarks: check if all the landmark names are identical (Mostly *Basal RCC-NCC* instead of *Basis of IVT RCC-NCC* and *Nadir NC* instead of *Nadir NCS* for all three landmark types) and adapt it.d
+3. **Visualizations**
 
+- Error distributions
+- Axis-specific analyses
+- Resolution impact analysis
+- Detection rate distributions
+- Top 10 challenging landmarks
 
-# Additional Material
+4. **Detailed Analysis**
 
-## Explanation of Parameters
+- Mean, median, and standard deviation of errors
+- Resolution impact assessment
+- Outlier analysis
+- Axis-specific performance metrics
 
-### Spacing Parameter
-The 'spacing' parameter defines the physical size of each voxel in the output landmark mask. It is specified as three float values representing the spacing in millimeters along the x, y, and z axes respectively.
+### Key Metrics Explained
 
-- Default value: [0.43, 0.3, 0.43]
-- Usage: -s 0.43 0.3 0.43 or --spacing 0.43 0.3 0.43
+- Detection Rate: Percentage of successfully detected landmarks
+Mean Error: Average distance between predicted and true positions (mm)
+- Axis-specific Errors: Separate analysis for X, Y, and Z coordinates
+- 5mm Inlier Rate: Percentage of detections within 5mm of ground truth
+- Resolution Impact: Correlation between image resolution and detection accuracy
 
-**How it affects the output:**
+**Tips**
 
-- The spacing parameter determines the resolution of the output landmark mask.
-- A smaller spacing results in a higher resolution mask with more voxels, potentially capturing finer details but increasing computational requirements and file size.
-- A larger spacing produces a lower resolution mask with fewer voxels, which may be computationally efficient but might lose some detail.
-- The output mask is resampled to this spacing, regardless of the input image's original spacing.
+- Use --debug flag for detailed processing information
+- Enable --generate_pictures for visual validation
+- Review the detailed_analysis.md file for in-depth insights
+- Check error distributions to identify systematic issues
 
-### Bounds Parameter
-The 'bounds' parameter consists of two values: the positive upper bound and the negative lower bound. These values define the size of the region around each landmark in the mask.
-
-- Default values: [5, 10] (positive upper bound: 5, negative lower bound: 10)
-- Usage: -b 5 10 or --bound 5 10
-
-**How it influences landmark mask generation:**
-
-1. Positive Upper Bound (first value):
-
-- Defines the radius (in voxels) around the landmark where the mask will have the full landmark label value.
-- Voxels within this radius from the landmark center are assigned the landmark's label value.
-
-
-2. Negative Lower Bound (second value):
-
-- Defines the outer radius (in voxels) of a "transition zone" around the landmark.
-- Voxels between the positive upper bound and this value are assigned a value of 0.5, representing a transition or "negative" sample area.
-
-
-
-**Visual representation:**
-```
-    0 0 0 0 0 0 0      0: Background
-    0 0 5 5 5 0 0      5: Full landmark value (within positive upper bound)
-    0 5 5 5 5 5 0      2: Transition zone (between bounds)
-    0 5 5 L 5 5 0      L: Landmark center
-    0 5 5 5 5 5 0
-    0 0 5 5 5 0 0
-    0 0 0 0 0 0 0
-```
-These bounds help create a gradual transition in the landmark mask, which can be beneficial for training landmark detection models by providing context around the exact landmark location.

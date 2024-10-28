@@ -74,5 +74,3 @@ After the landmark detection is complete, you'll find the results in the output 
 - If you don't specify the input, output, or model directories, the script will use default paths. Make sure these default paths exist or specify your own paths.
 
 By following this guide, you should be able to easily run landmark detection tasks using the provided Docker setup.
-
-**Attribution**: This how-to guide was created with assistance from Claude.ai, an AI language model developed by Anthropic./Documentation/landmark-detection-docker-guide.md

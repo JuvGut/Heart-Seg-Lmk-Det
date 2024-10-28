@@ -292,7 +292,8 @@ class LandmarkDetectionDataset(Dataset):
 
     # Debug: Save the data
     try:
-        self.save_debug_data(image_tensor, landmark_mask_tensor, landmark_coords_tensor, image_frame, image_name)
+        pass
+        #self.save_debug_data(image_tensor, landmark_mask_tensor, landmark_coords_tensor, image_frame, image_name)
     except Exception as e:
         print(f"Error saving debug data for {image_name}: {str(e)}")
     

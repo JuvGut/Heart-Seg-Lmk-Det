@@ -32,7 +32,9 @@ Dataset/
 
 ### Step 2: Change the Label Structure (Background to 0)
 
-> ==**Before running the script, create a backup of the labelsTr folder.**==
+---
+> Before running the script, create a **backup** of the labelsTr folder. It will prompt you to continue or cancel in the command line.
+---
 
 Run change_label.py with the following command:
 ```
@@ -44,7 +46,7 @@ This script rearranges the label files, specifically moving the "background" lab
 ### Step 3: Split dataset 
 This script takes the imagesTr, labelsTr, and landmarksTr folders and generates the imagesTs, labelsTs, and landmarksTs folders, containing 20% of the total data as a test set. This ensures there is a test set of unseen data.
 
-Run create_datalist.py with the following command:
+Run it with the following command:
 
 ```
 python split_dataset.py /path/to/Dataset
@@ -67,11 +69,11 @@ CopyDataset/
 ├── labelsTs/
 ├── landmarksTs/
 ```
-with 20% of the data moved from the 'Tr' folders to the 'Ts' folders
+with 20% of the data moved from the 'Tr' folders to the 'Ts' folders. This can be specified when changing the parameter `test_ratio` within the code.
 
 ### Step 4: Create 'dataset.json' file
 
-Run the create_dataset_json.py script to generate the dataset.json file, which informs the model about the number of training examples, the modality of the input images, and the label structure.
+Run the create_dataset_json.py script to generate the dataset.json file, which informs the model about the number of training examples, the modality of the input images, and the label structure. This file is needed to train the nnUNetv2.
 
 ```
 python create_dataset_json.py /path/to/Dataset 
@@ -100,38 +102,4 @@ The generated dataset.json file will look similar to this:
         "numTraining": 0,
         "file_ending": ".nrrd"
     }
-```
-
-
-# IGNORE PAST HERE
-
-### Don't use: Step 0: Match and align the label with the image
-Run `match_and_align_nrrd.py` with the following command: 
-
-```
-python match_and_align_nrrd.py /path/to/folder/containing/data
-```
-
-This program takes the label file and looks which available volume best matches the label. It then saves the label with the corresponding image filename like so: 
-
-image: image_file.nrrd --> label: image_file.seg.nrrd
-
-This step is necessary, because some folders contain multiple .nrrd volumes that don't correspond to the labels.
-
-### Don't use: Step 1: Reorganize the Files into a Dataset
-Run `organize_files.py` with the following command:
-
-```
-python organize_files.py /path/to/folder/containing/data
-```
-
-The folder containing all the data should include the CT-Scan files (.nrrd), the segmentation files (.seg.nrrd), and the landmark files (mrk.json).
-
-The script reorganizes the files into a dataset with the following structure and appends _0000.nrrd to the volumes, which is required for nnUNet:
-
-```
-Dataset/
-├── imagesTr/
-├── labelsTr/
-└── landmarksTr/
 ```

@@ -2,9 +2,10 @@
 
 ## Overview
 
-This Python script categorizes files from a source folder based on their names and copies them into new folders. It allows users to specify which categories of files to process and where to place the output folders.
+This script helps organize medical image cutouts by automatically grouping similar images into separate folders. While **not essential for the main project functionality**, it serves as a useful preprocessing tool to organize your image dataset.
 
-## Features
+The script analyzes file names to identify different types of medical images (e.g., heart scans, thorax images, angiograms) and systematically organizes them into categorized folders for easier access and management.
+Features
 
 - Categorizes files into four categories: Heart (H), Thorax (T), Angio (A), and Other (O).
 - Allows selection of specific categories to process.
