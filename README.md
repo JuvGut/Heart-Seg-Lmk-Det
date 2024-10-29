@@ -25,7 +25,7 @@ This project aims to segment the heart into 4 segments (4 + Background) and dete
 ## Visuals of the provided labels and landmarks
 ![alt text](BS-043.png)
 
-## Example output to the Segmentation model
+## Example output to the Segmentation and Landmark Detection model
 
 The folder `Segmentation/Example_Output` contains 3 sample images with their ground truth labels, as well as the sample output of the segmentation model.
 
@@ -43,45 +43,6 @@ Project/
 │       ├── Sample_seg_labels/
 │       └── Sample_seg_results/
 |       └── ...
-```
-
-## Project Structure
-```
-Project/
-├── scripts/
-│   ├── nrrd_processor.py
-│   ├── change_label.py
-│   ├── split_dataset.py
-│   ├── create_dataset_json.py
-│   └── ...
-├── Documentation/
-│   ├── Dataset_preparation.md (for seg and lmk)
-│   ├── Landmark_detection_usage.md
-│   ├── Segmentation_usage.md (TODO)
-│   ├── nnunet-docker-guide.md
-│   ├── landmark-detection-docker-guide.md
-│   └── ...
-├── Medical-Detection3d-Toolkit-master/
-│   ├── detection3d/
-│       └── ...
-│   ├── lmk_det_in_docker.sh
-│   ├── lmk-pred-runner.sh
-│   ├── run_detection.py
-│   └── ...
-├── Landmark_Detection/
-│   └── Example_Output/
-│       ├── Sample_images/
-│       ├── Sample_seg_labels/
-│       └── Sample_seg_results/
-│       └── ...
-├── nnUNet/
-│   └── ...
-├── Segmentation/
-│   └── Example_Output/
-│       ├── Sample_images/
-│       ├── Sample_seg_labels/
-│       └── Sample_seg_results/
-└── README.md
 ```
 
 ## Installation
@@ -278,3 +239,48 @@ Now: Use all files that do not exit with an error to create dataset. Even the on
 This should result in a dataset consisting of 203 images and segmentations as well as landmarks BEFORE the splitting up of the data (80% Training, 20% Testing).
 
 The dataset is then Validated by nnUNet and the datasets are prepared automatically (163 training images, rest for validation/testing).
+
+## Project Structure
+```
+Project/
+├── scripts/
+│   ├── nrrd_processor.py
+│   ├── change_label.py
+│   ├── split_dataset.py
+│   ├── create_dataset_json.py
+│   └── ...
+├── Documentation/
+│   ├── Dataset_preparation.md (for seg and lmk)
+│   ├── Segmentation_usage.md
+│   ├── nnunet-docker-guide.md
+│   ├── Landmark_detection_usage.md
+│   ├── landmark-detection-docker-guide.md
+│   └── File_Categorization_script.md # not directly used in project
+├── Medical-Detection3d-Toolkit-master/
+│   ├── detection3d/
+│   │   └── ...
+│   └── ...
+├── Landmark_Detection/
+│   ├── Heart-Landmark-Model/
+│   ├── lmk_det_in_docker.sh
+│   ├── lmk-pred-runner.sh
+│   ├── run_detection.py
+│   └── Example_Output/
+│       ├── Sample_images/
+│       ├── Sample_seg_labels/
+│       └── Sample_seg_results/
+│       └── ...
+├── nnUNet/
+│   └── ...
+├── Segmentation/
+│   └── Example_Output/
+│       ├── Dockerfile
+│       ├── predictor-seg-script.sh    # Run model locally
+│       ├── segmentation_in_docker.sh  # Run model in Docker
+│       ├── segmentation_model.zip     # Export of segmentation model
+│       ├── Sample_images/
+│       ├── Sample_seg_labels/
+│       └── Sample_seg_results/
+├── CHANGES.md
+└── README.md
+```
