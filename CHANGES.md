@@ -1,5 +1,11 @@
 # Project Modifications Documentation
 
+Copyright (C) 2024 Center for medical Image Analysis and Navigation, 
+Department of Biomedical Engineering, University of Basel
+
+This documentation is part of a project licensed under GNU General Public License v3.0.
+For full license terms, see the LICENSE file in the root directory.
+
 ## Source Repositories
 1. nnUNet
    - Original Repository: [nnUNet](https://github.com/MIC-DKFZ/nnUNet)
@@ -11,7 +17,7 @@
    - Original Repository: [Medical-Detection3d-Toolbox](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/tree/master)
    - Version Used: prior to March 2022
    - Status: Significantly modified
-   - License: GNU General Public License v3.0](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/blob/master/LICENSE)
+   - License: [GNU General Public License v3.0](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/blob/master/LICENSE)
 
 ## Medical-Detection3d-Toolbox Modifications
 While exact changes cannot be tracked due to historical workflow, the following major modifications were made:
