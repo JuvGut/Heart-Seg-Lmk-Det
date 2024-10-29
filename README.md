@@ -193,13 +193,50 @@ Adapt all the paths in the file `lmk_det_infer.py` and run it like so. Alternati
 python lmk_det_infer.py
 ```
 
+## Attribution
+This project builds upon:
+- [nnUNet](https://github.com/MIC-DKFZ/nnUNet) (Licensed under [Apache License 2.0](https://github.com/MIC-DKFZ/nnUNet/blob/master/LICENSE))
+- [Medical-Detection3D-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit) (Licensed under 
+[GNU General Public License v3.0](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/blob/master/LICENSE))
+
+## Modifications Overview
+Major modifications were made to Medical-Detection3d-Toolbox, including:
+- Addition of .nrrd file processing capabilities
+- Integration with nnUNet dataset structure
+- New scripts for landmark conversion and preprocessing
+- Modified detection thresholds for improved performance
+- Additional configuration files for specialized training
+
+For complete documentation of changes, see `CHANGES.md`
+
+## Project Components
+This project combines two major components:
+1. **nnUNet (v2.5.1)**
+   - Used as-is for segmentation tasks
+   - Containerized for inference
+   - Handles the segmentation of heart structures
+
+2. **Modified Medical-Detection3d-Toolbox**
+   - Significantly adapted for landmark detection
+   - Enhanced with .nrrd support
+   - Integrated with nnUNet dataset structure
+   - Modified detection parameters for improved accuracy
+
+
 ## Authors and Acknowledgment
 - **Lead Developer:** Juval Gutknecht
-- **Original nnUNet Implementation:** Isensee et al. ([GitHub Repository](https://github.com/MIC-DKFZ/nnUNet))
-- **Original Medical Detection 3D Toolkit** Liu et al. ([GitHub Repository](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit))
+- **Original nnUNet Implementation:** Isensee et al. ([nnUNet](https://github.com/MIC-DKFZ/nnUNet); Licensed under [Apache License 2.0](https://github.com/MIC-DKFZ/nnUNet/blob/master/LICENSE))
+- **Original Medical Detection 3D Toolkit** Liu et al. ([Medical-Detection3D-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit); Licensed under 
+[GNU General Public License v3.0](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/blob/master/LICENSE))
 
 ## License
-This project is licensed under the Center for medical Image Analysis and Navigation, Department of Biomedical Engineering, University of Basel.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+This project incorporates:
+- [nnUNet](https://github.com/MIC-DKFZ/nnUNet) - Licensed under [Apache License 2.0](https://github.com/MIC-DKFZ/nnUNet/blob/master/LICENSE)
+- [Medical-Detection3D-Toolkit](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit) - Licensed under [GNU General Public License v3.0](https://github.com/qinliuliuqin/Medical-Detection3d-Toolkit/blob/master/LICENSE)
+
+As this project includes GPL-3.0 licensed code and is a derivative work, the entire project must be licensed under GPL-3.0.
 
 ## Contact
 For general inquiries and bug reports, please open an issue in this repository
