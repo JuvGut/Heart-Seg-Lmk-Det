@@ -61,7 +61,7 @@ Dataset/
 ```
 After running the script, your Dataset directory will look like this:
 ```
-CopyDataset/
+Dataset/
 ├── imagesTr/
 ├── labelsTr/
 ├── landmarksTr/

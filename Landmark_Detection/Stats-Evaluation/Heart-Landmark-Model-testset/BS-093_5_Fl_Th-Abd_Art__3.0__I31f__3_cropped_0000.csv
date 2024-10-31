@@ -1,0 +1,10 @@
+name,x,y,z,probability
+Commissure LCC-RCC,-132.79060810463284,-232.14437295257792,70.83378220678262,0.6141185164451599
+Commissure NCC-RCC,-1.0,-1.0,-1.0,0.0
+Commissure LCC-NCC,-1.0,-1.0,-1.0,0.0
+Nadir LCS,-1.0,-1.0,-1.0,0.0
+Nadir RCS,-330.0,-32.0,270.0,0.25590747594833374
+Nadir NCS,-1.0,-1.0,-1.0,0.0
+Basis of IVT LCC-RCC,-1.0,-1.0,-1.0,0.0
+Basis of IVT NCC-RCC,-1.0,-1.0,-1.0,0.0
+Basis of IVT LCC-NCC,-1.0,-1.0,-1.0,0.0

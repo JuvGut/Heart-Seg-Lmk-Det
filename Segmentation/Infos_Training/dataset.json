@@ -1,0 +1,20 @@
+{
+    "name": "HeartScans",
+    "description": "Heart segmentation",
+    "tensorImageSize": "3D",
+    "reference": "University Hospital Basel",
+    "licence": "??????",
+    "relase": "1.0 29/07/2024",
+    "channel_names": {
+        "0": "CT"
+    },
+    "labels": {
+        "background": 0,
+        "LVOT": 1,
+        "RCC": 2,
+        "LCC": 3,
+        "NCC": 4
+    },
+    "numTraining": 163,
+    "file_ending": ".nrrd"
+}

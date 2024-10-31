@@ -115,7 +115,7 @@ nnUNetv2_train 012 3d_fullres 3 --npz
 nnUNetv2_train 012 3d_fullres 4 --npz
 ```
 
-Typical training time per fold on RTX 3090: ~8-12 hours
+Typical training time per fold on RTX 3090: ~8-12 hours; I saved my files on a different server, which might be why it used 400h per fold.
 
 For multiple GPUs:
 ```bash

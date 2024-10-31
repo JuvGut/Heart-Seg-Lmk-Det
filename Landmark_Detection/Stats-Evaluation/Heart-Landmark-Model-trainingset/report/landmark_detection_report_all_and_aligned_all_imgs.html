@@ -1,0 +1,1651 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f5f5f5; }
+            tr:nth-child(even) { background-color: #f9f9f9; }
+            .summary-box {
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            .error-distribution {
+                margin: 20px 0;
+            }
+            .axis-specific {
+                margin: 20px 0;
+                padding: 10px;
+                background-color: #fff;
+                border: 1px solid #e9ecef;
+            }
+            h2 { color: #333; margin-top: 30px; }
+            .metric { margin: 10px 0; }
+            .highlight { color: #007bff; }
+            .model-name { 
+                background-color: #e9ecef;
+                padding: 10px;
+                border-radius: 4px;
+                margin-bottom: 20px;
+                font-size: 1.2em;
+                color: #495057;
+            }
+            .info-icon {
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-color: #6c757d;
+                color: white;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 16px;
+                font-size: 12px;
+                cursor: pointer;
+                margin-left: 5px;
+            }
+            .explanation {
+                display: none;
+                background-color: #f8f9fa;
+                border: 1px solid #dee2e6;
+                padding: 10px;
+                margin: 5px 0;
+                border-radius: 4px;
+            }
+            .graph-section {
+                margin: 30px 0;
+                padding: 20px;
+                background-color: white;
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+            }
+            .graph-container {
+                margin: 20px 0;
+            }
+            .graph-title {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            .graph-description {
+                color: #666;
+                margin-bottom: 15px;
+            }
+            .expandable-section {
+                border: 1px solid #dee2e6;
+                border-radius: 4px;
+                margin: 10px 0;
+            }
+            .expandable-header {
+                background-color: #f8f9fa;
+                padding: 10px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .expandable-content {
+                display: none;
+                padding: 15px;
+            }
+        </style>
+        <script>
+            function toggleExplanation(id) {
+                const element = document.getElementById(id);
+                element.style.display = element.style.display === 'none' ? 'block' : 'none';
+            }
+            
+            function toggleSection(id) {
+                const element = document.getElementById(id);
+                const content = element.querySelector('.expandable-content');
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Landmark Detection Analysis Report</h1>
+        <div class="model-name">Model: all_and_aligned_all_imgs</div>
+
+        <div class="summary-box">
+            <h2>Overall Summary <span class="info-icon" onclick="toggleExplanation('summary-explanation')">?</span></h2>
+            <div id="summary-explanation" class="explanation">
+                This section provides key metrics summarizing the model's performance across all landmarks and cases.
+            </div>
+            <div class="metric">Total Landmarks Analyzed: <span class="highlight">9</span></div>
+            <div class="metric">Average Detection Rate: <span class="highlight">98.16%</span></div>
+            <div class="metric">Median Detection Rate: <span class="highlight">98.16%</span></div>
+            <div class="metric">Mean Error: <span class="highlight">3.43 mm</span></div>
+            <div class="metric">Median Error: <span class="highlight">0.45 mm</span></div>
+            <div class="metric">Standard Deviation: <span class="highlight">29.18 mm</span></div>
+            <div class="metric">5mm Inlier Rate: <span class="highlight">97.50%</span></div>
+        </div>
+
+        <div class="graph-section">
+            <h2>Visualization Plots <span class="info-icon" onclick="toggleExplanation('plots-explanation')">?</span></h2>
+            <div id="plots-explanation" class="explanation">
+                Visual representations of error distributions and model performance metrics.
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Error Distribution</div>
+                <div class="graph-description">Distribution of landmark detection errors across all cases</div>
+                <img src="error_distribution.png" alt="Error Distribution" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Axis-specific Error Distribution</div>
+                <div class="graph-description">Error distributions broken down by anatomical axis (X, Y, Z)</div>
+                <img src="axis_error_distribution.png" alt="Axis-specific Error Distribution" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Detection Rate Distribution</div>
+                <div class="graph-description">Distribution of detection rates across landmarks</div>
+                <img src="detection_rate_distribution.png" alt="Detection Rate Distribution" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Error Boxplot</div>
+                <div class="graph-description">Box plot showing error distributions by axis</div>
+                <img src="error_boxplot.png" alt="Error Boxplot" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Resolution Distribution</div>
+                <div class="graph-description">Distribution of image resolutions across dataset</div>
+                <img src="resolution_distribution.png" alt="Resolution Distribution" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Error vs Resolution</div>
+                <div class="graph-description">Relationship between detection errors and image resolution</div>
+                <img src="error_vs_resolution.png" alt="Error vs Resolution" style="width: 100%; max-width: 800px;">
+            </div>
+
+            <div class="graph-container">
+                <div class="graph-title">Top 10 Landmarks by Error</div>
+                <div class="graph-description">Landmarks with the highest mean detection errors</div>
+                <img src="top_10_errors.png" alt="Top 10 Errors" style="width: 100%; max-width: 800px;">
+            </div>
+        </div>
+
+        <div class="expandable-section" id="landmark-section">
+            <div class="expandable-header" onclick="toggleSection('landmark-section')">
+                Landmark Detection Summary
+                <span class="info-icon" onclick="toggleExplanation('landmark-explanation'); event.stopPropagation()">?</span>
+            </div>
+            <div id="landmark-explanation" class="explanation">
+                Detailed performance metrics for each individual landmark, including detection rates and error statistics.
+            </div>
+            <div class="expandable-content">
+                <table>
+                    <tr>
+                        <th>Landmark</th>
+                        <th>Detection Rate (%)</th>
+                        <th>Detected/Total</th>
+                        <th>Mean Error (mm)</th>
+                        <th>X Error (mm)</th>
+                        <th>Y Error (mm)</th>
+                        <th>Z Error (mm)</th>
+                        <th>Median Error (mm)</th>
+                        <th>Max Error (mm)</th>
+                        <th>5mm Inlier Rate (%)</th>
+                    </tr>
+                    
+        <tr>
+            <td>Nadir NCS</td>
+            <td>100.00%</td>
+            <td>163/163</td>
+            <td>19.93</td>
+            <td>4.56</td>
+            <td>9.22</td>
+            <td>14.36</td>
+            <td>0.46</td>
+            <td>575.81</td>
+            <td>86.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>Nadir LCS</td>
+            <td>99.39%</td>
+            <td>162/163</td>
+            <td>0.62</td>
+            <td>0.24</td>
+            <td>0.30</td>
+            <td>0.36</td>
+            <td>0.48</td>
+            <td>6.36</td>
+            <td>99.38</td>
+        </tr>
+        
+
+        <tr>
+            <td>Basis of IVT LCC-RCC</td>
+            <td>98.77%</td>
+            <td>161/163</td>
+            <td>1.30</td>
+            <td>0.58</td>
+            <td>0.33</td>
+            <td>0.99</td>
+            <td>0.44</td>
+            <td>117.59</td>
+            <td>99.38</td>
+        </tr>
+        
+
+        <tr>
+            <td>Nadir RCS</td>
+            <td>98.16%</td>
+            <td>160/163</td>
+            <td>2.55</td>
+            <td>0.92</td>
+            <td>1.42</td>
+            <td>1.77</td>
+            <td>0.49</td>
+            <td>310.93</td>
+            <td>99.38</td>
+        </tr>
+        
+
+        <tr>
+            <td>Commissure LCC-RCC</td>
+            <td>98.16%</td>
+            <td>160/163</td>
+            <td>1.74</td>
+            <td>0.60</td>
+            <td>0.76</td>
+            <td>1.19</td>
+            <td>0.42</td>
+            <td>100.49</td>
+            <td>98.12</td>
+        </tr>
+        
+
+        <tr>
+            <td>Commissure NCC-RCC</td>
+            <td>97.55%</td>
+            <td>159/163</td>
+            <td>2.53</td>
+            <td>1.18</td>
+            <td>0.75</td>
+            <td>1.76</td>
+            <td>0.50</td>
+            <td>115.83</td>
+            <td>96.86</td>
+        </tr>
+        
+
+        <tr>
+            <td>Basis of IVT LCC-NCC</td>
+            <td>97.55%</td>
+            <td>159/163</td>
+            <td>0.51</td>
+            <td>0.26</td>
+            <td>0.17</td>
+            <td>0.31</td>
+            <td>0.41</td>
+            <td>3.17</td>
+            <td>100.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>Commissure LCC-NCC</td>
+            <td>96.93%</td>
+            <td>158/163</td>
+            <td>0.74</td>
+            <td>0.47</td>
+            <td>0.22</td>
+            <td>0.38</td>
+            <td>0.46</td>
+            <td>14.69</td>
+            <td>98.73</td>
+        </tr>
+        
+
+        <tr>
+            <td>Basis of IVT NCC-RCC</td>
+            <td>96.93%</td>
+            <td>158/163</td>
+            <td>0.57</td>
+            <td>0.28</td>
+            <td>0.28</td>
+            <td>0.27</td>
+            <td>0.43</td>
+            <td>6.24</td>
+            <td>99.37</td>
+        </tr>
+        
+                </table>
+            </div>
+        </div>
+
+        <div class="expandable-section" id="case-section">
+            <div class="expandable-header" onclick="toggleSection('case-section')">
+                Case Detection Summary
+                <span class="info-icon" onclick="toggleExplanation('case-explanation'); event.stopPropagation()">?</span>
+            </div>
+            <div id="case-explanation" class="explanation">
+                Per-case detection statistics and image spacing information.
+            </div>
+            <div class="expandable-content">
+                <table>
+                    <tr>
+                        <th>Case</th>
+                        <th>Detection Rate (%)</th>
+                        <th>Detected/Total</th>
+                        <th>Image Spacing (mm)</th>
+                    </tr>
+                    
+        <tr>
+            <td>BS-005</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-009</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-010</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-014</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.34 × 0.34 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-015</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-021</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.33 × 0.33 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-022</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-026</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-048</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-051</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-057</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-059</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-067</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.46 × 0.46 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-072</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.60 × 0.60 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-076</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-083</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.70</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-085</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-090</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.49 × 0.49 × 0.45</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-091</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-092</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-096</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.34 × 0.34 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-104</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-120</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.71 × 0.71 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-121</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.68 × 0.68 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-124</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.33 × 0.33 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-125</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.33 × 0.33 × 0.70</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-129</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.50 × 0.50 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-132</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.45 × 0.45 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-136</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-137</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.44 × 0.44 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-138</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.73 × 0.73 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-140</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-141</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-144</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.48 × 0.48 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-145</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-152</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.59 × 0.59 × 0.60</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-153</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-154</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.70</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-155</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.81 × 0.81 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-158</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.31 × 0.31 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-164</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.53 × 0.53 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-171</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.66 × 0.66 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-177</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-179</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-180</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-181</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.44 × 0.44 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-182</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-190</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-194</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-195</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.78 × 0.78 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-196</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-201</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.37 × 0.37 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-215</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-216</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-217</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-224</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-242</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-243</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.80 × 0.80 × 0.80</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-244</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-245</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-247</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.60</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-262</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-264</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-279</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.30 × 0.30 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-281</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.68 × 0.68 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-282</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.46 × 0.46 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-285</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.28 × 0.28 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-287</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.38 × 0.38 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-288</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.33</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-290</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.37 × 0.37 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-293</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.98 × 0.98 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-306</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-308</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-324</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.85 × 0.85 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-325</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.85 × 0.85 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-334</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.33 × 0.33 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-336</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.87 × 0.87 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-337</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.34 × 0.34 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-3399</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.88 × 0.88 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-348</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-349</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.46 × 0.46 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-351</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-355</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.34 × 0.34 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-361</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-365</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-370</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-373</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.98 × 0.98 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-374</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.44 × 0.44 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-383</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-386</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-390</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.44 × 0.44 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-393</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-394</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-400</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.83 × 0.83 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-401</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.75 × 0.75 × 3.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-402</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.52 × 0.52 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-410</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-411</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.49 × 0.49 × 0.45</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-418</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.46 × 0.46 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-421</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-424</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.71 × 0.71 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-425</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.82 × 0.82 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-426</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-429</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.83 × 0.83 × 0.80</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-431</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.80 × 0.80 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-433</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-434</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-437</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.76 × 0.76 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-439</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.82 × 0.82 × 0.45</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-441</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.46 × 0.46 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-442</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.45 × 0.45 × 0.34</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-455</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.89 × 0.89 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-456</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.62 × 0.62 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-459</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-477</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.32 × 0.32 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-482</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-483</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.79 × 0.79 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-486</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.27 × 0.27 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-489</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.33 × 0.33 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-504</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-508</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.61 × 0.61 × 0.60</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-510</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-512</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 0.75</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-520</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.49 × 0.49 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-525</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.52 × 0.52 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-534</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.42 × 0.42 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-539</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-545</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-548</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.64 × 0.64 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-549</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.72 × 0.72 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-556</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.76 × 0.76 × 0.70</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-558</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.76 × 0.76 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-559</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.80 × 0.80 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-560</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.72 × 0.72 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-563</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.87 × 0.87 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-567</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-568</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.80 × 0.80 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-569</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-570</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.65 × 0.65 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-572</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.77 × 0.77 × 0.60</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-573</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.48 × 0.48 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-579</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.41 × 0.41 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-580</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.80 × 0.80 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-592</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.63 × 0.63 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-593</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.68 × 0.68 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-600</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.98 × 0.98 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-603</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.79 × 0.79 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-607</td>
+            <td>100.00%</td>
+            <td>9/9</td>
+            <td>0.43 × 0.43 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-017</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-031</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.40 × 0.40 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-089</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.62 × 0.62 × 2.50</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-130</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.39 × 0.39 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-143</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.29 × 0.29 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-148</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.29 × 0.29 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-162</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-458</td>
+            <td>88.89%</td>
+            <td>8/9</td>
+            <td>0.36 × 0.36 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-013</td>
+            <td>77.78%</td>
+            <td>7/9</td>
+            <td>0.33 × 0.33 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-077</td>
+            <td>77.78%</td>
+            <td>7/9</td>
+            <td>0.30 × 0.30 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-207</td>
+            <td>77.78%</td>
+            <td>7/9</td>
+            <td>0.37 × 0.37 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-250</td>
+            <td>77.78%</td>
+            <td>7/9</td>
+            <td>0.37 × 0.37 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-286</td>
+            <td>77.78%</td>
+            <td>7/9</td>
+            <td>0.75 × 0.75 × 1.00</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-034</td>
+            <td>66.67%</td>
+            <td>6/9</td>
+            <td>0.35 × 0.35 × 0.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>BS-151</td>
+            <td>33.33%</td>
+            <td>3/9</td>
+            <td>0.74 × 0.74 × 0.80</td>
+        </tr>
+        
+                </table>
+            </div>
+        </div>
+
+    </body>
+    </html>
+    
